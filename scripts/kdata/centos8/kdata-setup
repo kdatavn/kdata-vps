@@ -567,7 +567,8 @@ pmmaxrequests=500
 fi
 
 
-
+##########################
+yum -y install php-fpm
 rm -f /etc/php-fpm.d/www.conf
 yes | cp -rf /opt/vps_kdata/scripts/kdata/conf-webserver/www.txt /etc/php-fpm.d/www.conf
 # config
