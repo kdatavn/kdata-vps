@@ -360,7 +360,7 @@ cd
 #if [ ! "$(cat /tmp/gitversion)" = "253" ]; then
 #sudo yum -y remove git
 #cd /usr/src
-#wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps-software/raw/main/git-2.5.3.tar.gz
+#wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps-software/raw/main/git-2.5.3.tar.gz
 #tar xzf git-2.5.3.tar.gz
 #cd /usr/src/git-2.5.3
 #make prefix=/usr/local/git all
@@ -371,7 +371,7 @@ cd
 #fi
 #else
 #cd /usr/src
-#wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps-software/raw/main/git-2.5.3.tar.gz
+#wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps-software/raw/main/git-2.5.3.tar.gz
 #tar xzf git-2.5.3.tar.gz
 #cd /usr/src/git-2.5.3
 #make prefix=/usr/local/git all
@@ -940,7 +940,7 @@ fi
 
 #wget --no-check-certificate -q https://kdata.com/scripts/kdata/Softwear/wp-cli.phar
 #yes | cp -rf /opt/vps_kdata/scripts/kdata/Softwear/wp-cli.phar wp-cli.phar
-wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps-software/raw/main/wp-cli.phar
+wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps-software/raw/main/wp-cli.phar
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 #clear

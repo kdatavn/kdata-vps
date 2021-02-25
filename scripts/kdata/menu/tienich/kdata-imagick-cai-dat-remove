@@ -63,7 +63,7 @@ else
 echo "extension=imagick.so" > /etc/php.d/imagick.ini
 fi
 #wget --no-check-certificate -q https://kdata.com/script/kdata/check-imagick.php.zip -O /home/$mainsite/private_html/check-imagick.php
-wget --no-check-certificate -q https://github.com/vuukhanhduy/kdata-vps/tree/main/scripts/kdata/check-imagick.php.zip -O /home/$mainsite/private_html/check-imagick.php
+wget --no-check-certificate -q https://github.com/kdatavn/kdata-vps/tree/main/scripts/kdata/check-imagick.php.zip -O /home/$mainsite/private_html/check-imagick.php
 /etc/kdata/menu/kdata-re-config-cac-ham-php-disable-php.ini
 if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
 service php-fpm restart

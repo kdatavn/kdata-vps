@@ -45,7 +45,7 @@ rm -rf /etc/kdata/menu.zip
 cd
 download_main_menu () {
 #wget -q --no-check-certificate https://kdata.com/script/kdata/kdata -O /bin/kdata && chmod +x /bin/kdata
-wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps/tree/main/scripts/kdata/kdata -O /bin/kdata && chmod +x /bin/kdata
+wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps/tree/main/scripts/kdata/kdata -O /bin/kdata && chmod +x /bin/kdata
 }
 download_main_menu
 checkkdata_mainmenu=`cat /bin/kdata`
@@ -53,7 +53,7 @@ if [ -z "$checkkdata_mainmenu" ]; then
 download_main_menu
 fi
 #wget -q --no-check-certificate https://kdata.com/script/kdata/motd -O /etc/motd
-wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps/tree/main/scripts/kdata/motd -O /etc/motd
+wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps/tree/main/scripts/kdata/motd -O /etc/motd
 find /etc/kdata/menu -type f -exec chmod 755 {} \;
 clear 
 echo "========================================================================= "

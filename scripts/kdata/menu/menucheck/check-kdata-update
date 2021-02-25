@@ -14,7 +14,7 @@ fileTime2=$(date -r /tmp/kdata.newversion +%d)
 if [ ! "$fileTime2" == "$curTime" ]; then
 rm -rf /tmp/kdata.newversion
 #wget -q https://kdata.echbay.com/script/kdata/kdata.newversion -O /tmp/kdata.newversion
-wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/version -O /tmp/kdata.newversion
+wget --no-check-certificate -q https://raw.githubusercontent.com/kdatavn/kdata-vps/main/version -O /tmp/kdata.newversion
 touch /tmp/kdata.newversion
 LOCALVER=`cat /etc/kdata/kdata.version`
 checksize=$(du -sb /tmp/kdata.newversion | awk 'NR==1 {print $1}')

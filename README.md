@@ -1,6 +1,6 @@
 ### Lệnh Cài Đặt KDATA-VPS Trên Centos 6 & 7 & 8:
 ```
-bash <( curl -k https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/install )
+bash <( curl -k https://raw.githubusercontent.com/kdatavn/kdata-vps/main/install )
 ```
 
 ----------------------------------------------

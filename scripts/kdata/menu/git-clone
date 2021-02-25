@@ -19,7 +19,7 @@ cd ~ ; cd /opt/vps_kdata && git pull ; cd ~
 #git merge origin master
 # or clone new
 else
-git clone https://github.com/vuukhanhduy/kdata-vps.git /opt/vps_kdata
+git clone https://github.com/kdatavn/kdata-vps.git /opt/vps_kdata
 fi
 
 cd ~

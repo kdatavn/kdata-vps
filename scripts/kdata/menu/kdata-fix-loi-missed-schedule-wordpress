@@ -69,10 +69,10 @@ case $response in
 cd /tmp
 rm -rf /tmp/wp-missed-schedule.zip
 #wget -q --no-check-certificate https://kdata.com/script/kdata/Softwear/wp-missed-schedule.zip
-wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps-software/raw/main/wp-missed-schedule.zip
+wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps-software/raw/main/wp-missed-schedule.zip
 if [ ! -f /tmp/wp-missed-schedule.zip ]; then
 #wget -q --no-check-certificate https://kdata.com/script/kdata/Softwear/wp-missed-schedule.zip
-wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps-software/raw/main/wp-missed-schedule.zip
+wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps-software/raw/main/wp-missed-schedule.zip
 fi
 unzip -q wp-missed-schedule.zip -d /home/$website/public_html/wp-content/plugins/
 rm -rf /tmp/wp-missed-schedule.zip

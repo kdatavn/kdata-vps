@@ -9,7 +9,7 @@ fi
 
 
 #checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://kdata.vn/script/kdata/kdata.newversion" )
-checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/version" )
+checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/kdatavn/kdata-vps/master/version" )
 #echo $checkketnoi
 if [[ "$checkketnoi" == "000" ]]; then
 clear
@@ -46,7 +46,7 @@ rm -rf /etc/kdata/.tmp/kdata-update-*
 # update glibc
 ### Check GLIBC 2.17 tren centos6 - Fix loi VPSKDATA tu phien ban 4.2.0.8 tro ve cai dat san tren server
 if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then
-wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/scripts/kdata/kdata-update-glibc -O /etc/kdata/.tmp/kdata-update-glibc
+wget --no-check-certificate -q https://raw.githubusercontent.com/kdatavn/kdata-vps/master/scripts/kdata/kdata-update-glibc -O /etc/kdata/.tmp/kdata-update-glibc
 chmod +x /etc/kdata/.tmp/kdata-update-glibc
 bash /etc/kdata/.tmp/kdata-update-glibc
 fi
@@ -54,7 +54,7 @@ fi
 
 ## Bat dau thuc hien update VPSKDATA
 #wget -q https://kdata.vn/script/kdata/kdata-update-run -O /etc/kdata/.tmp/kdata-update-run && chmod +x /etc/kdata/.tmp/kdata-update-run
-wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/scripts/kdata/kdata-update-run -O /etc/kdata/.tmp/kdata-update-run
+wget --no-check-certificate -q https://raw.githubusercontent.com/kdatavn/kdata-vps/master/scripts/kdata/kdata-update-run -O /etc/kdata/.tmp/kdata-update-run
 chmod +x /etc/kdata/.tmp/kdata-update-run
 bash /etc/kdata/.tmp/kdata-update-run
 

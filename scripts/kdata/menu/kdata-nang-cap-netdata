@@ -16,7 +16,7 @@ rm -rf /tmp/checktmp
 echo "-------------------------------------------------------------------------"
 echo "KDATA dang kiem tra. Please wait ..."
 #checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://kdata.com/script/kdata/Softwear/00-all-netdata-version.txt" )
-checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/scripts/kdata/Softwear/00-all-netdata-version.txt" )
+checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/kdatavn/kdata-vps/main/scripts/kdata/Softwear/00-all-netdata-version.txt" )
 if [[ "$checkketnoi" == "000" ]]; then
 clear
 echo "========================================================================="
@@ -33,7 +33,7 @@ rm -rf /tmp/00-all-netdata*
 cd /tmp
 download_version_netdata () {
 #wget --no-check-certificate -q https://kdata.com/script/kdata/Softwear/00-all-netdata-version.txt
-wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/scripts/kdata/Softwear/00-all-netdata-version.txt
+wget --no-check-certificate -q https://raw.githubusercontent.com/kdatavn/kdata-vps/main/scripts/kdata/Softwear/00-all-netdata-version.txt
 }
 download_version_netdata
 checkdownload_version_netdata=`cat /tmp/00-all-netdata-version.txt`
@@ -78,7 +78,7 @@ killall netdata
 cd /usr/local/kdata
 rm -rf netdata
 #wget --no-check-certificate -q https://kdata.com/script/kdata/Softwear/netdata_$REMOVER.zip
-wget --no-check-certificate -q https://github.com/vuukhanhduy/kdata-vps-software/raw/main/netdata_$REMOVER.zip
+wget --no-check-certificate -q https://github.com/kdatavn/kdata-vps-software/raw/main/netdata_$REMOVER.zip
 unzip -o -q netdata_$REMOVER.zip
 rm -rf /usr/local/kdata/netdata_$REMOVER.zip
 cd /usr/local/kdata/netdata

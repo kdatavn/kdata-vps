@@ -16,11 +16,11 @@ input {
 </head>
 <body>
 <div>
-	<input type="text" value="curl -sO https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/install && bash install" onClick="this.select();">
+	<input type="text" value="curl -sO https://raw.githubusercontent.com/kdatavn/kdata-vps/master/install && bash install" onClick="this.select();">
 </div>
 <br>
 <div>
-	<input type="text" value="yum -y install wget ; wget --no-check-certificate https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/install ; chmod +x install ; bash install" onClick="this.select();">
+	<input type="text" value="yum -y install wget ; wget --no-check-certificate https://raw.githubusercontent.com/kdatavn/kdata-vps/master/install ; chmod +x install ; bash install" onClick="this.select();">
 </div>
 </body>
 </html>
