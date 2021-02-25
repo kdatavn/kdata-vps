@@ -1,0 +1,29 @@
+#!/bin/bash
+
+echo "=========================================================================="
+echo "chomod 755 menu... "
+echo "=========================================================================="
+
+find /etc/kdata/menu -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/checkddos -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/crontab -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/CSF-Fiwall -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/database-example -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/downloadlog -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/memcache -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/menucheck -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/nang-cap-mariaDB -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/nangcap-php -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/opcache -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/pagespeed -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/swap -type f -exec chmod 755 {} \;
+#find /etc/kdata/menu/tienich -type f -exec chmod 755 {} \;
+
+#for d in /opt/vps_kdata/scripts/kdata/menu/*
+for d in /etc/kdata/menu/*
+do
+	if [ -d $d ]; then
+		echo $d
+		find $d -type f -exec chmod 755 {} \;
+	fi
+done

@@ -1,0 +1,42 @@
+#!/bin/sh
+
+curTime=$(date +%d)
+#echo "curTime: "$curTime
+
+
+if [ ! -f /tmp/kdata.newversion ]; then
+touch -a -m -t 201602180130.09 /tmp/kdata.newversion  
+fi
+
+fileTime2=$(date -r /tmp/kdata.newversion +%d)
+#echo "fileTime2: "$fileTime2
+
+if [ ! "$fileTime2" == "$curTime" ]; then
+rm -rf /tmp/kdata.newversion
+#wget -q https://kdata.echbay.com/script/kdata/kdata.newversion -O /tmp/kdata.newversion
+wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/version -O /tmp/kdata.newversion
+touch /tmp/kdata.newversion
+LOCALVER=`cat /etc/kdata/kdata.version`
+checksize=$(du -sb /tmp/kdata.newversion | awk 'NR==1 {print $1}')
+###
+	if [ $checksize -gt 2 ]; then
+	REMOVER=`cat /tmp/kdata.newversion`
+	cat >> "/tmp/kdata_check_kdata_version" <<END
+		if [ ! "$LOCALVER" == "$REMOVER" ]; then
+			echo "========================================================================="
+			echo "Update for KDATA found !  "
+			echo "-------------------------------------------------------------------------"
+			echo "Your Version: $LOCALVER   |   Newest version: $REMOVER"
+			echo "-------------------------------------------------------------------------"
+			echo "How to update: KDATA-VPS menu => Update System => Update KDATA-VPS "
+			
+		fi
+END
+	chmod +x /tmp/kdata_check_kdata_version
+	/tmp/kdata_check_kdata_version
+	rm -rf /tmp/kdata_check_kdata_version
+	fi
+fi
+
+
+

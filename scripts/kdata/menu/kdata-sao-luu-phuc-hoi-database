@@ -1,0 +1,28 @@
+#!/bin/sh
+prompt="Nhap lua chon cua ban (0-Thoat):"
+options=( "Thoat")
+printf "=========================================================================\n"
+printf "               KDATA - Manage VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                      Backup & Restore Database\n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1 ) /etc/kdata/menu/kdata-sao-luu-data;;
+    2 ) /etc/kdata/menu/kdata-lan-luot-sao-luu-het-tat-ca-database;;
+    3 ) /etc/kdata/menu/kdata-phuc-hoi-database-chon-dinh-dang;;
+    4 ) /etc/kdata/menu/kdata-lay-link-sao-luu-database-backup-menu;;
+    #5 ) /etc/kdata/menu/kdata-list-database-tren-vps;; "Danh Sach Database Tren Server"
+    5 ) clear && /etc/kdata/menu/kdata-them-xoa-database;;
+    0 ) clear && /etc/kdata/menu/kdata-them-xoa-database;;
+
+    
+    *) echo "Ban nhap sai, vui long nhap theo danh sach";continue;;
+
+    esac
+
+done

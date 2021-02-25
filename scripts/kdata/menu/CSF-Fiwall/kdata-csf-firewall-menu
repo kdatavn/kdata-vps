@@ -1,0 +1,68 @@
+#!/bin/sh
+. /home/kdata.conf
+prompt="Nhap lua chon cua ban (0-Thoat):"
+if [ -f /etc/csf/csf.conf ]; then
+options=("Block IP" "Unblock IP" "Unblock Tat Ca IP" "Them IP Vao CSF.Allow" "Remove IP Khoi CSF.Allow" "Block Countries By CSF" "Unblock All Countries" "Restart (Enable) CSF Firewall" "Disable CSF Firewall" "Remove CSF Firewall" "View IP Blocked List" "Update CSF Firewall" "Tat/Bat Canh Bao Tren Menu")
+else
+options=("Block IP" "Unblock IP" "Unblock Tat Ca IP" "Them IP Vao CSF.Allow" "Remove IP Khoi CSF.Allow" "Block Countries By CSF" "Unblock All Countries"  "Restart (Enable) CSF Firewall" "Disable CSF Firewall" "Remove CSF Firewall" "View IP Blocked List" "Cai dat CSF Firewall" "Tat/Bat Canh Bao Tren Menu")
+fi
+printf "=========================================================================\n"
+printf "                KDATA-VPS - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                            Quan Ly CSF Firewall                                \n"
+printf "=========================================================================\n"
+
+
+if [ ! -f "/etc/csf/csf.conf" ]; then
+echo "                          CSF Firewall: Not install"
+else
+csf -v > /tmp/kdatacheckcscfstatus
+if [ "$(grep disabled /tmp/kdatacheckcscfstatus)" = "" ]; then
+echo "             CSF Firewall: installed | Running | Version: $(csf -v | awk 'NR==1 {print $2}' | sed 's/v//') "
+else
+echo "                    CSF Firewall: Installed but Disable" 
+fi
+fi
+
+if [ -f "/etc/csf/csf.conf" ]; then
+if [ ! -f /etc/csf/csf.deny ]; then
+cat > "/etc/csf/csf.deny" <<END
+END
+fi
+fi
+
+if [ -f /etc/csf/csf.deny ]; then
+if [ "$(cat /etc/csf/csf.deny | awk 'NR==2 {print $2}')" == "Copyright" ]; then
+rm -rf /etc/csf/csf.deny
+cat > "/etc/csf/csf.deny" <<END
+END
+fi
+fi
+
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/CSF-Fiwall/kdata-chan-ip-ddos;;
+    2) /etc/kdata/menu/CSF-Fiwall/kdata-bo-chan-ip;;
+    3) /etc/kdata/menu/CSF-Fiwall/kdata-bo-chan-tat-ca-ip;;
+    4) /etc/kdata/menu/CSF-Fiwall/kdata-csf-allow;;
+    5) /etc/kdata/menu/CSF-Fiwall/kdata-remove-ip-khoi-csf-allow;;
+    6) /etc/kdata/menu/CSF-Fiwall/kdata-csf-firewall-block-country;;
+    7) /etc/kdata/menu/CSF-Fiwall/kdata-csf-firewall-un-block-country;;
+    8) /etc/kdata/menu/CSF-Fiwall/kdata-restart-csf;;
+    9) /etc/kdata/menu/CSF-Fiwall/kdata-befor-tat-csf;;
+    10) /etc/kdata/menu/CSF-Fiwall/kdata-xoa-csf;;
+    11) /etc/kdata/menu/CSF-Fiwall/kdata-download-csf-denny;;
+    12) /etc/kdata/menu/CSF-Fiwall/kdata-cai-dat-csf-csf-before;;
+    13) /etc/kdata/menu/CSF-Fiwall/kdata-tat-bat-canh-bao-cai-dat-csf;;
+    #14) clear && kdata;;  
+    0) clear && kdata;;  
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu";continue;;
+
+    esac
+done
+ 

@@ -1,0 +1,26 @@
+#!/bin/sh
+prompt="Lua chon cua ban (0-Thoat):"
+options=("Full Backup Database" "Link download backup file" "Restore Databases" )
+printf "=========================================================================\n"
+printf "               KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                     Backup & Restore Full Database\n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1 ) /etc/kdata/menu/kdata-befor-sao-luu-tat-ca-database;;
+    2 ) /etc/kdata/menu/kdata-link-sao-luu-all-database;;
+    3 ) /etc/kdata/menu/kdata-befor-phuc-hoi-tat-ca-database;;
+    4 ) clear && /etc/kdata/menu/kdata-them-xoa-database;;
+    0 ) clear && /etc/kdata/menu/kdata-them-xoa-database;;
+
+    
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+
+done

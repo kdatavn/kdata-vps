@@ -1,0 +1,52 @@
+#!/bin/sh
+. /home/kdata.conf
+rm -rf /tmp/kdata.newversion*
+cd /tmp
+timeout 3 wget -q https://kdata.vn/script/kdata/kdata.newversion
+cd
+LOCALVER=`cat /etc/kdata/kdata.version`
+ if [ ! -f /tmp/kdata.newversion ]; then 
+ clear
+printf "=========================================================================\n"
+echo "KDATA Khong the kiem tra phien ban KDATA hien tai"
+echo "-------------------------------------------------------------------------"
+echo "(KDATA cant not check current version)"
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+ exit
+ fi
+if [ -f /tmp/kdata.newversion ]; then
+REMOVER=`cat /tmp/kdata.newversion`
+if [ ! "$LOCALVER" == "$REMOVER" ]; then
+clear
+printf "=========================================================================\n"
+echo "Ban phai update KDATA-VPS len phien ban moi nhat de su dung chuc nang nay"
+echo "-------------------------------------------------------------------------"
+echo "(You must update KDATA-VPS to latest version to use this function)"
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+fi
+fi
+if [ "$(grep KDATA.COM /bin/kdata)" != "" ]; then
+options=("EngLish (Current)" "VietNamese" "Exit")
+else
+options=("EngLish" "VietNamese (Current)" "Exit")
+fi
+prompt="Nhap lua chon cua ban:" 
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"             
+printf "=========================================================================\n"
+printf "                       Lua Chon Ngon Ngu Cho KDATA                                \n"
+printf "=========================================================================\n"
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/kdata-chuyen-ngon-ngu-sang-tieng-anh;;
+    2) /etc/kdata/menu/kdata-chuyen-ngon-ngu-sang-tieng-viet;;
+    3) clear && /etc/kdata/menu/kdata-update-upgrade-service-menu;; 
+    0) clear && /etc/kdata/menu/kdata-update-upgrade-service-menu;; 
+    *) echo "You typed wrong, Please type in the ordinal number on the list";continue;;
+
+    esac
+done
+ 

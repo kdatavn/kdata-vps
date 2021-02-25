@@ -1,0 +1,32 @@
+#!/bin/bash
+. /home/kdata.conf
+rm -rf /tmp/*kdata*
+mkdir -p /tmp/sitedangbatpagespeedkdata
+ls /etc/nginx/conf.d > /tmp/kdata-websitelist
+sed -i 's/\.conf//g' /tmp/kdata-websitelist 
+sowebsitetrenserver=$(cat /tmp/kdata-websitelist | wc -l)
+websitetrenserver=$(cat /tmp/kdata-websitelist)
+for website in $websitetrenserver 
+do
+if [ "$(grep "ngx_pagespeed.conf" /etc/nginx/conf.d/$website.conf)" == "include /etc/nginx/ngx_pagespeed.conf;" ]; then
+touch /tmp/sitedangbatpagespeedkdata/$website
+fi
+done
+echo "-------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 1
+clear
+echo "========================================================================="
+echo "Website tren server: $sowebsitetrenserver"
+echo "-------------------------------------------------------------------------"
+if [ "$(ls -1 /tmp/sitedangbatpagespeedkdata | wc -l)" == "0" ]; then
+echo "Website Enabled Nginx Pagespeed: 0"
+else
+echo "Website dang Bat Nginx Pagespeed: $(ls -1 /tmp/sitedangbatpagespeedkdata | wc -l)"
+echo "-------------------------------------------------------------------------"
+ls /tmp/sitedangbatpagespeedkdata | pr -3 -t
+fi
+rm -rf /tmp/*kdata*
+rm -rf /tmp/*kdata*
+/etc/kdata/menu/pagespeed/kdata-pagespeed-menu
+

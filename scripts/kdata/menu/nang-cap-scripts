@@ -1,0 +1,104 @@
+#!/bin/bash
+. /home/kdata.conf
+
+if [ ! -f /etc/kdata/kdata.version ]; then
+clear
+echo "========================================================================="
+echo "Xin loi, chung toi khong the biet phien ban hien tai cua ban"
+echo "-------------------------------------------------------------------------"
+echo "Hay chac rang ban chay script offical tu website https://github.com/vuukhanhduy/kdata-vps"
+kdata
+exit
+fi
+
+maximumsize=10
+rm -rf /etc/kdata/kdata.newversion
+cd /etc/kdata
+#timeout 3 wget -q http://kdata.vn/script/kdata/kdata.newversion
+timeout 3 wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/version -O /etc/kdata/kdata.newversion
+
+cd
+if [ -f /etc/kdata/kdata.newversion ]; then
+checksizeversion=$(du -sb /etc/kdata/kdata.newversion | awk 'NR==1 {print $1}')
+if [ "$checksizeversion" == "0" ];then
+rm -rf /etc/kdata/kdata.newversion
+fi
+if [ $checksizeversion -gt $maximumsize ]; then
+rm -rf /etc/kdata/kdata.newversion
+fi
+fi
+
+if [ ! -f /etc/kdata/kdata.newversion ]; then
+clear
+printf "=========================================================================\n"
+echo "Khong the kiem tra phien ban update KDATA-VPS"
+echo "-------------------------------------------------------------------------"
+echo "Ban vui long thu lai"
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+else
+LOCALVER=`cat /etc/kdata/kdata.version`
+REMOVER=`cat /etc/kdata/kdata.newversion`
+fi
+
+
+chuaCoBanMoi="n"
+if [ "$LOCALVER" == "$REMOVER" ]; then
+clear
+rm -rf /etc/kdata/kdata.newversion
+echo "========================================================================="
+echo "Ban dang su dung phien ban moi nhat cua KDATA-VPS - Phien ban: $LOCALVER"
+echo "-------------------------------------------------------------------------"
+echo "Xem KDATA-VPS update Log tai: https://github.com/vuukhanhduy/kdata-vps"
+
+echo -n "Ban van muon cap nhat lai KDATA-VPS chu? [y/N] "
+read vanCapNhat
+if [ "$vanCapNhat" = "y" ]; then
+echo "OK sir! tien trinh cap nhat se duoc tiep tuc..."
+sleep 3
+chuaCoBanMoi="y"
+else
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+exit
+fi
+fi
+
+printf "=========================================================================\n"
+printf "Xem KDATA-VPS update Log tai: https://github.com/vuukhanhduy/kdata-vps\n"
+printf "=========================================================================\n"
+printf "Da phat hien update cho KDATA-VPS\n"
+echo "-------------------------------------------------------------------------"
+printf "Phien ban ban dang su dung: $LOCALVER\n"
+echo "-------------------------------------------------------------------------"
+printf "Phien ban ban moi nhat tai thoi diem hien tai: $REMOVER\n"
+printf "=========================================================================\n"
+
+if [ "$chuaCoBanMoi" = "y" ]; then
+response="y"
+else
+read -r -p "Ban chac chan muon update KDATA-VPS ? [y/N] " response
+fi
+
+if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
+echo "-------------------------------------------------------------------------" 
+echo "Chuan bi update KDATA-VPS..... "
+sleep 1
+
+rm -rf /etc/kdata/kdata-update
+#wget -q http://kdata.vn/script/kdata/kdata-update -O /etc/kdata/kdata-update && chmod +x /etc/kdata/kdata-update
+wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/scripts/kdata/kdata-update -O /etc/kdata/kdata-update
+chmod +x /etc/kdata/kdata-update
+bash /etc/kdata/kdata-update
+
+else
+
+clear
+printf "=========================================================================\n"
+echo "Ban da huy bo update KDATA-VPS"
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+
+fi
+
+#
+clear && /etc/kdata/menu/kdata-update-upgrade-service-menu
+
+exit

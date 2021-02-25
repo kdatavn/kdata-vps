@@ -1,0 +1,30 @@
+#!/bin/sh
+prompt="Lua chon cua ban (0-Thoat):"
+options=("Services dang chay va RAM dung" "RAM MySQL su dung" "Free Disc " "Uptime VPS" "CPU Load average" "Last YUM update" "Authenication Failures" "User dang nhat gan day" "Xem thong tin CPU" "Check I/O Speed" "Check download Speed")
+printf "=========================================================================\n"
+printf "                KDATA - Manage VPS/Server by KDATA.VN             \n"
+printf "=========================================================================\n"
+printf "                     Check VPS/Server information\n"
+printf "=========================================================================\n"
+PS3="$prompt"
+select opt in "${options[@]}" "Thoat"; do 
+
+    case "$REPLY" in
+    1) clear && echo "=========================================================================" && /etc/kdata/menu/kdata-tien-trinh-dang-chay-ram-use;;
+    2) /etc/kdata/menu/checkddos/kdata-ram-mysql-dung;;
+    3) /etc/kdata/menu/checkddos/kdata-dung-luong-disc-trong;;
+    4) /etc/kdata/menu/checkddos/kdata-uptime-vps;;
+    5) /etc/kdata/menu/checkddos/kdata-load-average;;
+    6) /etc/kdata/menu/checkddos/kdata-lan-cap-nhat-yum-cuoi;;
+    7) /etc/kdata/menu/checkddos/kdata-Authenication-Failures;;
+    8) /etc/kdata/menu/checkddos/kdata-user-dang-nhap-gan-day;;
+    9) echo "-------------------------------------------------------------------------" && cat /proc/cpuinfo && echo "-------------------------------------------------------------------------";;
+    10) echo "-------------------------------------------------------------------------" && dd if=/dev/zero of=test bs=64k count=16k conv=fdatasync; rm test && echo "-------------------------------------------------------------------------";;
+#    11) clear && wget http://kdata.vn/script/others/freeVPSbench.sh -O - -o /dev/null|bash;;
+    11) clear && wget --no-check-certificate https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/main/scripts/others/freeVPSbench.sh -O - -o /dev/null|bash;;
+    0) clear && kdata;;
+$(( ${#options[@]}+1 )) ) echo "Bye!";  clear && /bin/kdata;;
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+done

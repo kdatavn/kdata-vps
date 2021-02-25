@@ -1,0 +1,34 @@
+#!/bin/sh
+. /home/kdata.conf
+website=$(cat /tmp/kdata-tensitephuchoi)
+dataname=$(cat /tmp/kdata-tendatabasephuchoi)
+randomcode=`date |md5sum |cut -c '1-18'`
+echo "========================================================================="
+	echo "Tim thay file backup KDATA-DATABASE.sql.gz"
+	echo "-------------------------------------------------------------------------"
+	echo "Chuan bi phuc hoi .... "
+	sleep 2
+	gunzip < /home/$website/public_html/KDATA-DATABASE.sql.gz | mysql -u root -p$mariadbpass $dataname
+	date -r /var/lib/mysql/$dataname +%H%M%S> /tmp/kdata2
+	check1=`cat /tmp/kdata1`
+	check2=`cat /tmp/kdata2`
+		if [ "$check1" == "$check2" ]; then
+		rm -rf /tmp/*kdata*
+		sleep 8
+		clear
+		echo "========================================================================="
+		echo "Phuc hoi database $dataname that bai "
+		echo "-------------------------------------------------------------------------"
+		echo "Vui long kiem tra file backup va thu lai !"
+		/etc/kdata/menu/kdata-them-xoa-database
+		else	
+		rm -rf /tmp/*kdata*
+		mv /home/$website/public_html/KDATA-DATABASE.sql.gz /home/$website/public_html/KDATA-DATABASE.sql.gz.$randomcode
+		clear
+		echo "========================================================================="
+		echo "Phuc hoi database $dataname thanh cong !"
+		echo "-------------------------------------------------------------------------"
+		echo "File backup duoc doi ten thanh KDATA-DATABASE.sql.gz.$randomcode"
+		/etc/kdata/menu/kdata-them-xoa-database
+		exit
+		fi

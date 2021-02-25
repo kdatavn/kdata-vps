@@ -1,0 +1,11 @@
+#!/bin/bash
+clear
+echo "-------------------------------------------------------------------------"
+echo "Bat dau go cai dat Memcached"
+echo "Please wait....";sleep 1
+yum -y remove memcache*
+clear
+echo "========================================================================= "
+echo "Go cai dat Memcached thanh cong."
+/etc/kdata/menu/memcache/kdata-before-memcache-menu
+

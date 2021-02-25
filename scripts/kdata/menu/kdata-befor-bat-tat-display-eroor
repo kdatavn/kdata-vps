@@ -1,0 +1,25 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ ! -f /etc/php.ini ]; then
+clear
+echo "========================================================================="
+echo "KDATA khong tim thay php.ini tren server"
+/etc/kdata/menu/kdata-config-php.ini-menu
+exit
+fi
+
+if [ "$(cat /etc/php.ini | grep display_errors | awk '{print $3}')" == "" ]; then
+clear
+echo "========================================================================="
+echo "KDATA khong the thuc hien chuc nang nay"
+/etc/kdata/menu/kdata-config-php.ini-menu
+exit
+fi
+
+if [ "$(cat /etc/php.ini | grep display_errors | awk '{print $3}')" == "Off" ]; then
+/etc/kdata/menu/kdata-dang-tat-display_errors
+fi
+if [ "$(cat /etc/php.ini | grep display_errors | awk '{print $3}')" == "On" ]; then
+/etc/kdata/menu/kdata-dang-bat-display_errors
+fi
+}

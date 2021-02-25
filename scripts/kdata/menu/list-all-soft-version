@@ -1,0 +1,23 @@
+#!/bin/bash
+
+clear
+echo "========================================================================="
+echo "---------------------------- KDATA -------------------------------"
+if [ -f /etc/kdata/kdata.version ]; then
+echo "KDATA version: "$(cat /etc/kdata/kdata.version)
+fi
+echo "------------------------------ PHP --------------------------------"
+echo "PHP version: "$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
+echo "------------------------- phpmyadmin ------------------------------"
+if [ -f /etc/kdata/phpmyadmin.version ]; then
+echo "phpmyadmin version: "$(cat /etc/kdata/phpmyadmin.version)
+fi
+echo "------------------------------ LDD --------------------------------"
+ldd --version
+echo "----------------------------- nginx -------------------------------"
+nginx -V
+echo "---------------------------- openssl ------------------------------"
+openssl version
+echo "========================================================================="
+
+/etc/kdata/menu/kdata-update-upgrade-service-menu

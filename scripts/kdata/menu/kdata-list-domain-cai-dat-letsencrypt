@@ -1,0 +1,55 @@
+#!/bin/bash
+
+. /home/kdata.conf
+echo "========================================================================="
+echo "Please wait ..."; sleep 3
+/root/.acme.sh/acme.sh --list | awk '{print $1}' | sed 's/Main_Domain//' > /etc/kdata/.tmp/list_domain_SSL
+sed '1d' /etc/kdata/.tmp/list_domain_SSL
+domainlist=$(cat /etc/kdata/.tmp/list_domain_SSL)
+rm -rf /etc/kdata/.tmp/thanh_cong_SSL
+curTime=$(date +%s)
+for domain in $domainlist; do
+if [ -f /root/.acme.sh/$domain/$domain.conf ] && [ -f /etc/nginx/auth-acme/$domain/$domain.crt ]; then
+echo "Check SSL by KDATA" > /home/$domain/public_html/kdata.check
+checkurlsttSSL=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://$domain/kdata.check")
+rm -rf /home/$domain/public_html/kdata.check
+if [[  "$checkurlsttSSL" == "200" ]]; then
+check_ssl () {
+data=`echo | openssl s_client -servername $domain -connect $domain:${2:-443} 2>/dev/null |
+openssl x509 -noout -enddate | sed -e 's#notAfter=##'`
+ssldate=`date -d "${data}" '+%s'`
+nowdate=`date '+%s'`
+diff="$((${ssldate}-${nowdate}))"
+echo $((${diff}/86400))
+}
+thoigianconlai=$(check_ssl $domain)
+echo "$domain [$thoigianconlai]" >> /etc/kdata/.tmp/thanh_cong_SSL
+else
+echo "$domain" >> /etc/kdata/.tmp/that_bai_SSL
+fi
+fi
+done;
+
+if [ ! -f /etc/kdata/.tmp/thanh_cong_SSL ]; then
+clear
+echo "========================================================================="
+echo "Hien tai khong co website nao cai dat SSL Let's Encrypt."
+/etc/kdata/menu/kdata-letsencrypt-menu
+fi
+
+if [ -n /etc/kdata/.tmp/thanh_cong_SSL ]; then
+clear
+echo "========================================================================="
+echo "Danh sach website cai dat thanh cong SSL Let's Encrypt:"
+echo "-------------------------------------------------------------------------"
+cat /etc/kdata/.tmp/thanh_cong_SSL | pr -2 -t
+rm -rf /etc/kdata/.tmp/thanh_cong_SSL
+rm -rf /etc/kdata/.tmp/that_bai_SSL
+else
+clear
+echo "========================================================================="
+echo "Hien tai khong co website nao cai dat SSL Let's Encrypt."
+rm -rf /etc/kdata/.tmp/thanh_cong_SSL
+rm -rf /etc/kdata/.tmp/that_bai_SSL
+fi
+/etc/kdata/menu/kdata-letsencrypt-menu

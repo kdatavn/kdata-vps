@@ -1,0 +1,48 @@
+#!/bin/bash
+if [ -f /etc/kdata/kdata_backup_VPS_by_rsync ]; then
+	if [ ! -f /etc/cron.d/kdata.rsync.cron ]; then
+	rm -rf /etc/kdata/kdata_backup_VPS_by_rsync
+	fi
+fi
+if [ -f /etc/cron.d/kdata.rsync.cron ]; then
+	if [ ! -f /etc/kdata/kdata_backup_VPS_by_rsync ]; then
+	rm -rf /etc/cron.d/kdata.rsync.cron
+	fi
+fi
+options=("Ket Noi VPS Backup" "Cau Hinh Thoi Gian Dong Bo" "Backup VPS Ngay Lap Tuc" "Setup CSF Firewall" "Thay Mat Khau User Root" "Disable Sync To VPS Backup")
+prompt="Nhap lua chon cua ban (0-Thoat): "
+#prompt="Type in your choice (7-Exit):"
+printf "=========================================================================\n"
+printf "               KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                          Quan Ly VPS Backup \n"
+printf "=========================================================================\n"
+if [ -f /etc/kdata/vps_backup_rsync.info ]; then
+if [ ! "$(grep "thanhcong" /etc/kdata/vps_backup_rsync.info | awk '{print $3}')" == "" ]; then
+printf "            VPS Backup: Config Finished | IP: $(grep "ipaddress" /etc/kdata/vps_backup_rsync.info | awk '{print $3}') \n"
+printf "=========================================================================\n"
+fi
+fi
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+    1) /etc/kdata/menu/kdata-rsync-ket-noi-vps-backup;;
+    2) /etc/kdata/menu/kdata-rsync-cau-hinh-thu-muc-sao-luu;;
+    3) /etc/kdata/menu/kdata-rsync-sync-toi-vps-backup-ngay;;
+    4) /etc/kdata/menu/kdata-rsync-cai-dat-csf-firewall-cho-vps-backup;;
+    5) /etc/kdata/menu/kdata-rsync-doi-mat-khau-tai-khoan-root-vps-backup;;
+    6) /etc/kdata/menu/kdata-rsync-ngat-ket-noi-vps-backup;;
+    7) clear && kdata;;
+    0) clear && kdata;;
+        *) echo "Ban nhap sai, vui long nhap so thu tu trong danh sach";continue;;
+      #  *) echo "You typed wrong, Please type in the ordinal number on the list";continue;;
+
+    esac
+
+done
+
+
+
+
+

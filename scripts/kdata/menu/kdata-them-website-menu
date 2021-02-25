@@ -1,0 +1,36 @@
+#!/bin/bash
+if [ ! -f /etc/cron.d/kdata.code.cron ]; then
+touch /etc/cron.d/kdata.code.cron
+fi
+prompt="Lua chon cua ban (0-Thoat):"
+options=( "Them Website" "Them Park & Redirect Domain" "Them website + Wordpress (Auto Setup)" "Them website + Forum Code (Auto Setup)" "Them Website + Opencart (Auto Setup)" "Them website + Wordpress (Download Code)" "Them Website + Joomla (Download Code)" "Them Website + Drupal (Download Code)" "List Website Tren Server")
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                          Them Website Vao Server\n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/kdata-them-website;;
+    2) /etc/kdata/menu/kdata-them-redirect-park-domain-menu;;
+    3) /etc/kdata/menu/kdata-them-website-auto-setup-wordpress-menu;;
+	4) /etc/kdata/menu/kdata-them-website-forum-code-menu;;
+    5) /etc/kdata/menu/kdata-them-website-auto-setup-opencart-menu;;
+    6) /etc/kdata/menu/kdata-them-website-wp;;
+    7) /etc/kdata/menu/kdata-them-website-joomla;;
+    8) /etc/kdata/menu/kdata-them-website-drupal;;
+    9) /etc/kdata/menu/kdata-list-website-tren-vps;; 
+    10) clear && kdata;;
+    0) clear && kdata;;
+        *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+
+done
+
+
+

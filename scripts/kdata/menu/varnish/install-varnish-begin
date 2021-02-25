@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -f /etc/kdata/varnish.version ]; then
+touch /etc/kdata/varnish.version
+fi
+
+chown -R root:root /etc/kdata/varnish.version
+chmod 644 /etc/kdata/varnish.version
+> /etc/kdata/varnish.version

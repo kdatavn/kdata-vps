@@ -1,0 +1,124 @@
+#!/bin/sh
+
+if [ $(id -u) != "0" ]; then
+    echo "Co loi: Ban phai dang nhap bang user root!"
+    exit
+fi
+
+if [ -f /var/cpanel/cpanel.config ]; then
+echo "Server cua ban da cai san WHM/Cpanel, neu ban muon dung VPSKDATA"
+echo "Hay cai moi lai he dieu hanh, khuyen dung centos7 - 64bit"
+echo "Chao tam biet !"
+exit
+fi
+
+if [ -f /etc/psa/.psa.shadow ]; then
+echo "Server cua ban da cai san Plesk, neu ban muon dung VPSKDATA"
+echo "Hay cai moi lai he dieu hanh, khuyen dung centos7 - 64bit"
+echo "Chao tam biet !"
+exit
+fi
+
+if [ -f /etc/init.d/directadmin ]; then
+echo "Server cua ban da cai san DirectAdmin, neu ban muon dung VPSKDATA"
+echo "Hay cai moi lai he dieu hanh, khuyen dung centos7 - 64bit"
+echo "Chao tam biet !"
+exit
+fi
+
+if [ -f /etc/init.d/webmin ]; then
+echo "Server cua ban da cai san webmin, neu ban muon dung VPSKDATA"
+echo "Hay cai moi lai he dieu hanh, khuyen dung centos7 - 64bit"
+echo "Chao tam biet !"
+exit
+fi
+
+if [ -f /home/kdata.conf ]; then
+clear
+echo "========================================================================="
+echo "========================================================================="
+echo "Server/VPS cua ban da cai san VPSKDATA"
+echo "Hay su dung lenh VPSKDATA de truy cap VPSKDATA menu"
+echo "Chao tam biet !"
+echo "========================================================================="
+echo "========================================================================="
+rm -rf install*
+exit
+fi
+
+arch=`uname -m`
+if [ ! "$arch" = "x86_64" ]; then
+clear
+echo "========================================================================="
+echo "========================================================================="
+echo "Hien tai! VPSKDATA chi ho tro phien ban x64 bit"
+echo "Vui long cai dat phien ban he dieu hanh x86_64 roi thu lai"
+echo "Chao tam biet !"
+echo "========================================================================="
+echo "========================================================================="
+rm -rf install*
+exit
+fi
+
+if [ -f /etc/yum.repos.d/epel.repo ]; then
+sudo sed -i "s/mirrorlist=https/mirrorlist=http/" /etc/yum.repos.d/epel.repo
+fi
+
+yes | cp -rf /opt/vps_kdata/scripts/kdata/calc /bin/calc && chmod +x /bin/calc
+clear  
+rm -rf /root/kdata*
+
+#prompt="Nhap lua chon cua ban: "
+#options=("Tieng Viet" "Tieng Anh" "Huy Bo")
+echo "========================================================================="
+echo "VPSKDATA Ho Tro Centos 6 & Centos 7 & Centos 8 x64"
+echo "-------------------------------------------------------------------------"
+echo "Ban nen su dung Centos 7 x64 de Server co hieu suat tot nhat."
+echo "-------------------------------------------------------------------------"
+#echo "VPSKDATA ho tro 2 ngon ngu: Tieng Anh va Tieng Viet. "
+#echo "-------------------------------------------------------------------------"
+#echo "Trong qua trinh su dung, ban co the thay doi ngon ngu ngon ngu bang chuc "
+#echo "-------------------------------------------------------------------------"
+#echo "nang [ Change VPSKDATA Language ] trong [ Update System ]."
+#echo "========================================================================="
+#echo "                   Chon Ngon Ngu Cho VPSKDATA"
+echo "========================================================================="
+
+#PS3="$prompt"
+#select opt in "${options[@]}"; do 
+#case "$REPLY" in
+#1) yourlanguage="vietnamese"; break;;
+#2) yourlanguage="english"; break;;
+#3) yourlanguage="Cancel"; break;;
+#*) echo "Ban nhap sai, vui long nhap theo so thu tu trong danh sach";continue;;
+#esac  
+#done
+yourlanguage="vietnamese"
+
+current_os_version=$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
+#echo $current_os_version
+
+cd ~
+
+if [ "$yourlanguage" = "english" ]; then
+echo "----------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 2
+cd /opt/vps_kdata/scripts/kdata/centos${current_os_version} ; chmod +x kdata-setup ; clear ; bash kdata-setup
+yes | cp -rf /opt/vps_kdata/scripts/kdata/centos${current_os_version}/kdata-setup ~/kdata-setup ; chmod +x kdata-setup ; clear ; bash kdata-setup
+elif [ "$yourlanguage" = "vietnamese" ]; then
+echo "----------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 2
+if [ "$current_os_version" == "6" ]; then
+yes | cp -rf /opt/vps_kdata/scripts/kdata/centos6/kdata-setup ~/kdata-setup ; chmod +x kdata-setup ; clear ; bash kdata-setup
+elif [ "$current_os_version" == "7" ]; then
+yes | cp -rf /opt/vps_kdata/scripts/kdata/centos7/kdata-setup ~/kdata-setup ; chmod +x kdata-setup ; clear ; bash kdata-setup
+else
+yes | cp -rf /opt/vps_kdata/scripts/kdata/centos8/kdata-setup ~/kdata-setup ; chmod +x kdata-setup ; clear ; bash kdata-setup
+fi
+else 
+rm -rf /root/install* && rm -rf /root/kdata* && clear
+fi
+
+

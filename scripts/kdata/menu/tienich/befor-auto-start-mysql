@@ -1,0 +1,8 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ -f /etc/cron.d/kdata-auto-start-mysql.cron ]; then
+/etc/kdata/menu/tienich/kdata-tat-auto-start-mysql
+else
+/etc/kdata/menu/tienich/kdata-bat-auto-start-mysql
+fi
+

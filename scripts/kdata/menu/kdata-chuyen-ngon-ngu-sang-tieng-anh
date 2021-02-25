@@ -1,0 +1,71 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ "$(grep KDATA.COM /bin/kdata)" != "" ]; then
+clear
+echo "========================================================================= "
+echo "You are using English Version"
+/etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu
+exit
+fi
+echo "========================================================================= "
+echo "Use this function to change language for KDATA"
+echo "-------------------------------------------------------------------------"
+echo "KDATA support EngLish & Vietnamese"
+echo "========================================================================= "
+read -r -p "You want to change KDATA language to English ? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+    echo "-------------------------------------------------------------------------"
+echo "Please wait ... "
+sleep 1
+echo "-------------------------------------------------------------------------"
+
+cd /etc/kdata/
+rm -rf /etc/kdata/menu.zip
+wget -q --no-check-certificate https://kdata.com/script/kdata/menu.zip
+
+#Check menu.zip files
+
+rm -rf /tmp/menu
+unzip -q -o menu.zip -d /tmp
+if [ ! -f /tmp/menu/kdata-tien-ich ]; then
+rm -rf /tmp/menu
+clear
+echo "========================================================================="
+echo "There's an error in changing language process"
+echo "-------------------------------------------------------------------------"
+echo "Please try again !"
+/etc/kdata/menu/kdata-update-upgrade-service-menu
+exit
+fi
+## Finish check menu.zip
+rm -rf /tmp/menu
+unzip -q -o menu.zip
+rm -rf /etc/kdata/menu.zip
+cd
+download_main_menu () {
+#wget -q --no-check-certificate https://kdata.com/script/kdata/kdata -O /bin/kdata && chmod +x /bin/kdata
+wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps/tree/main/scripts/kdata/kdata -O /bin/kdata && chmod +x /bin/kdata
+}
+download_main_menu
+checkkdata_mainmenu=`cat /bin/kdata`
+if [ -z "$checkkdata_mainmenu" ]; then
+download_main_menu
+fi
+#wget -q --no-check-certificate https://kdata.com/script/kdata/motd -O /etc/motd
+wget -q --no-check-certificate https://github.com/vuukhanhduy/kdata-vps/tree/main/scripts/kdata/motd -O /etc/motd
+find /etc/kdata/menu -type f -exec chmod 755 {} \;
+clear 
+echo "========================================================================= "
+echo "Change Language of KDATA to English Finished"
+/etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu
+       ;;
+    *)
+        echo ""
+        ;;
+esac
+clear
+clear
+echo "========================================================================="
+echo "Cancel Change Language for KDATA"
+/etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu

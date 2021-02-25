@@ -1,0 +1,25 @@
+#!/bin/sh
+prompt="Nhap lua chon cua ban (0-Thoat):"
+options=("Enable Nginx Pagespeed" "Disable Nginx Pagespeed" "Clear Nginx Pagespeed Cache" "List Website BAT Nginx Pagespeed")
+
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                         Quan Ly Nginx Pagespeed                                \n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" "Thoat"; do 
+
+    case "$REPLY" in
+    1 ) /etc/kdata/menu/pagespeed/kdata-bat-pagespeed;;
+    2 ) /etc/kdata/menu/pagespeed/kdata-tat-pagespeed;;
+    3 ) /etc/kdata/menu/pagespeed/kdata-clear-pagespeed;;
+    4 ) /etc/kdata/menu/pagespeed/kdata-list-website-dang-bat-pagespeed;;
+    
+    $(( ${#options[@]}+1 )) ) echo "bye!";  clear && /bin/kdata;;
+    0 ) echo "bye!";  clear && /bin/kdata;;
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+done

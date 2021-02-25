@@ -1,0 +1,205 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ -f /etc/kdata/uploadsite ]; then
+uploadsite=$(cat /etc/kdata/uploadsite)
+ if [ ! -d /home/$uploadsite/public_html ]; then
+rm -rf /etc/kdata/uploadsite
+ fi
+fi
+
+if [ -f /etc/kdata/uploadsite ]; then
+filemanagedomain=$(cat /etc/kdata/uploadsite)
+checkfilemanagedomainconfig=$(grep auth_basic /etc/nginx/conf.d/$filemanagedomain.conf)
+if [ "$checkfilemanagedomainconfig" == "" ]; then
+Protection=Disable
+else
+Protection=Enable
+fi
+fi
+
+
+show_menu_filemanager () {
+prompt="Lua chon cua ban (0-Thoat):"
+options=("Setup File Manager" "Cau hinh Upload Max Filesize" "Bao Ve File Manager" "Thay User & Password Admin" "Thay Domain File Manager" "Remove File Manager")
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                               File Manager \n"
+printf "=========================================================================\n"
+if [ ! -f /etc/kdata/uploadsite ]; then 
+printf "                      File Manager: Not Install \n"
+else
+printf "               File Manager: Installed | Protection: $Protection\n"
+fi
+printf "=========================================================================\n"
+if [ -f /etc/kdata/uploadsite ]; then
+filemanagedomain=$(cat /etc/kdata/uploadsite)
+printf "Link File Manager: http://$filemanagedomain\n"
+printf "=========================================================================\n"
+fi
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/kdata-cai-dat-web-upload-manage;;
+    #2) /etc/kdata/menu/kdata-tat-bat-web-manage;;
+    #3) /etc/kdata/menu/kdata-hien-link-web-upload;;
+    2) /etc/kdata/menu/kdata-change-upload-file-size-limit-file-manage;;
+    3) /etc/kdata/menu/kdata-mat-khau-bao-ve-web-file-manage;;
+    4) /etc/kdata/menu/kdata-thay-mat-khau-web-file-manage;;
+    5) /etc/kdata/menu/kdata-thay-domain-web-file-manage;;
+    6) /etc/kdata/menu/kdata-xoa-website-upload-site;;
+    #7) clear && /bin/kdata;;
+    0) clear && /bin/kdata;;
+    
+  *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+
+done
+}
+check_nginx_service () {
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+show_menu_filemanager 
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+service nginx start
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+		if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+show_menu_filemanager 
+		else
+				clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	echo "Rat tiec, Nginx dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+show_menu_filemanager 
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+systemctl start nginx.service
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+show_menu_filemanager 
+		else
+				clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	echo "Rat tiec, Nginx dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+}
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+check_nginx_service
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+service php-fpm start
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+			if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+check_nginx_service
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	#echo "Sorry, PHP-FPM stopped. Start it before use this function!"
+	echo "Sorry, PHP-FPM dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+check_nginx_service
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+systemctl start php-fpm.service
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+check_nginx_service
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	#echo "Sorry, PHP-FPM stopped. Start it before use this function!"
+	echo "Sorry, PHP-FPM dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+
+

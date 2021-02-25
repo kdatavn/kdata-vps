@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+. /home/kdata.conf
+clear
+echo "========================================================================="
+echo "Your VPS  Virtualization:"
+echo "-------------------------------------------------------------------------"
+virt-what
+/etc/kdata/menu/kdata-tien-ich

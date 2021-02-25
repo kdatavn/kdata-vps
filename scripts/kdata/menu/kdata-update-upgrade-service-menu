@@ -1,0 +1,42 @@
+#!/bin/bash
+prompt="Lua chon cua ban (0-Thoat):" 
+#options=( "Update System" "Update KDATA" "Change Nginx Version" "Change phpMyAdmin Version" "Upgrade MariaDB to 10.0 Version" "Change PHP Version" "Change KDATA Language" "Thoat")
+#options=( "Update System" "Update KDATA" "Update Nginx" "Change phpMyAdmin Version" "Change PHP Version" "Change KDATA Language" "Update OpenSSL version" "Reset code form git" "List soft version")
+options=( "Update System" "Update KDATA-VPS" "Update Nginx" "Change phpMyAdmin Version" "Change PHP Version" "Update OpenSSL version" \
+"Pull code form git" "Reset code form git" "List soft version" "Nginx quiche" "Auto update system")
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                        Update / Upgrade Service \n"
+printf "=========================================================================\n"
+
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+ 
+    case "$REPLY" in
+
+
+	1) /etc/kdata/menu/update-he-thong;;
+	2) /etc/kdata/menu/nang-cap-scripts;;
+	3) /etc/kdata/menu/nang-cap-nginx;;
+#	3) /etc/kdata/menu/kdata-befor-nang-cap-nginx;;
+	4) /etc/kdata/menu/kdata-nang-cap-phpmyadmin;;
+#	5) /etc/kdata/menu/nang-cap-mariaDB/kdata-before-nang-cap-mariadb;;
+	5) clear && /etc/kdata/menu/nangcap-php/kdata-updown-php;;
+#	6) clear && /etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu;;
+	6) clear && /etc/kdata/menu/nang-cap-openssl;;
+	7) clear && /etc/kdata/menu/git-pull;;
+	8) clear && /etc/kdata/menu/git-reset;;
+	9) clear && /etc/kdata/menu/list-all-soft-version;;
+	10) clear && /etc/kdata/menu/nginx-quiche;;
+	11) clear && /etc/kdata/menu/auto-update-system;;
+	0) clear && kdata;;
+        *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+
+done
+
+
+

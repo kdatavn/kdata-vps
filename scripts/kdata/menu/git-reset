@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "-------------------------------------------------------------------------"
+echo "Ok ! please wait check reset code from git..."
+
+cd ~
+if [ -d /opt/vps_kdata ]; then
+rm -rf /opt/vps_kdata/*
+rm -rf /opt/vps_kdata
+sleep 5
+fi
+
+/etc/kdata/menu/git-clone
+sleep 1
+
+clear
+echo "========================================================================="
+echo "Done! Reset code from git..."
+/etc/kdata/menu/kdata-update-upgrade-service-menu

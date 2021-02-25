@@ -1,0 +1,39 @@
+#!/bin/sh
+. /home/kdata.conf
+echo "========================================================================="
+echo "Dung chuc nang nay de BAT/TAT che do Auto backup database tren server"
+echo "-------------------------------------------------------------------------"
+echo -n "Nhap ten Database [ENTER]: " 
+read dataname
+if [ "$dataname" = "" ]; then
+clear
+echo "========================================================================="
+echo "Ban chua nhap ten database !"
+/etc/kdata/menu/kdata-them-xoa-database
+exit
+fi
+if [ ! -f /var/lib/mysql/$dataname/db.opt ]; then
+clear
+echo "========================================================================="
+echo "Database: $dataname khong ton tai tren he thong"
+/etc/kdata/menu/kdata-them-xoa-database
+exit
+fi
+if [ "$(ls -1 /var/lib/mysql/$dataname | wc -l)" == 1 ]; then
+clear
+echo "========================================================================="
+echo "Database $dataname chua co du lieu"
+/etc/kdata/menu/kdata-them-xoa-database
+exit
+fi
+
+rm -rf /tmp/databaseautobackup
+echo "$dataname" > /tmp/databaseautobackup
+if [ -f /bin/kdata-backupdb-$dataname ]; then
+ if [ -f /etc/cron.d/kdata.db.cron ]; then
+     if [ ! "$(grep kdata-backupdb-$dataname /etc/cron.d/kdata.db.cron)" == "" ]; then
+     /etc/kdata/menu/kdata-TAT-tu-dong-sao-luu-database
+     fi
+ fi
+fi 
+ /etc/kdata/menu/kdata-BAT-tu-dong-sao-luu-database

@@ -1,0 +1,7 @@
+#!/bin/bash
+
+. /home/kdata.conf
+clear
+echo "========================================================================="
+echo "Cai dat KDATA phien ban tieng ANH tai KDATA.COM"
+kdata

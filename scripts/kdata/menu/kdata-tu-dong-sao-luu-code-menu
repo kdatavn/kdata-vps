@@ -1,0 +1,46 @@
+#!/bin/sh
+. /home/kdata.conf
+rm -rf /tmp/*kdata*
+mkdir -p /tmp/saoluuwebsitethanhcongkdata
+mkdir -p /tmp/saoluuwebsitethatbaikdata
+ls /etc/nginx/conf.d > /tmp/kdata-websitelist
+sed -i 's/\.conf//g' /tmp/kdata-websitelist 
+ cat > "/tmp/kdata-replace" <<END
+sed -i '/$mainsite/d' /tmp/kdata-websitelist
+END
+chmod +x /tmp/kdata-replace
+/tmp/kdata-replace
+rm -rf /tmp/kdata-replace
+rm -rf /tmp/checksite-list
+sowebsitetrenserver=$(cat /tmp/kdata-websitelist | wc -l)
+listwebsite=$(cat /tmp/kdata-websitelist)
+rm -rf /tmp/checksite-list
+for checksite in $listwebsite 
+do
+if [ -f /home/$checksite/public_html/index.php ]; then
+echo "$checksite" >> /tmp/checksite-list
+fi
+ done
+
+if [ ! -f /tmp/checksite-list ]; then
+rm -rf /tmp/*kdata*
+rm -rf /tmp/*kdata*
+clear
+echo "========================================================================="
+echo "Khong tim thay website co du lieu tren server"
+/etc/kdata/menu/kdata-sao-luu
+fi
+prompt="Nhap lua chon cua ban :"
+options=("BAT/TAT Tu Dong Backup Website" "List Website BAT Tu Dong Backup")
+printf "=========================================================================\n"
+PS3="$prompt"
+select opt in "${options[@]}" "Thoat"; do 
+
+    case "$REPLY" in
+    1 ) /etc/kdata/menu/kdata-befor-chon-tat-bat-tu-dong-sao-luu-code;;
+    2 ) /etc/kdata/menu/kdata-danh-sach-website-tu-dong-sao-luu-code;;
+    $(( ${#options[@]}+1 )) ) echo "";  clear && /etc/kdata/menu/kdata-sao-luu;;
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu";continue;;
+
+    esac
+done

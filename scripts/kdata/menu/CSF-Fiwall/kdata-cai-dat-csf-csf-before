@@ -1,0 +1,7 @@
+#!/bin/bash 
+. /home/kdata.conf
+if [ ! -f /etc/csf/csf.conf ]; then
+/etc/kdata/menu/CSF-Fiwall/kdata-cai-dat-csf-csf
+else
+/etc/kdata/menu/CSF-Fiwall/kdata-update-csf-firewall
+fi

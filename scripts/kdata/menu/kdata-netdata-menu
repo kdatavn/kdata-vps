@@ -1,0 +1,229 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ ! -f /etc/kdata/pwprotect.default ]; then
+echo "" > /etc/kdata/pwprotect.default
+fi
+if [ ! -f /usr/local/bin/htpasswd.py ]; then
+cp -r /etc/kdata/menu/kdata-tao-mat-khau-bao-ve-folder.py /usr/local/bin/htpasswd.py
+chmod 755 /usr/local/bin/htpasswd.py
+fi
+if [ -f /etc/kdata/netdatasite.info ]; then
+netdatasite=$(cat /etc/kdata/netdatasite.info)
+ if [ ! -f /etc/nginx/conf.d/$netdatasite.conf ]; then
+rm -rf /etc/kdata/netdatasite.info
+ fi
+ if [ ! -d /etc/netdata ]; then
+rm -rf /etc/kdata/netdatasite.info
+ fi
+fi
+
+if [ ! -f /etc/kdata/netdata.version ]; then
+echo "1.2" > /etc/kdata/netdata.version
+fi
+show_menu_netdata () {
+	
+prompt="Lua chon cua ban (0-Thoat):"
+options=("Setup NetData" "Tat / Bat NetData" "Thay Domain NetData" "Bao Ve Domain NetData      " "Nang Cap NetData")
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                            Quan Ly NetData \n"
+printf "=========================================================================\n"
+if [ ! -f /etc/kdata/netdatasite.info ]; then
+printf "                      NetData status: Not Install \n"
+else
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service netdata status | awk 'NR==1 {print $5}')" == "running..." ]; then
+printf "               Status: Installed and Enable | Version: $(cat /etc/kdata/netdata.version)\n"
+	else
+printf "               Status: Installed but Disable | Version: $(cat /etc/kdata/netdata.version)\n"
+	fi
+fi
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active netdata.service`" == "active" ]; then
+printf "               Status: Installed and Enable | Version: $(cat /etc/kdata/netdata.version)\n"
+	else
+printf "               Status: Installed but Disable | Version: $(cat /etc/kdata/netdata.version)\n"
+	fi
+fi
+fi
+printf "=========================================================================\n"
+if [ -f /etc/kdata/netdatasite.info ]; then
+netdatasite=$(cat /etc/kdata/netdatasite.info)
+checknetdataconfig=$(grep auth_basic /etc/nginx/conf.d/$netdatasite.conf)
+if [ "$checknetdataconfig" == "" ]; then
+Protection=Disable
+else
+Protection=Enable
+fi
+
+
+printf "Link: http://$netdatasite | Protection: $Protection \n"
+printf "=========================================================================\n"
+fi
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/kdata-cai-dat-netdata;;
+    2) /etc/kdata/menu/kdata-tat-bat-netdata;;
+    3) /etc/kdata/menu/kdata-thay-domain-netdata;;
+    4) /etc/kdata/menu/kdata-mat-khau-bao-ve-netdata;;
+    5) /etc/kdata/menu/kdata-nang-cap-netdata;;
+    #6) clear && /bin/kdata;;
+    0) clear && kdata;;
+    
+  *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+
+done
+
+}
+
+
+
+check_nginx_service () {
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+show_menu_netdata 
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+service nginx start
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+		if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+show_menu_netdata 
+		else
+				clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	echo "Rat tiec, Nginx dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+show_menu_netdata 
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+systemctl start nginx.service
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+show_menu_netdata 
+		else
+				clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	echo "Rat tiec, Nginx dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+}
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+check_nginx_service
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+service php-fpm start
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+			if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+check_nginx_service
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	#echo "Sorry, PHP-FPM stopped. Start it before use this function!"
+	echo "Sorry, PHP-FPM dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+check_nginx_service
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+systemctl start php-fpm.service
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+check_nginx_service
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	clear
+	echo "========================================================================="
+	#echo "Sorry, PHP-FPM stopped. Start it before use this function!"
+	echo "Sorry, PHP-FPM dang stopped. Hay bat len truoc khi dung chuc nang nay!"
+	kdata
+		fi
+fi
+fi

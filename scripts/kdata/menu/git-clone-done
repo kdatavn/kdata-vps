@@ -1,0 +1,5 @@
+#!/bin/bash
+
+yes | cp -rf /opt/vps_kdata/version /opt/vps_kdata/scripts/kdata/kdata.newversion
+rm -rf /root/git-clone*
+rm -rf /root/install*

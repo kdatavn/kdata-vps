@@ -1,0 +1,53 @@
+#!/bin/bash
+prompt="Lua chon cua ban (0-Thoat):"
+options=( "Thay Password Root" "Fix Loi Chmod, Chown" "Find Top Largest Files & Folders" "Service Running & Ram Use" "Kiem Tra IP/Nameserver Website" \
+"File Size Converter " "Kiem Tra Thong Tin Server" "Cai Dat Server Timezone" "Install / Remove Imagick" "Install / Remove Ioncube" "Cai Dat Htop" \
+"Backup Config File & Vhost" "Thay Doi Port SSH Number" "Config SSH Timeout" "Block Exploits, SQL Injections" "Deny Run Script In Upload Folder" \
+"Dat Mat Khau Bao Ve Folder" "BAT/TAT Email Thong Bao Login" "BAT/TAT Auto Run KDATA" "Canh Bao Full Disc Tren Menu" "Restart Service" "TocDo.net" \
+"Varnish Cache" "Update All Website Wordpress" "Install Composer" "Go Bo (Remove) KDATA" )
+printf "=========================================================================\n"
+printf "                KDATA-VPS - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                           Tien Ich - Addons\n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+
+	1) /etc/kdata/menu/kdata-doi-pass-root-vps;;
+	2) /etc/kdata/menu/kdata-sua-loi-chown;;
+	3) /etc/kdata/menu/tienich/kdata-xem-danh-sach-max-dung-luong-file-menu;;
+	4) /etc/kdata/menu/tienich/kdata-dich-vu-dang-chay-va-ram-dung;;
+	5) /etc/kdata/menu/tienich/kdata-tim-ip-nameserver-website;;
+	6) /etc/kdata/menu/kdata-chuyen-doi-don-vi-file-size-convert;;
+	7) /etc/kdata/menu/tienich/kdata-view-thong-tin-ip-vps;;
+	8) clear && /etc/kdata/menu/kdata-thay-doi-thong-tin-thoi-gian;; 
+	9) /etc/kdata/menu/tienich/kdata-before-imagick;;
+	10) /etc/kdata/menu/tienich/kdata-before-ioncube;;
+	11) /etc/kdata/menu/tienich/kdata-cai-dat-htop;;
+	12) /etc/kdata/menu/kdata-sao-luu-sys;;
+	13) /etc/kdata/menu/thay-doi-port-ssh;;
+	14) /etc/kdata/menu/kdata-bat-tat-ssh-time-out;;
+	15) /etc/kdata/menu/kdata-block-exploits-sql-injections-menu;;
+	16) /etc/kdata/menu/kdata-chan-run-script-trong-folder-upload-menu;;
+	17) /etc/kdata/menu/kdata-dat-mat-khau-bao-ve-folder-website;;
+	18) /etc/kdata/menu/bat-tat-email-thong-bao-dang-nhap-server;;
+	19) /etc/kdata/menu/kdata-bat-tat-tu-dong-chay-kdata;;
+	20) /etc/kdata/menu/kdata-config-canh-bao-dung-luong-disc-trong-free-it;;
+	21) clear && /etc/kdata/menu/tienich/kdata-restart-service;;
+	22) clear && /etc/kdata/menu/tienich/toc-do-dot-net;;
+	23) clear && /etc/kdata/menu/varnish/install-varnish;;
+	24) clear && /etc/kdata/menu/tienich/update-wordpress-for-all-site;;
+	25) clear && /etc/kdata/menu/tienich/install-composer;;
+	26) /etc/kdata/menu/go-bo-scripts;;
+#	23) clear && kdata;;
+	0) clear && kdata;;
+
+
+            *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+done

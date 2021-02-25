@@ -1,0 +1,38 @@
+#!/bin/sh
+
+cd ~
+if [ -d /opt/vps_kdata ]; then
+rm -rf /opt/vps_kdata/*
+rm -rf /opt/vps_kdata
+sleep 5
+fi
+
+echo "Install git..."
+sudo yum -y install git > /dev/null 2>&1
+
+# update code
+if [ -d /opt/vps_kdata ]; then
+cd ~ ; cd /opt/vps_kdata && git pull ; cd ~
+#git commit -m "KDATA-VPS commit"
+#git pull origin master
+#git pull origin
+#git merge origin master
+# or clone new
+else
+git clone https://github.com/vuukhanhduy/kdata-vps.git /opt/vps_kdata
+fi
+
+cd ~
+
+sleep 5
+
+find /opt/vps_kdata/scripts/kdata/menu -type f -exec chmod 755 {} \;
+/opt/vps_kdata/scripts/kdata/menu/git-clone-done
+
+echo "update KDATA-VPS menu"
+mkdir -p /etc/kdata/menu ; chmod 755 /etc/kdata/menu
+rm -rf /etc/kdata/menu/*
+yes | cp -rf /opt/vps_kdata/scripts/kdata/menu/. /etc/kdata/menu/
+
+echo "Chmod 755 Menu"
+/opt/vps_kdata/scripts/kdata/menu/chmod-755-menu

@@ -1,0 +1,157 @@
+#!/bin/bash
+
+. /home/kdata.conf
+
+echo "========================================================================="
+echo "Su dung chuc nang nay de gia han chung chi SSL (Let's Encrypt)."
+echo "-------------------------------------------------------------------------"
+echo -n "Nhap ten website [ENTER]: " 
+read website
+website=`echo $website | tr '[A-Z]' '[a-z]'`
+websiteTO=`echo $website | tr '[a-z]' '[A-Z]'`
+if [ "$website" = "" ]; then
+clear
+echo "========================================================================="
+echo "Ban chua nhap ten website"
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi
+
+if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
+clear
+echo "========================================================================="
+echo "Khong tim thay $website tren server "
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi  
+
+if [ ! -d /home/$website/public_html ]; then
+clear
+echo "========================================================================="
+echo "Khong tim thay folder public_html cua $website"
+echo "-------------------------------------------------------------------------"
+echo "KDATA khong the thuc hien thuc nang nay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi
+##############
+
+echo "Check $website when Setup SSL" > /home/$website/public_html/kdata.check
+checkurlsttSSL=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://$website/kdata.check")
+checkurlstt=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "http://$website/kdata.check")
+rm -rf /home/$website/public_html/kdata.check
+
+if [ ! "$checkurlstt" = "200" ] && [ ! "$checkurlsttSSL" = "200" ]; then
+clear
+echo "========================================================================="
+echo "Ban chua tro $website toi $serverip"
+echo "-------------------------------------------------------------------------"
+echo "KDATA khong the thuc hien chuc nang nay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+fi
+
+if [ "$(grep "/etc/nginx/auth-acme/$website/$website.crt" /etc/nginx/conf.d/$website.conf)" = "" ] && [ "$checkurlsttSSL" == "200" ]; then
+clear
+echo "========================================================================="
+echo "$websiteTO co cai dat SSL nhung khong su dung Let's Encrypt."
+echo "-------------------------------------------------------------------------"
+echo "KDATA khong the thuc hien chuc nang nay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi
+
+if [ ! "$(grep "/etc/nginx/auth-acme/$website/$website.crt" /etc/nginx/conf.d/$website.conf)" = "" ] && [ "$checkurlsttSSL" == "200" ]; then
+#---------------------------------------- Function Check SSL ---------------------------------------
+check_ssl () {
+data=`echo | openssl s_client -servername $website -connect $website:${2:-443} 2>/dev/null |
+openssl x509 -noout -enddate | sed -e 's#notAfter=##'`
+ssldate=`date -d "${data}" '+%s'`
+nowdate=`date '+%s'`
+diff="$((${ssldate}-${nowdate}))"
+echo $((${diff}/86400))
+}
+#----------------------------------------------------------------------------------------------------
+thoigianconlai=$(check_ssl $website)
+
+if [ "$thoigianconlai" -lt 10 ]; then
+echo "------------------------------------------------------------------------"
+echo "Chung chi SSL cho $website con thoi han: $thoigianconlai ngay"
+echo "------------------------------------------------------------------------"
+echo "KDATA se tien hanh gia han chung chi nay."
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."; sleep 3
+/root/.acme.sh/acme.sh --renew --domain $website -f
+
+thoigianconlai2=$(check_ssl $website)
+clear
+echo "========================================================================="
+echo "Hoan thanh gia han chung chi SSL cho $website."
+echo "-------------------------------------------------------------------------"
+echo "Chung chi se het han sau: $thoigianconlai2 ngay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+fi
+
+if [ "$thoigianconlai" -gt 10 ] && [ "$thoigianconlai" -lt 60 ]; then
+echo "========================================================================="
+echo "Chung chi SSL cho $website con thoi han $thoigianconlai ngay."
+echo "-------------------------------------------------------------------------"
+echo "Thoi han nay > 10 ngay."
+echo "========================================================================="
+  read -r -p "Ban van muon gia han chung chi SSL cho $website ? [y/N] " response
+case $response in
+    [yY][eE][sS]|[yY]) 
+    echo "-------------------------------------------------------------------------"
+echo "Please wait ..."; sleep 3
+/root/.acme.sh/acme.sh --renew --domain $website -f
+thoigianconlai2=$(check_ssl $website)
+clear
+echo "========================================================================="
+echo "Hoan thanh gia han chung chi SSL Let's Encrypt."
+echo "-------------------------------------------------------------------------"
+echo "Chung chi se het han sau: $thoigianconlai2 ngay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+;;
+    *)
+clear 
+echo "========================================================================= "
+echo "Cancel !"
+/etc/kdata/menu/kdata-letsencrypt-menu
+        ;;
+esac
+fi
+
+if [ "$thoigianconlai" -gt 61 ]; then
+clear 
+echo "========================================================================= "
+echo "Thoi Han chung chi SSL cua $website con $thoigianconlai ngay."
+echo "-------------------------------------------------------------------------"
+echo "Ban chua can chay chuc nang nay."
+/etc/kdata/menu/kdata-letsencrypt-menu
+fi
+fi
+
+if [ -f /root/.acme.sh/$website/$website.conf ] && [ "$checkurlstt" == "200" ]; then
+yes | cp -rf  /etc/kdata/Backup.Vhost.SSL/$website/$website.conf /home/$website/$website.conf_HTTP
+yes | cp -rf  /etc/kdata/Backup.Vhost.SSL/$website/$website.conf_HTTPS /home/$website/$website.conf_HTTPS
+clear
+echo "========================================================================="
+echo "Ban da tao chung chi SSL cho $website nhung chua cai dat thanh cong"
+echo "-------------------------------------------------------------------------"
+echo "Ban phai tu edit Vhost cua $website theo thong tin duoi:"
+echo "-------------------------------------------------------------------------"
+echo "File Vhost: /etc/nginx/conf.d/$website.conf"
+echo "-------------------------------------------------------------------------"
+echo "Backup Vhost: /home/$website/$website.conf_HTTP"
+echo "-------------------------------------------------------------------------"
+echo "SSL Vhost: /home/$website/$website.conf_HTTPS"
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi
+
+if [ ! -f /root/.acme.sh/$website/$website.conf ] && [ "$checkurlstt" == "200" ]; then
+clear
+echo "========================================================================="
+echo "Ban chu cai dat SSL Let's Encrypt cho $website !"
+/etc/kdata/menu/kdata-letsencrypt-menu
+exit
+fi

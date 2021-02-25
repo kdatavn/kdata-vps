@@ -1,0 +1,258 @@
+#!/bin/sh
+. /home/kdata.conf
+rm -rf /tmp/kdata*
+echo "-------------------------------------------------------------------------"
+echo "Please wait. KDATA dang kiem tra ..."; sleep 1
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service memcached status | awk 'NR==1 {print $5}')" == "running..." ]; then
+		echo "Memcached: Running | Ram Usage: `grep CACHESIZE= /etc/sysconfig/memcached | grep -o '[0-9]*'` MB"  > /tmp/kdata-memcached-info.txt
+	else
+		echo "Memcached: Stopped"  > /tmp/kdata-memcached-info.txt
+	fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active memcached.service`" == "active" ]; then
+		echo "Memcached: Running | Ram Usage: `grep CACHESIZE= /etc/sysconfig/memcached | grep -o '[0-9]*'` MB"  > /tmp/kdata-memcached-info.txt
+	else
+		echo "Memcached: Stopped"  > /tmp/kdata-memcached-info.txt
+	fi
+fi
+
+if [ ! -f /etc/kdata/uploadsite ]; then 
+echo "File Manager: Not Install " > /tmp/kdata-filemanager-info.txt
+else
+uploadsite=$(cat /etc/kdata/uploadsite)
+echo "File Manager: Installed | Domain: $uploadsite" > /tmp/kdata-filemanager-info.txt
+fi
+
+if [ ! -f /etc/kdata/net2ftpsite.info ]; then 
+echo "Net2FTP: Not Install " > /tmp/kdata-net2ftp-info.txt
+else
+net2ftpsite=$(cat /etc/kdata/net2ftpsite.info)
+echo "Net2FTP: Installed | Domain: $net2ftpsite" > /tmp/kdata-net2ftp-info.txt
+fi
+
+if [ ! -f /etc/kdata/netdatasite.info ]; then 
+echo "NetData: Not Install " > /tmp/kdata-netdata-info.txt
+else
+netdatasite=$(cat /etc/kdata/netdatasite.info)
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service netdata status | awk 'NR==1 {print $5}')" == "running..." ]; then
+echo "NetData: Installed & Enable | Domain: $netdatasite" > /tmp/kdata-netdata-info.txt
+	else
+echo "NetData: Installed But Disable | Domain: $netdatasite" > /tmp/kdata-netdata-info.txt
+	fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active netdata.service`" == "active" ]; then
+echo "NetData: Installed & Enable | Domain: $netdatasite" > /tmp/kdata-netdata-info.txt
+	else
+echo "NetData: Installed But Disable | Domain: $netdatasite" > /tmp/kdata-netdata-info.txt
+	fi
+fi
+fi
+
+
+if [ ! -f "/etc/csf/csf.conf" ]; then
+echo "CSF Firewall: Not install" > /tmp/kdata-csf-firewall-info.txt
+else
+csf -v > /tmp/kdatacheckcscfstatus
+if [ "$(grep disabled /tmp/kdatacheckcscfstatus)" = "" ]; then
+echo "CSF Firewall: installed | Version: $(csf -v | awk 'NR==1 {print $2}' | sed 's/v//') " > /tmp/kdata-csf-firewall-info.txt
+else
+echo "CSF Firewall: Installed but Disable" > /tmp/kdata-csf-firewall-info.txt
+fi
+fi
+
+
+# /etc/kdata/menu/kdata-befor-vps-info-redis
+
+
+if [ -f /var/lib/mysql/kdataCheckDB/db.opt ]; then
+rm -rf /var/lib/mysql/kdataCheckDB
+fi
+ cat > "/tmp/config.temp" <<END
+CREATE DATABASE kdataCheckDB COLLATE utf8_general_ci;
+END
+mysql -u root -p$mariadbpass < /tmp/config.temp
+rm -f /tmp/config.temp
+
+if [ ! -f /var/lib/mysql/kdataCheckDB/db.opt ]; then
+clear
+echo "========================================================================"
+echo "MySQL service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5
+rm -rf /var/lib/mysql/ib_logfile0
+rm -rf /var/lib/mysql/ib_logfile1
+cat > "/tmp/startmysql" <<END
+systemctl start mariadb.service
+service mysql start
+END
+chmod +x /tmp/startmysql
+/tmp/startmysql
+rm -rf /tmp/startmysql
+clear
+echo "========================================================================"
+echo "Check MySQL service once again !"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5
+cat > "/tmp/config.temp" <<END
+CREATE DATABASE kdataCheckDB COLLATE utf8_general_ci;
+END
+mysql -u root -p$mariadbpass < /tmp/config.temp
+rm -f /tmp/config.temp
+	if [ ! -f /var/lib/mysql/kdataCheckDB/db.opt ]; then
+		clear
+echo "========================================================================"
+echo "KDATA can not start MySQL Service"
+sleep 4 ;
+echo "MySQL Status: Stopped" > /tmp/kdata-mysql-info.txt
+	else
+	rm -rf /var/lib/mysql/kdataCheckDB
+echo "MySQL Status: Running" > /tmp/kdata-mysql-info.txt
+	fi
+else
+rm -rf /var/lib/mysql/kdataCheckDB
+echo "MySQL Status: Running" > /tmp/kdata-mysql-info.txt
+fi
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+service nginx start
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+		if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
+echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+echo "Nginx Status: Stopped" > /tmp/kdata-nginx-info.txt
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+
+echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
+	else
+clear
+echo "========================================================================"
+echo "Nginx service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+systemctl start nginx.service
+clear
+echo "========================================================================"
+echo "Check Nginx service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+	if [ "`systemctl is-active nginx.service`" == "active" ]; then
+
+echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start Nginx Service"
+sleep 4 ;
+echo "Nginx Status: Stopped" > /tmp/kdata-nginx-info.txt
+		fi
+fi
+fi
+if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+	if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+	echo "PHP Status: Running" > /tmp/kdata-php-info.txt
+	echo "PHP version: $(php -i | grep 'PHP Version' | awk 'NR==1 {print $4}') " >> /tmp/kdata-php-info.txt
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+service php-fpm start
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+			if [ "$(/sbin/service php-fpm status | awk 'NR==1 {print $5}')" == "running..." ]; then
+	echo "PHP Status: Running" > /tmp/kdata-php-info.txt
+	echo "PHP version: $(php -i | grep 'PHP Version' | awk 'NR==1 {print $4}') " >> /tmp/kdata-php-info.txt
+		else
+	clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	echo "PHP Status: Stopped" >> /tmp/kdata-php-info.txt
+		fi
+fi
+fi
+
+#if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
+if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+	echo "PHP Status: Running" > /tmp/kdata-php-info.txt
+	echo "PHP version: $(php -i | grep 'PHP Version' | awk 'NR==1 {print $4}') " >> /tmp/kdata-php-info.txt
+	else
+clear
+echo "========================================================================"
+echo "PHP-FPM service is not running"
+echo "------------------------------------------------------------------------"
+echo "KDATA trying to start it"
+echo "------------------------------------------------------------------------"
+echo "Please wait ..."
+sleep 5 ; clear
+	echo "-------------------------------------------------------------------------"
+systemctl start php-fpm.service
+clear
+echo "========================================================================"
+echo "Check PHP-FPM service once again !"
+echo "------------------------------------------------------------------------"
+echo "please wait ..."
+sleep 5 ; clear
+if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
+	echo "PHP Status: Running" > /tmp/kdata-php-info.txt
+	echo "PHP version: $(php -i | grep 'PHP Version' | awk 'NR==1 {print $4}') " >> /tmp/kdata-php-info.txt
+		else
+		clear
+echo "========================================================================"
+echo "KDATA can not start PHP-FPM Service"
+sleep 4 ;
+	echo "PHP Status: Stopped" >> /tmp/kdata-php-info.txt
+		fi
+fi
+fi

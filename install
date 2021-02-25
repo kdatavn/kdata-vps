@@ -1,0 +1,20 @@
+#!/bin/sh
+
+cd ~
+if [ -d /opt/vps_kdata ]; then
+rm -rf /opt/vps_kdata/*
+rm -rf /opt/vps_kdata
+sleep 2
+fi
+
+sudo yum -y install wget
+
+#
+cd ~
+wget --no-check-certificate -q https://raw.githubusercontent.com/vuukhanhduy/kdata-vps/master/scripts/kdata/menu/git-clone
+chmod +x /root/git-clone
+bash /root/git-clone
+
+cd /opt/vps_kdata
+chmod +x setup
+bash setup

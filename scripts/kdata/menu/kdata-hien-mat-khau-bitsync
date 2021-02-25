@@ -1,0 +1,20 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ ! -f /etc/kdata/btsync.info ]; then
+clear
+echo "========================================================================= "
+echo "Ban chua cai dat BTsync"
+/etc/kdata/menu/kdata-bitsync-menu
+else
+echo "Please wait..."; sleep 1
+clear
+echo "========================================================================="
+echo "Thong tin quan ly BTsync:"
+echo "-------------------------------------------------------------------------"
+echo "Link truy cap: http://$serverip:$(grep btport /etc/kdata/btsync.info | awk 'NR==1 {print $3}')"
+echo "-------------------------------------------------------------------------"
+echo "User: $(grep username /etc/kdata/btsync.info | awk 'NR==1 {print $3}') | Password: $(grep password /etc/kdata/btsync.info | awk 'NR==1 {print $3}')"
+echo "-------------------------------------------------------------------------"
+echo "BTsync phai duoc bat truoc khi truy cap ! "
+/etc/kdata/menu/kdata-bitsync-menu
+fi

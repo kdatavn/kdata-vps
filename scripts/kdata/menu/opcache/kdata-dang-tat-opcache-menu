@@ -1,0 +1,28 @@
+#!/bin/sh
+. /home/kdata.conf
+prompt="Lua chon cua ban (0-Thoat):"
+options=("Bat Zend Opcache" "Cau Hinh Zend Opcache" "Them Website Vao BlackList" "Xoa Website Khoi Blacklist" "Clear Zend OPcache")
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                          Zend OPcache Manage \n"
+printf "=========================================================================\n"
+printf "                    Zend Opcache Current: Disable\n"
+printf "=========================================================================\n"
+printf "Zend Opcache Manage Link: http://$serverip:$priport/ocp.php\n"
+printf "=========================================================================\n"
+PS3="$prompt"
+select opt in "${options[@]}"; do 
+
+    case "$REPLY" in
+	1 ) /etc/kdata/menu/opcache/kdata-bat-opcache;;
+	2 ) /etc/kdata/menu/opcache/kdata-opcache-change-size;;
+	3) /etc/kdata/menu/opcache/kdata-them-website-vao-blacklist;;
+	4) /etc/kdata/menu/opcache/kdata-xoa-website-khoi-blacklist;;
+	5) /etc/kdata/menu/opcache/kdata-clear-opcache;;
+	#$(( ${#options[@]}+1 )) ) echo "";  clear && /bin/kdata;;
+	0) echo "";  clear && /bin/kdata;;
+    *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu";continue;;
+
+    esac
+done

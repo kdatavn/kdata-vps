@@ -1,0 +1,21 @@
+#!/bin/sh
+. /home/kdata.conf
+
+if [ ! -f /var/spool/cron/root ]; then
+/etc/kdata/menu/crontab/kdata-xoa-het-cronjob
+exit
+fi
+
+if [ "$(grep "auto-start-mysql" /var/spool/cron/root | awk '{print $6}')" == "auto-start-mysql" ]; then
+/etc/kdata/menu/crontab/kdata-xoa-het-cronjob-but-auto-start-mariadb
+exit
+fi
+if [ "$(grep "auto-start-mysql" /var/spool/cron/root | awk '{print $6}')" == "" ]; then
+/etc/kdata/menu/crontab/kdata-xoa-het-cronjob
+exit
+fi
+clear
+echo "we can find cronjob for you"
+/etc/kdata/menu/crontab/kdata-cronjob-menu
+exit
+fi

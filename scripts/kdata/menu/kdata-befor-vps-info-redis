@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [ "$(redis-cli ping)" = "PONG" ]; then
+echo "Working" > /tmp/kdata-redis-info.txt
+else
+echo "Stopped" > /tmp/kdata-redis-info.txt
+fi

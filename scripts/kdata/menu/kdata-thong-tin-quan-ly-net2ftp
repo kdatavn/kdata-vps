@@ -1,0 +1,15 @@
+#!/bin/sh
+. /home/kdata.conf
+if [ ! -f /etc/kdata/net2ftpsite.info ]; then
+clear
+echo "========================================================================="
+echo "Ban chua cai dat domain Net2FTP cho Server !"
+/etc/kdata/menu/kdata-net2ftp-menu
+exit
+fi
+echo "Please wait..."; sleep 1
+net2ftpsite=$(cat /etc/kdata/net2ftpsite.info)
+clear
+echo "========================================================================="
+echo "Domain Net2FTP: $net2ftpsite"
+/etc/kdata/menu/kdata-net2ftp-menu

@@ -1,0 +1,19 @@
+========================================================================
+* VPS (Server) duoc Cai dat va Cau hinh boi VPSKDATA
+========================================================================
+* Lenh goi KDATA-VPS menu :    kdata 
+========================================================================
+* Neu khong truy cap duoc phpMyAdmin, download backup files ...
+------------------------------------------------------------------------
+* Chay chuc nang: [Open Phpmyadmin Port] trong [Quan Ly Phpmyadmin].
+------------------------------------------------------------------------
+* Neu Server ho tro tao SWAP, ban nen su dung chuc nang [Quan ly SWAP]
+------------------------------------------------------------------------
+* de tao SWAP, nang cao hieu suat Server.
+------------------------------------------------------------------------
+* Mac dinh: CSF Firewall bi disable.
+*-----------------------------------------------------------------------
+* Neu server > 1 GB RAM ==> Ban nen Enable CSF Firewall.
+*-----------------------------------------------------------------------
+* Neu co thac mac co the vao website KDATA de duoc tu van them.
+========================================================================

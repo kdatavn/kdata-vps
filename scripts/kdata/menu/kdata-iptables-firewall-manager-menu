@@ -1,0 +1,37 @@
+#!/bin/bash
+prompt="Lua chon cua ban (0-Thoat):"
+options=( "Mo Port (INPUT)" "Close Port (INPUT)" "Kiem Tra Service Dung Port" "Sao Luu IPtables Rules" "Phuc Hoi IPtables Rules" "Xem IPtables Rules Hien Tai" )
+printf "=========================================================================\n"
+printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "=========================================================================\n"
+printf "                       Quan Ly IPtables Firewall\n"
+printf "=========================================================================\n"
+
+PS3="$prompt"
+select opt in "${options[@]}" ; do 
+
+    case "$REPLY" in
+
+    1) /etc/kdata/menu/tienich/kdata-mo-port-ip-tables;;
+    2) /etc/kdata/menu/tienich/kdata-dong-port-ip-tables;;
+    3) /etc/kdata/menu/tienich/kdata-check-port-service;;
+    4) /etc/kdata/menu/tienich/kdata-sao-luu-iptables;;
+    5) /etc/kdata/menu/tienich/kdata-phuc-hoi-iptables;;
+    6) /etc/kdata/menu/tienich/kdata-view-iptables-rules;;
+    7) clear && /bin/kdata;;
+    0) clear && kdata;;
+
+            *) echo "Ban nhap sai, vui long nhap theo so thu tu tren menu !";continue;;
+
+    esac
+done
+
+
+
+
+
+
+
+
+
+
