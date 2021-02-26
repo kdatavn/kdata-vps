@@ -1,4 +1,4 @@
-All phpMyAdmin Versions for KPANEL Server !
+All phpMyAdmin Versions for KLEMP Server !
 |5.0.4|
 |4.9.7|
 |4.9.5| 

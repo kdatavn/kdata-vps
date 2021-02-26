@@ -1,4 +1,4 @@
-All Nginx Versions for KPANEL Server !
+All Nginx Versions for KLEMP Server !
 |1.18.0|
 |1.11.4|
 |1.11.3|
