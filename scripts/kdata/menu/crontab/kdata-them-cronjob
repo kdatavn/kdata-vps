@@ -6,8 +6,13 @@ else
 rm -rf /etc/kdata/crontab/*
 fi
 echo "========================================================================="
+<<<<<<< HEAD
+echo "Xem cach tao lenh crontab ben duoi"
+cat /etc/crontab
+=======
 echo "Xem cach tao lenh crontab ben duoi:"
 cat /etc/crontab
+>>>>>>> 702d438dcca1418daa21f7dccc3464e153b7afdb
 echo "-------------------------------------------------------------------------"
 echo -n "Crontab ban muon them [ENTER]: " 
 read cronjob

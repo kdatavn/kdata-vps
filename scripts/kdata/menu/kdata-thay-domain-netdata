@@ -15,8 +15,7 @@ echo "Qua trinh thay Domain NetData gap loi!"
 echo "-------------------------------------------------------------------------"
 echo "Ban vui long kiem tra lai"
 /etc/kdata/menu/kdata-netdata-menu
-exit
-fi
+exi
 echo "========================================================================= "
 echo "Su dung chuc nang nay de thay Domain NetData sang Domain Khac"
 echo "-------------------------------------------------------------------------"
