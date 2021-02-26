@@ -1,4 +1,4 @@
-All NetData Versions For VPSKDATA
+All NetData Versions For KPANEL
 |1.10.0|
 |1.9|
 |1.8|
