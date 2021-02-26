@@ -171,7 +171,8 @@ include /etc/nginx/conf/staticfiles.conf;
 		fastcgi_busy_buffers_size 256k;
 		fastcgi_temp_file_write_size 256k;
 		fastcgi_intercept_errors on;
-        	fastcgi_param SCRIPT_FILENAME /home/$website/public_html\$fastcgi_scripts_name;
+        	fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+		#fastcgi_param SCRIPT_FILENAME /home/$website/public_html\$fastcgi_scripts_name;
     	}
 
 #include /etc/nginx/conf/phpstatus.conf;
