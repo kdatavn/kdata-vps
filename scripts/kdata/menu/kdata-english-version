@@ -3,5 +3,5 @@
 . /home/kdata.conf
 clear
 echo "========================================================================="
-echo "Cai dat KDATA phien ban tieng ANH tai KDATA.COM"
+echo "Cai dat KPANEL phien ban tieng ANH tai KDATA.COM"
 kdata
