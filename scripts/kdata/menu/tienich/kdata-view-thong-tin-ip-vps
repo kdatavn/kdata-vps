@@ -18,7 +18,7 @@ curl -ss ipinfo.io > /etc/kdata/ipvpsinfo.txt
 sed -i 's/,//g' /etc/kdata/ipvpsinfo.txt
 sed -i 's/"//g' /etc/kdata/ipvpsinfo.txt
 echo "=========================================================================================" >> /home/$mainsite/private_html/servervpsinfo-$randomcode.txt
-echo "KIEM TRA THONG TIN SERVER BOI KDATA" > /home/$mainsite/private_html/servervpsinfo-$randomcode.txt
+echo "KIEM TRA THONG TIN SERVER BOI KPANEL" > /home/$mainsite/private_html/servervpsinfo-$randomcode.txt
 echo "=========================================================================================" >> /home/$mainsite/private_html/servervpsinfo-$randomcode.txt
 echo "" >> /home/$mainsite/private_html/servervpsinfo-$randomcode.txt
 echo "" >> /home/$mainsite/private_html/servervpsinfo-$randomcode.txt

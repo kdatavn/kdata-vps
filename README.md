@@ -1,4 +1,4 @@
-### Lệnh Cài Đặt KPANEL (KDATA-VPS-LEMP) Trên Centos 6 & 7 & 8:
+### Lệnh Cài Đặt KPANEL (KDATA-VPS) Trên Centos 6 & 7 & 8:
 ```
 bash <( curl -k https://kdata.vn/install )
 ```

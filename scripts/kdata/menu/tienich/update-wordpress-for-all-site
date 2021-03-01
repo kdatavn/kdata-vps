@@ -489,7 +489,7 @@ if [ $2 -lt $3 ]; then
 								chown -R $4:$4 $d
 								chown -R $4:$4 $d/*
 							else
-								# voi KDATA, HOCVPS -> phan quyen cho user va nginx
+								# voi KPANEL, HOCVPS -> phan quyen cho user va nginx
 								id -u nginx
 								if [ $? -eq 0 ]; then
 									chown -R $4:nginx $d

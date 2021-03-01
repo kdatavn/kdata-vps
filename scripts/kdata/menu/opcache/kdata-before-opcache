@@ -42,7 +42,7 @@ fi
 fi
 clear
 echo "========================================================================="
-echo "KDATA can not find zend opcache in your system"
+echo "KPANEL can not find zend opcache in your system"
 kdata
 }
 

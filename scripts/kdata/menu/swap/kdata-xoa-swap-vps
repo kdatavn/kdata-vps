@@ -1,9 +1,9 @@
 #!/bin/bash
 if [ -f /swapfile ]; then
 echo "========================================================================="
-echo "Chuc nang nay chi ho tro xoa Swap do KDATA tao ra truoc do"
+echo "Chuc nang nay chi ho tro xoa Swap do KPANEL tao ra truoc do"
 echo "-------------------------------------------------------------------------"
-echo "Voi Swap co san tren he thong, KDATA khong the can thiep duoc"
+echo "Voi Swap co san tren he thong, KPANEL khong the can thiep duoc"
 echo "========================================================================="
 read -r -p "Ban muon xoa swap tren server? [y/N] " response
 case $response in

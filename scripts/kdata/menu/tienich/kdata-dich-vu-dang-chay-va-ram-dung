@@ -15,7 +15,7 @@ rm -rf /home/$mainsite/private_html/ServiceandRamuseage*
 /etc/kdata/menu/tienich/kdata-tien-trinh-dang-chay-ram-use > /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt 
 sed -i '/kdata/d' /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
 sed -i '1s/^/====================================================================================================================================\n/' /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
-sed -i '2s/^/List Service Running And Ram Useage  -  Created by KDATA\n/' /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
+sed -i '2s/^/List Service Running And Ram Useage  -  Created by KPANEL\n/' /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
 sed -i '3s/^/====================================================================================================================================\n/' /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
 echo "============================================================The End=================================================================" >> /home/$mainsite/private_html/ServiceandRamuseage-$randomcode.txt
 

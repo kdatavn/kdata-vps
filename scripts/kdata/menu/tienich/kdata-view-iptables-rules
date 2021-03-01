@@ -11,7 +11,7 @@ case $response in
 rm -rf /home/$mainsite/private_html/IPtablesRules*
 randomcode=`date |md5sum |cut -c '1-16'`
 echo "============================================================================" > /home/$mainsite/private_html/IPtablesRules-$randomcode.txt
-echo "IPtables Firewall Rules in Server: $serverip - Created by KDATA " >> /home/$mainsite/private_html/IPtablesRules-$randomcode.txt
+echo "IPtables Firewall Rules in Server: $serverip - Created by KPANEL " >> /home/$mainsite/private_html/IPtablesRules-$randomcode.txt
 echo "============================================================================" >>/home/$mainsite/private_html/IPtablesRules-$randomcode.txt
 echo "" >> /home/$mainsite/private_html/IPtablesRules-$randomcode.txt
 iptables-save >> /home/$mainsite/private_html/IPtablesRules-$randomcode.txt

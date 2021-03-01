@@ -78,7 +78,7 @@ echo "Kiem tra ket qua cai dat Imagick:"
 echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport/check-imagick.php"
 echo "-------------------------------------------------------------------------"
-echo "Neu Imagick cai thanh cong, trang nay se hien anh thong bao cua KDATA"
+echo "Neu Imagick cai thanh cong, trang nay se hien anh thong bao cua KPANEL"
 /etc/kdata/menu/kdata-tien-ich
        ;;
     *)

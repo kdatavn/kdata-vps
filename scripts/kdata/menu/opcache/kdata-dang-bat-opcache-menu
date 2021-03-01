@@ -29,7 +29,7 @@ fi
 prompt="Nhap lua chon cua ban (0-Thoat):"
 options=("Tat Opcache" "Cau Hinh Zend Opcache" "Them Website Vao BlackList" "Xoa Website Khoi Blacklist" "Clear Zend OPcache")
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                      Quan Ly Zend OPcache (Enable)\n"
 printf "=========================================================================\n"
@@ -41,7 +41,7 @@ cat /etc/kdata/opcache.blacklist > /tmp/check_zendblacklist
 sed -i '/wp-content/d' /tmp/check_zendblacklist
 if [ ! "$(grep home /tmp/check_zendblacklist)" == "" ]; then
 echo "=========================================================================" > /home/$mainsite/private_html/OP-Blacklist.txt
-echo "Zend Opcache Black List - Created by KDATA " >> /home/$mainsite/private_html/OP-Blacklist.txt
+echo "Zend Opcache Black List - Created by KPANEL " >> /home/$mainsite/private_html/OP-Blacklist.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/OP-Blacklist.txt
 echo "" >> /home/$mainsite/private_html/OP-Blacklist.txt
 cat /etc/kdata/opcache.blacklist >> /home/$mainsite/private_html/OP-Blacklist.txt
@@ -55,7 +55,7 @@ rm -rf /tmp/viewzendcacheblacklist
 sed -i '/wp-content/d' /home/$mainsite/private_html/OP-Blacklist.txt
 else
 echo "=========================================================================" > /home/$mainsite/private_html/OP-Blacklist.txt
-echo "Zend Opcache Black List - Created by KDATA " >> /home/$mainsite/private_html/OP-Blacklist.txt
+echo "Zend Opcache Black List - Created by KPANEL " >> /home/$mainsite/private_html/OP-Blacklist.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/OP-Blacklist.txt
 echo "" >> /home/$mainsite/private_html/OP-Blacklist.txt
 echo "Hien tai khong co website nao trong Zend Opcache Blacklist" >> /home/$mainsite/private_html/OP-Blacklist.txt
