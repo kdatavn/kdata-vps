@@ -31,7 +31,7 @@ fi
 if [ ! -f /etc/kdata/kdata.newversion ]; then
 clear
 printf "=========================================================================\n"
-echo "Khong the kiem tra phien ban update KDATA-VPS"
+echo "Khong the kiem tra phien ban update KPANEL"
 echo "-------------------------------------------------------------------------"
 echo "Ban vui long thu lai"
 /etc/kdata/menu/kdata-update-upgrade-service-menu
@@ -46,11 +46,11 @@ if [ "$LOCALVER" == "$REMOVER" ]; then
 clear
 rm -rf /etc/kdata/kdata.newversion
 echo "========================================================================="
-echo "Ban dang su dung phien ban moi nhat cua KDATA-VPS - Phien ban: $LOCALVER"
+echo "Ban dang su dung phien ban moi nhat cua KPANEL - Phien ban: $LOCALVER"
 echo "-------------------------------------------------------------------------"
-echo "Xem KDATA-VPS update Log tai: https://github.com/kdatavn/kdata-vps"
+echo "Xem KPANEL update Log tai: https://github.com/kdatavn/kdata-vps"
 
-echo -n "Ban van muon cap nhat lai KDATA-VPS chu? [y/N] "
+echo -n "Ban van muon cap nhat lai KPANEL chu? [y/N] "
 read vanCapNhat
 if [ "$vanCapNhat" = "y" ]; then
 echo "OK sir! tien trinh cap nhat se duoc tiep tuc..."
@@ -63,9 +63,9 @@ fi
 fi
 
 printf "=========================================================================\n"
-printf "Xem KDATA-VPS update Log tai: https://github.com/kdatavn/kdata-vps\n"
+printf "Xem KPANEL update Log tai: https://github.com/kdatavn/kdata-vps\n"
 printf "=========================================================================\n"
-printf "Da phat hien update cho KDATA-VPS\n"
+printf "Da phat hien update cho KPANEL\n"
 echo "-------------------------------------------------------------------------"
 printf "Phien ban ban dang su dung: $LOCALVER\n"
 echo "-------------------------------------------------------------------------"
@@ -75,12 +75,12 @@ printf "========================================================================
 if [ "$chuaCoBanMoi" = "y" ]; then
 response="y"
 else
-read -r -p "Ban chac chan muon update KDATA-VPS ? [y/N] " response
+read -r -p "Ban chac chan muon update KPANEL ? [y/N] " response
 fi
 
 if [ "$response" = "y" ] || [ "$response" = "Y" ]; then
 echo "-------------------------------------------------------------------------" 
-echo "Chuan bi update KDATA-VPS..... "
+echo "Chuan bi update KPANEL..... "
 sleep 1
 
 rm -rf /etc/kdata/kdata-update
@@ -93,7 +93,7 @@ else
 
 clear
 printf "=========================================================================\n"
-echo "Ban da huy bo update KDATA-VPS"
+echo "Ban da huy bo update KPANEL"
 /etc/kdata/menu/kdata-update-upgrade-service-menu
 
 fi

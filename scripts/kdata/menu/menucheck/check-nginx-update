@@ -28,7 +28,7 @@ cat >> "/tmp/kdata_check_nginx" <<END
 			echo "-------------------------------------------------------------------------"
 			echo "Your Version: $Nginx1   |   Newest version: $Nginx3"
 			echo "-------------------------------------------------------------------------"
-			echo "How to update: KDATA-VPS menu => Update System => Change Nginx Version "
+			echo "How to update: KPANEL menu => Update System => Change Nginx Version "
 			
 			fi
 		fi

@@ -27,7 +27,7 @@ fi
 fi
 clear
 echo "========================================================================="
-echo "Sorry, KDATA-VPS khong phat hien Memcached tren he thong !"
+echo "Sorry, KPANEL khong phat hien Memcached tren he thong !"
 kdata
 exit
 fi

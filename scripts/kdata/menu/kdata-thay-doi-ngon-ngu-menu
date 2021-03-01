@@ -19,9 +19,9 @@ REMOVER=`cat /tmp/kdata.newversion`
 if [ ! "$LOCALVER" == "$REMOVER" ]; then
 clear
 printf "=========================================================================\n"
-echo "Ban phai update KDATA-VPS len phien ban moi nhat de su dung chuc nang nay"
+echo "Ban phai update KPANEL len phien ban moi nhat de su dung chuc nang nay"
 echo "-------------------------------------------------------------------------"
-echo "(You must update KDATA-VPS to latest version to use this function)"
+echo "(You must update KPANEL to latest version to use this function)"
 /etc/kdata/menu/kdata-update-upgrade-service-menu
 fi
 fi

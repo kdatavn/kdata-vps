@@ -68,7 +68,7 @@ access_log        off;
 log_not_found     off;
 error_log         off;
 root /home/kdata.demo/private_html;
-auth_basic "Authorization Required ( Get User & Password at /home/KDATA-manage-info.txt or Create new one by : KDATA-VPS menu ->  User & Password Mac Dinh )";
+auth_basic "Authorization Required ( Get User & Password at /home/KDATA-manage-info.txt or Create new one by : KPANEL menu ->  User & Password Mac Dinh )";
 auth_basic_user_file  /etc/nginx/.htpasswd;
 index index.php index.html index.htm;
 server_name kdata.demo;

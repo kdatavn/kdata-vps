@@ -19,7 +19,7 @@ options=("Enable Memcached" "Restart Memcached" "Config Memcached" "Clear Memcac
 fi
 fi
 printf "=========================================================================\n"
-printf "                KDATA-VPS - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                            Quan Ly Memcached \n"
 printf "=========================================================================\n"

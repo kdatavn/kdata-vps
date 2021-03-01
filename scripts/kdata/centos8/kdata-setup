@@ -10,7 +10,7 @@ echo "Mac dinh server se duoc cai dat PHP "$phpmacdinh". Neu muon su dung phien 
 echo "--------------------------------------------------------------------------"
 echo "khac, sau khi cai dat server xong dung chuc nang [ Change PHP Version ] "
 echo "--------------------------------------------------------------------------"
-echo "trong [ Update System ] cua KDATA-VPS."
+echo "trong [ Update System ] cua KPANEL."
 echo "--------------------------------------------------------------------------"
 echo "KDATA ho tro: PHP 7.2, PHP 7.1, PHP 7.0, PHP 5.6, PHP 5.5 & PHP 5.4"
 cpuname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
@@ -39,7 +39,7 @@ read svport
 if [ "$svport" = "80" ] || [ "$svport" = "443" ] || [ "$svport" = "22" ] || [ "$svport" = "3306" ] || [ "$svport" = "25" ] || [ "$svport" = "465" ] || [ "$svport" = "587" ] || [ "$svport" = "21" ]; then
 svport="1241"
 echo "Phpmyadmin khong the trung voi port cua dich vu khac !"
-echo "KDATA-VPS se dat phpmyadmin port la "$svport
+echo "KPANEL se dat phpmyadmin port la "$svport
 fi
 if [ "$svport" = "" ] ; then
 clear
@@ -199,7 +199,7 @@ phpmyadmin_version=`cat /tmp/00-all-phpmyadmin-version.txt | awk 'NR==2 {print $
 #Nginx_VERSION=`cat /tmp/00-all-nginx-version.txt | awk 'NR==2 {print $1}' | sed 's/|//' | sed 's/|//'`
 kdata_version=`cat /tmp/kdata.newversion`
 
-# End Download Nginx, KDATA-VPS & phpMyadmin Version
+# End Download Nginx, KPANEL & phpMyadmin Version
 ###############################################################################
 
 clear
@@ -207,7 +207,7 @@ clear
 echo "=========================================================================="
 echo "OS Version: "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))
 echo "--------------------------------------------------------------------------"
-echo "KDATA-VPS Se Cai Dat Server Theo Thong Tin:"
+echo "KPANEL Se Cai Dat Server Theo Thong Tin:"
 echo "=========================================================================="
 echo "eMail Quan Ly: $kdataemail"
 echo "--------------------------------------------------------------------------"
@@ -223,7 +223,7 @@ echo "Nginx Version: $Nginx_VERSION"
 echo "--------------------------------------------------------------------------"
 echo "PHP Version: "$phpmacdinh
 echo "--------------------------------------------------------------------------"
-echo "KDATA-VPS Version: $kdata_version"
+echo "KPANEL Version: $kdata_version"
 echo "=========================================================================="
 prompt="Nhap lua chon cua ban: "
 options=( "Dong Y" "Khong Dong Y")
@@ -239,7 +239,7 @@ done
 
 if [ "$xacnhanthongtin" = "dongy" ]; then
 echo "--------------------------------------------------------------------------"
-echo "Chuan Bi Cai Dat KDATA-VPS ..."
+echo "Chuan Bi Cai Dat KPANEL ..."
 sleep 2
 else 
 clear
@@ -260,7 +260,7 @@ fi
 #cat >> "/root/.bash_profile" <<END
 #IPkdatacheck="\$(echo \$SSH_CONNECTION | cut -d " " -f 1)"
 #timeloginkdatacheck=\$(date +"%e %b %Y, %a %r")
-#echo 'Someone has IP address '\$IPkdatacheck' login to $svip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KDATA-VPS On $svip' ${kdataemail}
+#echo 'Someone has IP address '\$IPkdatacheck' login to $svip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KPANEL On $svip' ${kdataemail}
 #END
 
 echo "$svport" > /tmp/priport.txt
@@ -956,7 +956,7 @@ mkdir -p /var/lib/php/session
 chown -R nginx:nginx /var/lib/php
 clear
 echo "=========================================================================="
-echo "Dang Tao KDATA-VPS Menu...... "
+echo "Dang Tao KPANEL Menu...... "
 echo "=========================================================================="
 rm -rf /etc/motd
 
@@ -979,7 +979,7 @@ fi
 
 cd /etc/kdata/
 
-# Download KDATA-VPS data
+# Download KPANEL data
 download_kdata_data () {
 #rm -rf menu.zip
 #wget --no-check-certificate -q https://kdata.vn/scripts/kdata/menu.zip
@@ -1126,7 +1126,7 @@ Thong tin dang nhap phpMyadmin, quan ly Zend Opcache, status.php, download backu
 Username: $usernamebv
 Password: $matkhaubv 
 
-Lenh truy cap KDATA-VPS: kdata
+Lenh truy cap KPANEL: kdata
 
 LUU Y: 
 
@@ -1136,7 +1136,7 @@ va su dung cac Plugin cache(wp super cache....) cho website.
 Neu VPS dang bat Zend Opcache, khi edit file PHP, do cac file php duoc cache vao RAM  
 nen ban can clear Zend Opcache de thay doi duoc cap nhat. 
 
-Chuc ban se thanh cong cung KDATA-VPS .
+Chuc ban se thanh cong cung KPANEL .
 END
 # increase SSH login speed
 if [ -f /etc/ssh/sshd_config ]; then 
@@ -1149,14 +1149,14 @@ fi
 #fi
 cat > "/tmp/finishedemail.sh" <<END
 #!/bin/bash 
-echo -e 'Subject: KDATA-VPS - Chuc mung cai dat thanh cong $svip!
+echo -e 'Subject: KPANEL - Chuc mung cai dat thanh cong $svip!
 
 Chao ban!
 
-Chuc mung ban da hoan thanh qua trinh cai dat va cau hinh server $svip bang KDATA-VPS.
+Chuc mung ban da hoan thanh qua trinh cai dat va cau hinh server $svip bang KPANEL.
 Sau day la thong tin quan ly server cua ban:
 
-+ Lenh goi KDATA-VPS: kdata
++ Lenh goi KPANEL: kdata
 + Link phpMyAdmin: http://$svip:$svport
 + Quan Ly Zend Opcache: http://$svip:$svport/ocp.php
 + Quan Ly Memcached: http://$svip:$svport/memcache.php
@@ -1177,7 +1177,7 @@ Host: sftp://$svip  - User: root - Password: Your_password - Port: 22 (hoac port
 + Sau khi Upload code len server. Ban phai chay chuc nang [ Fix Loi Chmod, Chown ] trong [ Tien Ich - Addons ] de thiet lap phan quyen cho website. 
 Neu website su dung code wordpress, thiet lap phan quyen cho website bang chuc nang [ Fix loi Permission ] trong [ Wordpress Blog Tools ]
 + Tuy theo so luong website, dung luong code ma ban cau hinh lai Zend Opcache, Memcached, Redis Cache bang chuc nang [ Quan Ly Memcached ], [ Quan Ly Zend Opcache ] , [ Quan Ly Redis Cache ] cho phu hop.
-+ De bao mat, moi khi co dang nhap SSH va Server, KDATA-VPS se gui email thong bao toi dia chi email $kdataemail .
++ De bao mat, moi khi co dang nhap SSH va Server, KPANEL se gui email thong bao toi dia chi email $kdataemail .
 Thay email hoac tat chuc nang nay bang [ BAT/TAT Email Thong Bao Login ] trong [ Tien ich - Addons ].  
 
 KDATA by Nguyen Oanh - http://kdata.vn' | exim  $kdataemail
@@ -1189,7 +1189,7 @@ clear
 echo "=========================================================================="
 echo "KDATA da hoan tat qua trinh cai dat Server. "
 echo "=========================================================================="
-echo "Lenh goi KDATA-VPS: kdata"
+echo "Lenh goi KPANEL: kdata"
 echo "--------------------------------------------------------------------------"
 echo "Link phpMyAdmin: http://$svip:$svport"
 echo "--------------------------------------------------------------------------"
@@ -1203,11 +1203,11 @@ echo "Thong tin username & password bao ve phpMyAdmin, ocp.php, status.php ..."
 echo "--------------------------------------------------------------------------"
 echo "Username: $usernamebv  | Password: $matkhaubv"
 echo "--------------------------------------------------------------------------"
-echo "Thay thong tin dang nhap nay: KDATA-VPS menu ==> User & Password Mac Dinh. "
+echo "Thay thong tin dang nhap nay: KPANEL menu ==> User & Password Mac Dinh. "
 echo "=========================================================================="
 echo "Thong tin quan ly duoc luu tai: /home/KDATA-manage-info.txt "
 echo "--------------------------------------------------------------------------"
-echo "va gui kem luu y su dung KDATA-VPS toi: $kdataemail"
+echo "va gui kem luu y su dung KPANEL toi: $kdataemail"
 echo "=========================================================================="
 echo "Server se tu khoi dong lai sau 3 giay.... "
 sleep 3

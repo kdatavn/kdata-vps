@@ -2,7 +2,7 @@
 prompt="Nhap lua chon cua ban (0-Thoat):"
 options=("Them Crontab" "Xoa 1 Crontab" "Xoa Tat Ca Crontab" "List Crontab")
 printf "=========================================================================\n"
-printf "                KDATA-VPS - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                              Quan Ly Cronjob \n"
 echo "========================================================================="

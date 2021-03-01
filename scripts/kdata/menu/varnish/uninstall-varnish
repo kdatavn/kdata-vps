@@ -13,7 +13,7 @@ if [ -f /etc/kdata/varnish.version ];then
 printf "                   Phien ban Varnish hien tai: $(cat /etc/kdata/varnish.version) \n"
 else
 printf "                  Varnish Cache chua duoc cai dat\n"
-printf "          Hoac khong duoc cai dat thong qua KDATA-VPS \n"
+printf "          Hoac khong duoc cai dat thong qua KPANEL \n"
 fi
 
 echo "-------------------------------------------------------------------------"

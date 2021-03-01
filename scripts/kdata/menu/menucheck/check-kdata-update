@@ -28,7 +28,7 @@ checksize=$(du -sb /tmp/kdata.newversion | awk 'NR==1 {print $1}')
 			echo "-------------------------------------------------------------------------"
 			echo "Your Version: $LOCALVER   |   Newest version: $REMOVER"
 			echo "-------------------------------------------------------------------------"
-			echo "How to update: KDATA-VPS menu => Update System => Update KDATA-VPS "
+			echo "How to update: KPANEL menu => Update System => Update KPANEL "
 			
 		fi
 END

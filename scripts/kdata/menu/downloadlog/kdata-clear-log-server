@@ -84,7 +84,7 @@ fi
 prompt="Lua chon cua ban (0-Thoat):"
 options=( "Nginx Log" "PHP-FPM Log" "MySQL Log" "PHP-FPM Error Log" "Secure Log" "Exim Log" "PHP-FPM Slow Log" "MySQL Slow Log" "Xoa Tat Ca Log")
 printf "=========================================================================\n"
-printf "                KDATA-VPS - Quan Ly VPS/Server by KDATA.VN              \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN              \n"
 printf "=========================================================================\n"
 printf "                             Clear Log File                           \n"
 printf "=========================================================================\n"

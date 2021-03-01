@@ -2,7 +2,7 @@
 . /home/kdata.conf
 php_version1=$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")
 rm -rf /tmp/checktmp
-echo "Check /tmp by KDATA-VPS" > /tmp/checktmp
+echo "Check /tmp by KPANEL" > /tmp/checktmp
 if [ ! -f /tmp/checktmp ]; then
 clear
 echo "========================================================================="
@@ -142,7 +142,7 @@ echo "Tim thay phpMyAdmin phien ban $phpmyadmin_version tren phpmyadmin.net"
 echo "-------------------------------------------------------------------------"
 echo "Phien ban phpMyAdmin ban dang su dung: $phpmyadinhientai"
 echo "-------------------------------------------------------------------------"
-echo "KDATA-VPS se thay the phien ban $phpmyadinhientai bang phien ban $phpmyadmin_version"
+echo "KPANEL se thay the phien ban $phpmyadinhientai bang phien ban $phpmyadmin_version"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 3
