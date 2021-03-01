@@ -26,7 +26,7 @@ options=( "PHP 7.4" "PHP 7.3" "PHP 7.2" "PHP 7.1" "PHP 7.0" "PHP 5.6" "PHP 5.5" 
 fi
 
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                       Chon PHP Version Cho Server\n"
 
@@ -54,8 +54,8 @@ case "$REPLY" in
 6) chonphpversion="56"; break;;
 7) chonphpversion="55"; break;;
 8) chonphpversion="54"; break;;
-#9) chonphpversion="cancle"; break;;
-0) chonphpversion="cancle"; break;;
+#9) chonphpversion="cancel"; break;;
+0) chonphpversion="cancel"; break;;
 *) echo "Ban nhap sai, vui long nhap theo so thu tu trong danh sach";continue;;
 
 esac  

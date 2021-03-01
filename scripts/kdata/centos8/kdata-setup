@@ -12,7 +12,7 @@ echo "khac, sau khi cai dat server xong dung chuc nang [ Change PHP Version ] "
 echo "--------------------------------------------------------------------------"
 echo "trong [ Update System ] cua KPANEL."
 echo "--------------------------------------------------------------------------"
-echo "KDATA ho tro: PHP 7.2, PHP 7.1, PHP 7.0, PHP 5.6, PHP 5.5 & PHP 5.4"
+echo "KPANEL ho tro: PHP 7.2, PHP 7.1, PHP 7.0, PHP 5.6, PHP 5.5 & PHP 5.4"
 cpuname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
 cpucores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
 cpufreq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
@@ -157,7 +157,7 @@ passrootmysql=`date |md5sum |cut -c '1-12'`
 echo "$passrootmysql" > /tmp/passrootmysql
 
 ###############################################################################
-#Download Nginx, KDATA & phpMyadmin Version
+#Download Nginx, kdata & phpMyadmin Version
 cd /tmp
 rm -rf 00-all-nginx-version.txt
 rm -rf kdata.newversion
@@ -601,15 +601,15 @@ rm -f /tmp/kdataSetConfigFile
 kdata_setup_cleanup_config_file "/etc/php.ini"
 
 
-if [ ! -d /home/0-KDATA-SHORTCUT ];then
+if [ ! -d /home/0-kdata-SHORTCUT ];then
 #wget --no-check-certificate -q https://kdata.com/scripts/kdata/check-imagick.php.zip -O /home/kdata.demo/private_html/check-imagick.php
 yes | cp -rf /opt/vps_kdata/scripts/kdata/check-imagick.php.zip /home/kdata.demo/private_html/check-imagick.php
-mkdir -p /home/0-KDATA-SHORTCUT
+mkdir -p /home/0-kdata-SHORTCUT
 mkdir -p /home/kdata.demo/private_html/backup
-ln -s /home/kdata.demo/private_html/backup /home/0-KDATA-SHORTCUT/Backup\ \(Website\ +\ Database\)
-ln -s /etc/nginx/conf.d /home/0-KDATA-SHORTCUT/Vhost\ \(Vitual\ Host\)
-echo "This is shortcut to Backup ( Code & Database ) and Vitual Host in VPS" > /home/0-KDATA-SHORTCUT/readme.txt
-echo "Please do not delete it" >>  /home/0-KDATA-SHORTCUT/readme.txt
+ln -s /home/kdata.demo/private_html/backup /home/0-kdata-SHORTCUT/Backup\ \(Website\ +\ Database\)
+ln -s /etc/nginx/conf.d /home/0-kdata-SHORTCUT/Vhost\ \(Vitual\ Host\)
+echo "This is shortcut to Backup ( Code & Database ) and Vitual Host in VPS" > /home/0-kdata-SHORTCUT/readme.txt
+echo "Please do not delete it" >>  /home/0-kdata-SHORTCUT/readme.txt
 fi
 
 
@@ -1108,7 +1108,7 @@ sleep 3
 rm -rf /root/install*
 rm -rf /root/kdata-setup
 rm -rf /etc/sysconfig/memcached
-cat >> "/home/KDATA-manage-info.txt" <<END
+cat >> "/home/kdata-manage-info.txt" <<END
 =========================================================================
 VPS MANAGE INFOMATION                         
 =========================================================================
@@ -1180,14 +1180,14 @@ Neu website su dung code wordpress, thiet lap phan quyen cho website bang chuc n
 + De bao mat, moi khi co dang nhap SSH va Server, KPANEL se gui email thong bao toi dia chi email $kdataemail .
 Thay email hoac tat chuc nang nay bang [ BAT/TAT Email Thong Bao Login ] trong [ Tien ich - Addons ].  
 
-KDATA by Nguyen Oanh - http://kdata.vn' | exim  $kdataemail
+kdata by Nguyen Oanh - http://kdata.vn' | exim  $kdataemail
 END
 chmod +x /tmp/finishedemail.sh
 /tmp/finishedemail.sh
 rm -f /tmp/finishedemail.sh
 clear
 echo "=========================================================================="
-echo "KDATA da hoan tat qua trinh cai dat Server. "
+echo "kdata da hoan tat qua trinh cai dat Server. "
 echo "=========================================================================="
 echo "Lenh goi KPANEL: kdata"
 echo "--------------------------------------------------------------------------"
@@ -1205,7 +1205,7 @@ echo "Username: $usernamebv  | Password: $matkhaubv"
 echo "--------------------------------------------------------------------------"
 echo "Thay thong tin dang nhap nay: KPANEL menu ==> User & Password Mac Dinh. "
 echo "=========================================================================="
-echo "Thong tin quan ly duoc luu tai: /home/KDATA-manage-info.txt "
+echo "Thong tin quan ly duoc luu tai: /home/kdata-manage-info.txt "
 echo "--------------------------------------------------------------------------"
 echo "va gui kem luu y su dung KPANEL toi: $kdataemail"
 echo "=========================================================================="
