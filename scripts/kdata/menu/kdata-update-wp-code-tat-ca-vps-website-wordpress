@@ -16,7 +16,7 @@ fi
  if [ ! -f /tmp/wordpresslist ]; then
 clear
 echo "========================================================================="
- echo "KDATA khong tim thay website chay Wordpress Code tren Server"
+ echo "KPANEL khong tim thay website chay Wordpress Code tren Server"
  /etc/kdata/menu/kdata-wordpress-tools-menu
  exit
  fi
@@ -25,7 +25,7 @@ sositewp=$(cat /tmp/wordpresslist | wc -l)
 echo "========================================================================="
 echo "Hien tai co $sositewp website dang su dung code wordpress tren he thong" 
 echo "-------------------------------------------------------------------------"
-echo "KDATA se check va update tat ca website co the update."
+echo "KPANEL se check va update tat ca website co the update."
 echo "========================================================================="
 sleep 1
 file="/tmp/wordpresslist"
@@ -34,7 +34,7 @@ rm -rf /tmp/*kdata*
 rm -rf /home/$mainsite/private_html/Listbackupwpdata*
 
 echo "=========================================================================" > /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
-echo "List Backup Files - Created by KDATA " >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
+echo "List Backup Files - Created by KPANEL " >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
@@ -63,18 +63,18 @@ kdatacheckversion=$(wp core check-update --allow-root | tail -n1 | awk 'NR==1 {p
   echo "Website $wpwebsite dang chay phien ban wordpress moi nhat "
   echo "========================================================================="
  else
-      if [ ! -d /home/$wpwebsite/public_html/0-KDATA ]; then
-mkdir -p /home/$wpwebsite/public_html/0-KDATA
+      if [ ! -d /home/$wpwebsite/public_html/0-KPANEL ]; then
+mkdir -p /home/$wpwebsite/public_html/0-KPANEL
       fi
  echo "Update $wpwebsite Status:"
-echo "KDATA se update $wpwebsite tu $(wp core version --allow-root) len $kdatacheckversion"
+echo "KPANEL se update $wpwebsite tu $(wp core version --allow-root) len $kdatacheckversion"
 echo "-------------------------------------------------------------------------"
 check1=$(date +"%H%m%s")
 touch /tmp/sowebsitecanupdatekdata/$check1
 if [ "$(grep "default_storage_engine = MyISAM" /etc/my.cnf.d/server.cnf | awk 'NR==1 {print $3}')" = "MyISAM" ]; then
-mysqldump -u root -p$mariadbpass $tendatabase --lock-tables=false | gzip -9 > /home/$wpwebsite/public_html/0-KDATA/$tendatabase-$random-$tenmo.sql.gz
+mysqldump -u root -p$mariadbpass $tendatabase --lock-tables=false | gzip -9 > /home/$wpwebsite/public_html/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz
 else
-mysqldump -u root -p$mariadbpass $tendatabase --single-transaction | gzip -9 > /home/$wpwebsite/public_html/0-KDATA/$tendatabase-$random-$tenmo.sql.gz
+mysqldump -u root -p$mariadbpass $tendatabase --single-transaction | gzip -9 > /home/$wpwebsite/public_html/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz
 fi
 
 wp core update --allow-root > /tmp/abc.txt
@@ -87,15 +87,15 @@ kdatacheckversion2=$(wp core check-update --allow-root | tail -n1 | awk 'NR==1 {
      echo "-------------------------------------------------------------------------"
 check2=$(date +"%H%m%s")
 touch /tmp/updatethanhcongkdata/$check2  
-		if [ -f /home/$wpwebsite/public_html/0-KDATA/$tendatabase-$random-$tenmo.sql.gz ]; then
+		if [ -f /home/$wpwebsite/public_html/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz ]; then
 echo "Backup database $tendatabase thanh cong. Link Backup:"
 echo "-------------------------------------------------------------------------"
-echo "http://$wpwebsite/0-KDATA/$tendatabase-$random-$tenmo.sql.gz"
+echo "http://$wpwebsite/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz"
 echo ""  >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "Backup Database: $tendatabase cua website $wpwebsite" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "-------------------------------------------------------------------------" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
-echo "http://$wpwebsite/0-KDATA/$tendatabase-$random-$tenmo.sql.gz" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
+echo "http://$wpwebsite/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 check3=$(date +"%H%m%s")
 touch /tmp/saoluudatabasethanhcong/$check3

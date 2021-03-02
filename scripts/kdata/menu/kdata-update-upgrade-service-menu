@@ -1,11 +1,11 @@
 #!/bin/bash
 prompt="Lua chon cua ban (0-Thoat):" 
-#options=( "Update System" "Update KDATA" "Change Nginx Version" "Change phpMyAdmin Version" "Upgrade MariaDB to 10.0 Version" "Change PHP Version" "Change KDATA Language" "Thoat")
-#options=( "Update System" "Update KDATA" "Update Nginx" "Change phpMyAdmin Version" "Change PHP Version" "Change KDATA Language" "Update OpenSSL version" "Reset code form git" "List soft version")
+#options=( "Update System" "Update KPANEL" "Change Nginx Version" "Change phpMyAdmin Version" "Upgrade MariaDB to 10.0 Version" "Change PHP Version" "Change KPANEL Language" "Thoat")
+#options=( "Update System" "Update KPANEL" "Update Nginx" "Change phpMyAdmin Version" "Change PHP Version" "Change KPANEL Language" "Update OpenSSL version" "Reset code form git" "List soft version")
 options=( "Update System" "Update KPANEL" "Update Nginx" "Change phpMyAdmin Version" "Change PHP Version" "Update OpenSSL version" \
 "Pull code form git" "Reset code form git" "List soft version" "Nginx quiche" "Auto update system")
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                        Update / Upgrade Service \n"
 printf "=========================================================================\n"

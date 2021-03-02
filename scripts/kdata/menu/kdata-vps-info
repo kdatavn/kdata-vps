@@ -3,7 +3,7 @@
 /etc/kdata/menu/kdata-befor-vps-info
 clear
 printf "=========================================================================\n"
-printf "               KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "               KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                            Server Status \n"
 printf "=========================================================================\n"
@@ -51,10 +51,10 @@ echo "$(cat /tmp/kdata-csf-firewall-info.txt)"
 if [ -f /root/.bash_profile ]; then
 if [ "$(grep "/bin/kdata" /root/.bash_profile)" == "" ]; then
 echo "-------------------------------------------------------------------------"
-echo "Auto Run KDATA (Khi Login SSH): TAT"
+echo "Auto Run KPANEL (Khi Login SSH): TAT"
 else
 echo "-------------------------------------------------------------------------"
-echo "Auto Run KDATA (Khi Login SSH): BAT"
+echo "Auto Run KPANEL (Khi Login SSH): BAT"
 fi
 if [ "$(grep timeloginkdatacheck /root/.bash_profile)" == "" ]; then
 echo "-------------------------------------------------------------------------"
@@ -100,7 +100,7 @@ echo "Server Uptime: $(uptime | awk '{print $3,$4}' | sed 's/,/ /g') - CPU Load 
 echo "RAM: $( free -m | grep Mem | awk '{print $2}') MB - Free: $( free -m | grep Mem | awk '{print $4}') MB - Cached: $( free -m | grep Mem | awk '{print $7}') MB || Free buffers: $(free -m | grep - | awk '{print $4}') MB"
 echo "Swap: $(free -m | grep Swap | awk '{print $2}') MB - Swap free: $(free -m | grep Swap | awk '{print $4}') MB"
 printf "=========================================================================\n"
-read -p "Nhan [Enter] de quay tro lai KDATA menu ..."
+read -p "Nhan [Enter] de quay tro lai KPANEL menu ..."
 clear
 kdata
 exit

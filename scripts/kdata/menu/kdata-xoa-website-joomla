@@ -28,7 +28,7 @@ check_and_delete_auto_backup_website()
 echo "========================================================================="
 echo "Phat hien $website dang bat auto backup code"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tat che do auto backup code khi remove khoi server"
+echo "KPANEL se tat che do auto backup code khi remove khoi server"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ...."
 sleep 5
@@ -49,7 +49,7 @@ if [ ! -f /etc/kdata/FTP-Account.info ]; then
 echo "=========================================================================" > /etc/kdata/FTP-Account.info
 echo "Please Do Not Delete This File " >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
-echo "If you delete this file, KDATA will not run !" >> /etc/kdata/FTP-Account.info
+echo "If you delete this file, KPANEL will not run !" >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
 echo "All FTP User for all domain on VPS list below:" >> /etc/kdata/FTP-Account.info
 echo "=========================================================================" >> /etc/kdata/FTP-Account.info
@@ -71,7 +71,7 @@ if [ ! "$(grep /home/$website/ /etc/kdata/FTP-Account.info)" == "" ];then
 echo "========================================================================="
 echo "Tim thay tai khoan FTP: $(grep /home/$website/ /etc/kdata/FTP-Account.info | awk 'NR==1 {print $7}') cua $website  "
 echo "-------------------------------------------------------------------------"
-echo "KDATA se remove tai khoan FTP: $(grep /home/$website/ /etc/kdata/FTP-Account.info | awk 'NR==1 {print $7}')"
+echo "KPANEL se remove tai khoan FTP: $(grep /home/$website/ /etc/kdata/FTP-Account.info | awk 'NR==1 {print $7}')"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ...."
 echo "-------------------------------------------------------------------------"
@@ -124,7 +124,7 @@ if [ ! "$(grep /home/$website /etc/kdata/opcache.blacklist)" == "" ]; then
 echo "-------------------------------------------------------------------------"
 echo "Tim thay $website trong Zend Opcache Blacklist"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se xoa $website trong blacklist nay"
+echo "KPANEL se xoa $website trong blacklist nay"
 echo "-------------------------------------------------------------------------"
 echo "Please wait .... "
 sleep 6
@@ -152,7 +152,7 @@ if [ -f /bin/kdata-backupdb-$tendatabase ]; then
 echo "-------------------------------------------------------------------------"
 echo "Phat hien $tendatabase trong danh sach tu dong sao luu"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se remove $tendatabase khoi danh sach tu dong sao luu"
+echo "KPANEL se remove $tendatabase khoi danh sach tu dong sao luu"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 3
@@ -190,7 +190,7 @@ if [ ! "$(grep /home/$website /etc/kdata/opcache.blacklist)" == "" ]; then
 echo "-------------------------------------------------------------------------"
 echo "Tim thay $website trong Zend Opcache Blacklist"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se xoa $website trong blacklist nay"
+echo "KPANEL se xoa $website trong blacklist nay"
 echo "-------------------------------------------------------------------------"
 echo "Please wait .... "
 sleep 6
@@ -262,7 +262,7 @@ if [ ! "$(grep /home/$website /etc/kdata/opcache.blacklist)" == "" ]; then
 echo "-------------------------------------------------------------------------"
 echo "Tim thay $website trong Zend Opcache Blacklist"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se xoa $website trong blacklist nay"
+echo "KPANEL se xoa $website trong blacklist nay"
 echo "-------------------------------------------------------------------------"
 echo "Please wait .... "
 sleep 6
@@ -291,7 +291,7 @@ if [ -f /bin/kdata-backupdb-$tendatabase ]; then
 echo "-------------------------------------------------------------------------"
 echo "Phat hien $tendatabase trong danh sach tu dong sao luu"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se remove $tendatabase khoi danh sach tu dong sao luu"
+echo "KPANEL se remove $tendatabase khoi danh sach tu dong sao luu"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 3

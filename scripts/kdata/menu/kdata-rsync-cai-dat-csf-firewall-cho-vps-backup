@@ -32,7 +32,7 @@ clear
 echo "========================================================================="
 echo "Ket noi toi VPS Backup that bai"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay"
+echo "KPANEL khong the thuc hien chuc nang nay"
 /etc/kdata/menu/kdata-rsync-backup-vps-menu
 exit
 fi

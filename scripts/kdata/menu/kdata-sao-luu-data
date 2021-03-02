@@ -115,7 +115,7 @@ done
 fi
 cd
 echo "========================================================================="
-echo "KDATA se doi ten file backup cu thanh:"
+echo "KPANEL se doi ten file backup cu thanh:"
 echo "-------------------------------------------------------------------------"
 echo "`cat /tmp/kdata_ten_file_cu`"
 echo "-------------------------------------------------------------------------"

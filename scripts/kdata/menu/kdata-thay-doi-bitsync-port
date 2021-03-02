@@ -93,7 +93,7 @@ rm -rf /tmp/btsync.info
 /usr/bin/btsync --config /etc/btsync-kdata/sync.conf
 clear 
 echo "========================================================================= "
-echo "KDATA hoan thanh thay port BitTorrent sync "
+echo "KPANEL hoan thanh thay port BitTorrent sync "
 echo "-------------------------------------------------------------------------"
 echo "Thong tin quan ly:"
 echo "-------------------------------------------------------------------------"

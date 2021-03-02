@@ -64,7 +64,7 @@ echo "Tim thay $website tren he thong"
 echo "-------------------------------------------------------------------------"
 echo "$website chua tao tai khoan FTP"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tao tai khoan FTP cho $website ngay bay gio"
+echo "KPANEL se tao tai khoan FTP cho $website ngay bay gio"
 echo "-------------------------------------------------------------------------"
 echo "Please wait..."; sleep 6
 
@@ -85,7 +85,7 @@ if [ ! -f /etc/kdata/FTP-Account.info ]; then
 echo "=========================================================================" > /etc/kdata/FTP-Account.info
 echo "Please Do Not Delete This File " >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
-echo "If you delete this file, KDATA will not run !" >> /etc/kdata/FTP-Account.info
+echo "If you delete this file, KPANEL will not run !" >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
 echo "All FTP User for all domain on VPS list below:" >> /etc/kdata/FTP-Account.info
 echo "=========================================================================" >> /etc/kdata/FTP-Account.info

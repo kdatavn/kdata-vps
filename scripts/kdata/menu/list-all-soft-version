@@ -2,9 +2,9 @@
 
 clear
 echo "========================================================================="
-echo "---------------------------- KDATA -------------------------------"
+echo "---------------------------- KPANEL -------------------------------"
 if [ -f /etc/kdata/kdata.version ]; then
-echo "KDATA version: "$(cat /etc/kdata/kdata.version)
+echo "KPANEL version: "$(cat /etc/kdata/kdata.version)
 fi
 echo "------------------------------ PHP --------------------------------"
 echo "PHP version: "$(php -r "echo PHP_MAJOR_VERSION.'.'.PHP_MINOR_VERSION;")

@@ -4,7 +4,7 @@
 echo "========================================================================="
 echo "Chuc nang nay de BAT/TAT [Block Exploits, SQL Injections] cho Website"
 echo "-------------------------------------------------------------------------"
-#echo "KDATA khuyen nghi nen bat chuc nang nay cho tat ca website tren server "  
+#echo "KPANEL khuyen nghi nen bat chuc nang nay cho tat ca website tren server "  
 #echo "-------------------------------------------------------------------------"
 #echo "Tuy nhien, co truong hop Plugins (extensions) cua website xung doi"
 #echo "-------------------------------------------------------------------------"
@@ -56,7 +56,7 @@ clear
 echo "========================================================================="
 echo "Ban da thay doi config mac dinh trong Vhost cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien yeu cau cua ban"
+echo "KPANEL khong the thuc hien yeu cau cua ban"
 /etc/kdata/menu/kdata-block-exploits-sql-injections-menu
 exit
 fi
@@ -67,7 +67,7 @@ clear
 echo "========================================================================="
 echo "Ban da thay doi config mac dinh trong Vhost cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien yeu cau cua ban"
+echo "KPANEL khong the thuc hien yeu cau cua ban"
 /etc/kdata/menu/kdata-block-exploits-sql-injections-menu
 exit
 fi

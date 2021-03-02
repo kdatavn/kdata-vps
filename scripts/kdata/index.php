@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>KDATA.VN VPS</title>
+<title>KDATA.VN KPANEL</title>
 <style>
 input {
 	width: 99%;

@@ -203,7 +203,7 @@ echo "http://$serverip:$priport/$domainssl.csr"
 echo "-------------------------------------------------------------------------"
 echo "Xem huong dan tren KDATA.VN"
 echo "========================================================================= "
-read -p "Press [Enter] de quay tro lai KDATA ..."
+read -p "Press [Enter] de quay tro lai KPANEL ..."
 clear
 kdata
 exit

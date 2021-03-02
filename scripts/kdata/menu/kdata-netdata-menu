@@ -25,7 +25,7 @@ show_menu_netdata () {
 prompt="Lua chon cua ban (0-Thoat):"
 options=("Setup NetData" "Tat / Bat NetData" "Thay Domain NetData" "Bao Ve Domain NetData      " "Nang Cap NetData")
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                            Quan Ly NetData \n"
 printf "=========================================================================\n"
@@ -94,7 +94,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -110,7 +110,7 @@ show_menu_netdata
 		else
 				clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="
@@ -129,7 +129,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -145,7 +145,7 @@ show_menu_netdata
 		else
 				clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="
@@ -163,7 +163,7 @@ clear
 echo "========================================================================"
 echo "PHP-FPM service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -180,7 +180,7 @@ check_nginx_service
 		else
 		clear
 echo "========================================================================"
-echo "KDATA can not start PHP-FPM Service"
+echo "KPANEL can not start PHP-FPM Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="
@@ -200,7 +200,7 @@ clear
 echo "========================================================================"
 echo "PHP-FPM service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -217,7 +217,7 @@ check_nginx_service
 		else
 		clear
 echo "========================================================================"
-echo "KDATA can not start PHP-FPM Service"
+echo "KPANEL can not start PHP-FPM Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="

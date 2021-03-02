@@ -110,7 +110,7 @@ include /etc/nginx/conf/ddos2.conf;
 #///////////////////////////////////////////////////////
 # Ban chi co the chon 1 trong 4 rule AAA, BBB, CCC hoac DDD
 # Ban nen comment cac rule khong su dung thay vi xoa chung vi neu ban su dung wordpress blog 
-# Cac dong nay can thiet cho cac chuc nang trong Wordpress Blog Tools cua KDATA
+# Cac dong nay can thiet cho cac chuc nang trong Wordpress Blog Tools cua KPANEL
 # Thuat ngu:
 # Comment - Them dau # vao dau cau
 # Uncomment - Bo dau # o truoc cau.
@@ -134,8 +134,8 @@ include /etc/nginx/conf/w3total.conf;
 # Confif Cache Static Files
 include /etc/nginx/conf/staticfiles.conf;
 
-#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KDATA de tat.
-#Khong duoc xoa dong duoi, neu xoa KDATA se khong hoat dong !
+#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KPANEL de tat.
+#Khong duoc xoa dong duoi, neu xoa KPANEL se khong hoat dong !
 #include /etc/nginx/conf/block.conf;
  
 # Error Page

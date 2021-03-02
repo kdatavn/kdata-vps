@@ -5,7 +5,7 @@
 echo "========================================================================="
 echo "Su dung chuc nang nay de update Wordpress code len phien ban moi nhat"  
 echo "-------------------------------------------------------------------------"
-echo "Truoc khi update, KDATA tien hanh sao luu database cho website"
+echo "Truoc khi update, KPANEL tien hanh sao luu database cho website"
 echo "========================================================================="
 #prompt="Nhap lua chon cua ban: "
 prompt="Lua chon cua ban: "

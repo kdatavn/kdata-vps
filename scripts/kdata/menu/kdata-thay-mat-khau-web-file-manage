@@ -12,7 +12,7 @@ uploadsite=$(cat /etc/kdata/uploadsite)
 echo "========================================================================= "
 echo "Su dung chuc nang nay de thay username va mat khau cho tai khoan admin."
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tao thong tin dang nhap moi cho File Manager ma khong can biet "
+echo "KPANEL se tao thong tin dang nhap moi cho File Manager ma khong can biet "
 echo "-------------------------------------------------------------------------"
 echo "username va password cu."
 echo "========================================================================= "

@@ -15,7 +15,7 @@ fi
  if [ ! -f /tmp/wordpresslist ]; then
 clear
 echo "========================================================================="
- echo "KDATA khong tim thay website chay Wordpress Code tren Server"
+ echo "KPANEL khong tim thay website chay Wordpress Code tren Server"
  /etc/kdata/menu/kdata-wordpress-tools-menu
  exit
  fi
@@ -45,7 +45,7 @@ sositewp=$(cat /tmp/wordpresslist | wc -l)
 echo "========================================================================="
 echo "Hien tai co $sositewp website dang su dung wordpress code tren server" 
 echo "-------------------------------------------------------------------------"
-echo "KDATA se check va update tat ca plugins cua $sositewp website nay"
+echo "KPANEL se check va update tat ca plugins cua $sositewp website nay"
 sleep 1
 acction2="/tmp/wordpresslist"
 while read -r wpwebsite
@@ -87,7 +87,7 @@ sositewp=$(cat /tmp/wordpresslist | wc -l)
 echo "========================================================================="
 echo "Hien tai co $sositewp website dang su dung wordpress code tren server" 
 echo "-------------------------------------------------------------------------"
-echo "KDATA su check va update tat ca Themes cua $sositewp website nay"
+echo "KPANEL su check va update tat ca Themes cua $sositewp website nay"
 sleep 1
 acction2="/tmp/wordpresslist"
 while read -r wpwebsite

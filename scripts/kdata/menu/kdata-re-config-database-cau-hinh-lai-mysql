@@ -7,7 +7,7 @@ checknumbera='^[0-9]+$'
 if ! [[ $svram =~ $checknumbera ]] ; then 
 clear
 echo "========================================================================="
-echo "KDATA gap loi khi chay chuc nang nay"
+echo "KPANEL gap loi khi chay chuc nang nay"
 echo "-------------------------------------------------------------------------"
 echo "Ban vui long thu lai"
  /etc/kdata/menu/kdata-them-xoa-database
@@ -16,7 +16,7 @@ fi
 if ! [[ $cpucores =~ $checknumbera ]] ; then 
 clear
 echo "========================================================================="
-echo "KDATA gap loi khi chay chuc nang nay"
+echo "KPANEL gap loi khi chay chuc nang nay"
 echo "-------------------------------------------------------------------------"
 echo "Ban vui long thu lai"
  /etc/kdata/menu/kdata-them-xoa-database
@@ -26,7 +26,7 @@ fi
 if [ ! -d /home/$mainsite/public_html ]; then
 clear
 echo "========================================================================="
-echo "KDATA gap loi khi chay chuc nang nay"
+echo "KPANEL gap loi khi chay chuc nang nay"
 echo "-------------------------------------------------------------------------"
 echo "Ban vui long thu lai"
  /etc/kdata/menu/kdata-them-xoa-database
@@ -36,7 +36,7 @@ fi
 echo "========================================================================="
 echo "Su dung chuc nang nay de config lai MySQL theo cau hinh server."
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tu dong config dua theo so thong so CPU & RAM cua Server."
+echo "KPANEL se tu dong config dua theo so thong so CPU & RAM cua Server."
 echo "-------------------------------------------------------------------------"
 echo "Khi nang hoac ha cap Server, Ban nen chay chuc nang nay !"
 echo "-------------------------------------------------------------------------"
@@ -299,7 +299,7 @@ clear
 echo "========================================================================="
 echo "Re-config MySQL that bai !"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se giu nguyen config MySQL nhu ban dau"
+echo "KPANEL se giu nguyen config MySQL nhu ban dau"
  /etc/kdata/menu/kdata-them-xoa-database
 else
 rm -rf /var/lib/mysql/kdataCheckDB

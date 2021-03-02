@@ -30,7 +30,7 @@ clear
 echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien thuc nang nay."
+echo "KPANEL khong the thuc hien thuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -46,7 +46,7 @@ clear
 echo "========================================================================="
 echo "Ban chua tro $website toi $serverip"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay."
+echo "KPANEL khong the thuc hien chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 fi
 
@@ -55,7 +55,7 @@ clear
 echo "========================================================================="
 echo "$websiteTO co cai dat SSL nhung khong su dung Let's Encrypt."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay."
+echo "KPANEL khong the thuc hien chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -77,7 +77,7 @@ if [ "$thoigianconlai" -lt 10 ]; then
 echo "------------------------------------------------------------------------"
 echo "Chung chi SSL cho $website con thoi han: $thoigianconlai ngay"
 echo "------------------------------------------------------------------------"
-echo "KDATA se tien hanh gia han chung chi nay."
+echo "KPANEL se tien hanh gia han chung chi nay."
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."; sleep 3
 /root/.acme.sh/acme.sh --renew --domain $website -f

@@ -127,7 +127,7 @@ done
 fi
 cd
 echo "-------------------------------------------------------------------------"
-echo "KDATA se doi ten file backup cu thanh:"
+echo "KPANEL se doi ten file backup cu thanh:"
 echo "-------------------------------------------------------------------------"
 echo "`cat /tmp/kdata_ten_file_cu`"
 echo "-------------------------------------------------------------------------"
@@ -164,7 +164,7 @@ rm -rf /tmp/*kdata*
 /etc/kdata/menu/kdata-sao-luu
 else
 echo "-------------------------------------------------------------------------"
-	echo "KDATA dang sao luu $website, ban cho xiu...."
+	echo "KPANEL dang sao luu $website, ban cho xiu...."
 	sleep 1
 	if [  -f /bin/kdata-backupcode-$website ]; then
 	if [ ! "$(grep kdata-backupcode-$website /etc/cron.d/kdata.code.cron)" == "" ]; then

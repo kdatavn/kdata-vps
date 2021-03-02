@@ -52,7 +52,7 @@ clear
 echo "========================================================================="
 echo "Ban da xoa 1 trong 3 dong: AAA, CCC, DDD trong Vhost cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien yeu cau cua ban"
+echo "KPANEL khong the thuc hien yeu cau cua ban"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi
@@ -61,7 +61,7 @@ clear
 echo "========================================================================="
 echo "Ban da xoa 1 trong 3 dong: AAA, CCC, DDD trong Vhost cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien yeu cau cua ban"
+echo "KPANEL khong the thuc hien yeu cau cua ban"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi
@@ -70,7 +70,7 @@ clear
 echo "========================================================================="
 echo "Ban da xoa 1 trong 3 dong: AAA, CCC, DDD trong Vhost cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien yeu cau cua ban"
+echo "KPANEL khong the thuc hien yeu cau cua ban"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi
@@ -111,9 +111,9 @@ echo "$website dang duoc config su dung Redis Cache"
   if [ "$(grep "include /etc/nginx/conf/all.conf;" /etc/nginx/conf.d/$website.conf)" == "" ]; then
 clear
 echo "========================================================================="
-echo "Ban da thay doi file cau hinh Vhost cua KDATA"
+echo "Ban da thay doi file cau hinh Vhost cua KPANEL"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay"
+echo "KPANEL khong the thuc hien chuc nang nay"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi
@@ -152,9 +152,9 @@ echo "$website dang duoc config su dung WP Super Cache"
   if [ "$(grep "include /etc/nginx/conf/supercache.conf;" /etc/nginx/conf.d/$website.conf)" == "" ]; then
 clear
 echo "========================================================================="
-echo "Ban da thay doi file cau hinh Vhost cua KDATA"
+echo "Ban da thay doi file cau hinh Vhost cua KPANEL"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay"
+echo "KPANEL khong the thuc hien chuc nang nay"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi
@@ -195,9 +195,9 @@ echo "$website dang duoc config su dung W3 Total Cache"
     if [ "$(grep "include /etc/nginx/conf/w3total.conf;" /etc/nginx/conf.d/$website.conf)" == "" ]; then
 clear
 echo "========================================================================="
-echo "Ban da thay doi file cau hinh Vhost cua KDATA"
+echo "Ban da thay doi file cau hinh Vhost cua KPANEL"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay"
+echo "KPANEL khong the thuc hien chuc nang nay"
 /etc/kdata/menu/kdata-wordpress-tools-menu
   exit
   fi

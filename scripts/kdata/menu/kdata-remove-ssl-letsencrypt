@@ -4,7 +4,7 @@
 if [ ! -f /etc/kdata/menu/kdata-remove-ssl-letsencrypt-read ]; then
 clear
 printf "=========================================================================\n"
-printf "               KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "               KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                      Cai Dat SSL - Let's Encrypt \n"
 echo "========================================================================="
@@ -27,7 +27,7 @@ fi
 echo "========================================================================="
 echo "Su dung chuc nang nay de remove SSL (Let's Encrypt) hay quay tro lai HTTP"
 echo "-------------------------------------------------------------------------"
-echo "tu HTTPS cho Domain da setup SSL by Let's Encrypt bang KDATA."
+echo "tu HTTPS cho Domain da setup SSL by Let's Encrypt bang KPANEL."
 echo "-------------------------------------------------------------------------"
 echo -n "Nhap ten domain [ENTER]: " 
 read website
@@ -70,7 +70,7 @@ clear
 echo "========================================================================="
 echo "Ban chua tro $website toi $serverip !"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay."
+echo "KPANEL khong the chay chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 fi
 
@@ -79,7 +79,7 @@ clear
 echo "========================================================================="
 echo "$websiteTO khong su dung SSL by Let's Encrypt"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay."
+echo "KPANEL khong the chay chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 fi
 
@@ -88,7 +88,7 @@ clear
 echo "========================================================================="
 echo "$websiteTO su dung SSL nhung khong phai SSL cua Let's Encrypt."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay."
+echo "KPANEL khong the thuc hien chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -172,7 +172,7 @@ clear
 echo "========================================================================="
 echo "Co loi xay ra trong qua trinh remove SSL cho $websiteTO."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay."
+echo "KPANEL khong the chay chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -193,7 +193,7 @@ echo "========================================================================="
 case $response in
     [yY][eE][sS]|[yY]) 
 echo "-------------------------------------------------------------------------"
-echo "KDATA will retore backup Vhost NON_SSL (HTTP) of $websiteTO."
+echo "KPANEL will retore backup Vhost NON_SSL (HTTP) of $websiteTO."
 echo "-------------------------------------------------------------------------"
 echo "Please wait ..."; sleep 2
 rm -rf /etc/kdata/.tmp/$website.conf_HTTPS
@@ -225,7 +225,7 @@ clear
 echo "========================================================================="
 echo "Co loi xay ra trong qua trinh remove SSL cho $websiteTO."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay."
+echo "KPANEL khong the chay chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 fi
 ;;

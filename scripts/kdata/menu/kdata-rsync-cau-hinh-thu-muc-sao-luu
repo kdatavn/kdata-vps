@@ -24,7 +24,7 @@ if [ -f /etc/kdata/kdata_backup_VPS_by_rsync ]; then
 minutesrsync=$(grep kdata_backup_VPS_by_rsync /etc/cron.d/kdata.rsync.cron | awk 'NR==1 {print $1}' | sed 's/*\///')
 clear
 echo "========================================================================="
-echo "Hien tai KDATA tu dong sync data server toi VPS Backup $minutesrsync phut 1 lan"
+echo "Hien tai KPANEL tu dong sync data server toi VPS Backup $minutesrsync phut 1 lan"
 echo "-------------------------------------------------------------------------"
 echo "Neu muon thay doi thoi gian nay, ban phai [Disable Sync To VPS Backup] "
 echo "-------------------------------------------------------------------------"
@@ -41,7 +41,7 @@ clear
 echo "========================================================================="
 echo "Ket noi toi VPS Backup that bai"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay"
+echo "KPANEL khong the thuc hien chuc nang nay"
 /etc/kdata/menu/kdata-rsync-backup-vps-menu
 exit
 fi
@@ -121,7 +121,7 @@ chmod +x /etc/kdata/kdata_backup_VPS_by_rsync
 if [ "$chooseaction" = "backuptatca" ]; then
 make_script_backup
 echo "-------------------------------------------------------------------------"
-echo "KDATA se backup tat ca website bao gom ca $mainsite"
+echo "KPANEL se backup tat ca website bao gom ca $mainsite"
 echo "-------------------------------------------------------------------------"
 echo "($mainsite chua toan bo backup cac website va database)"
 ###################################
@@ -130,7 +130,7 @@ echo "($mainsite chua toan bo backup cac website va database)"
 elif [ "$chooseaction" = "khongbackupmainsite" ]; then
 make_script_backup_no_sim_domain_com
 echo "-------------------------------------------------------------------------"
-echo "KDATA se backup tat ca website tru $mainsite"
+echo "KPANEL se backup tat ca website tru $mainsite"
 echo "-------------------------------------------------------------------------"
 echo "($mainsite chua toan bo backup cac website va database)"
 ###################################
@@ -210,8 +210,8 @@ exit
 fi
 
 echo "-------------------------------------------------------------------------"
-read -r -p "Ban muon KDATA auto Sync Data toi VPS Backup $phut phut 1 lan ? [y/N] " response
-#read -r -p "You want KDATA sync data to vps backup every $phut minutes  ? [y/N] " response
+read -r -p "Ban muon KPANEL auto Sync Data toi VPS Backup $phut phut 1 lan ? [y/N] " response
+#read -r -p "You want KPANEL sync data to vps backup every $phut minutes  ? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
     echo "-------------------------------------------------------------------------"
@@ -222,7 +222,7 @@ clear
   echo "========================================================================="
   echo "Thiet lap thoi gian auto Sync data thanh cong !"
   echo "-------------------------------------------------------------------------"
-  echo "Cu $phut phut 1 lan, KDATA auto sync data toi VPS backup."
+  echo "Cu $phut phut 1 lan, KPANEL auto sync data toi VPS backup."
   echo "-------------------------------------------------------------------------"
   echo "Thu muc luu tru backup tren VPS backup: /home/VPS-$serverip"
   /etc/kdata/menu/kdata-rsync-backup-vps-menu

@@ -25,5 +25,5 @@ echo "Huy bo remove BTsync "
 esac
 clear 
 echo "========================================================================= "
-echo "KDATA hoan thanh remove BTsync "
+echo "KPANEL hoan thanh remove BTsync "
 /etc/kdata/menu/kdata-bitsync-menu

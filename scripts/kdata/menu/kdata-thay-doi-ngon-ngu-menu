@@ -8,9 +8,9 @@ LOCALVER=`cat /etc/kdata/kdata.version`
  if [ ! -f /tmp/kdata.newversion ]; then 
  clear
 printf "=========================================================================\n"
-echo "KDATA Khong the kiem tra phien ban KDATA hien tai"
+echo "KPANEL Khong the kiem tra phien ban KPANEL hien tai"
 echo "-------------------------------------------------------------------------"
-echo "(KDATA cant not check current version)"
+echo "(KPANEL cant not check current version)"
 /etc/kdata/menu/kdata-update-upgrade-service-menu
  exit
  fi
@@ -32,9 +32,9 @@ options=("EngLish" "VietNamese (Current)" "Exit")
 fi
 prompt="Nhap lua chon cua ban:" 
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"             
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"             
 printf "=========================================================================\n"
-printf "                       Lua Chon Ngon Ngu Cho KDATA                                \n"
+printf "                       Lua Chon Ngon Ngu Cho KPANEL                                \n"
 printf "=========================================================================\n"
 PS3="$prompt"
 select opt in "${options[@]}" ; do 
