@@ -16,7 +16,7 @@ clear
 echo "========================================================================="
 echo "Rat tiec ! "
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay tren server cua ban"
+echo "KPANEL khong the chay chuc nang nay tren server cua ban"
 echo "-------------------------------------------------------------------------"
 /etc/kdata/menu/kdata-tien-ich
 exit
@@ -34,9 +34,9 @@ fi
 echo "========================================================================="
 echo "Hien tai FREE DISC server: $disfreehientai MB | FREE DISC Canh Bao: $minfreedisc MB"
 echo "========================================================================="
-echo "Su dung chuc nang nay de cau hinh canh bao FULL DISC tren KDATA menu"
+echo "Su dung chuc nang nay de cau hinh canh bao FULL DISC tren KPANEL menu"
 echo "-------------------------------------------------------------------------"
-echo "Khi Free Disc cua server nho hon FREE DISC Canh Bao, KDATA se thong bao" 
+echo "Khi Free Disc cua server nho hon FREE DISC Canh Bao, KPANEL se thong bao" 
 echo "-------------------------------------------------------------------------"
 echo "tren Main Menu. Gia tri ban chon phai > 1000 va < ${disfreehientai}"
 echo "========================================================================="
@@ -63,7 +63,7 @@ echo "Ban hay lam lai !"
 exit
 fi
 echo "-------------------------------------------------------------------------"  
-echo "KDATA se canh bao DISC FULL khi dung luong disc cua server < ${minfreedisca} MB"
+echo "KPANEL se canh bao DISC FULL khi dung luong disc cua server < ${minfreedisca} MB"
 echo "-------------------------------------------------------------------------" 
 echo "Please wait ..." ; sleep 2
 echo "${minfreedisca}" > /etc/kdata/minfreedisc.info 

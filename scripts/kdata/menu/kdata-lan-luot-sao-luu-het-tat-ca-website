@@ -94,11 +94,11 @@ fi
 echo "========================================================================="
 echo "Su dung chuc nang nay de sao luu tat ca cac website tren server"
 echo "-------------------------------------------------------------------------"
-echo "Sau khi duoc kich hoat, KDATA se lan luot sao luu tat ca cac website"
+echo "Sau khi duoc kich hoat, KPANEL se lan luot sao luu tat ca cac website"
 echo "-------------------------------------------------------------------------"
 echo "Tuy thuoc vao so luong va dung luong cac website ma thoi gian backup co"
 echo "-------------------------------------------------------------------------"
-echo "the nhanh hoac cham. KDATA se khong backup: $mainsite"
+echo "the nhanh hoac cham. KPANEL se khong backup: $mainsite"
 echo "=========================================================================" 
 read -r -p "Ban muon backup tat ca website ? [y/N] " response
 case $response in
@@ -109,7 +109,7 @@ echo "========================================================================="
 sleep 2
 rm -rf /home/$mainsite/private_html/listbackup*
 echo "========================================================================================================================" > /home/$mainsite/private_html/listbackup-AW$randomcode.txt
-echo "                                      Link Download All Backup Files - Created by KDATA" >> /home/$mainsite/private_html/listbackup-AW$randomcode.txt
+echo "                                      Link Download All Backup Files - Created by KPANEL" >> /home/$mainsite/private_html/listbackup-AW$randomcode.txt
 echo "========================================================================================================================" >> /home/$mainsite/private_html/listbackup-AW$randomcode.txt
 echo "" >> /home/$mainsite/private_html/listbackup-AW$randomcode.txt
 dobackup=$(cat /tmp/checksite-list)

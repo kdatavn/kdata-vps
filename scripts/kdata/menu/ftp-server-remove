@@ -13,7 +13,7 @@ if [ ! -f /etc/kdata/FTP-Account.info ]; then
 echo "=========================================================================" > /etc/kdata/FTP-Account.info
 echo "Please Do Not Delete This File " >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
-echo "If you delete this file, KDATA will not run !" >> /etc/kdata/FTP-Account.info
+echo "If you delete this file, KPANEL will not run !" >> /etc/kdata/FTP-Account.info
 echo "-------------------------------------------------------------------------" >> /etc/kdata/FTP-Account.info
 echo "All FTP User for all domain on VPS list below:" >> /etc/kdata/FTP-Account.info
 echo "=========================================================================" >> /etc/kdata/FTP-Account.info
@@ -32,7 +32,7 @@ echo "Huy bo remove FTP Server "
 esac
 clear 
 echo "========================================================================= "
-echo "KDATA hoan thanh remove FTP Server "
+echo "KPANEL hoan thanh remove FTP Server "
 /etc/kdata/menu/kdata-ftpserver-menu
 fi
 clear

@@ -2,7 +2,7 @@
 . /home/kdata.conf
 
 rm -rf /tmp/checktmp
-echo "Check /tmp by KDATA" > /tmp/checktmp
+echo "Check /tmp by KPANEL" > /tmp/checktmp
 if [ ! -f /tmp/checktmp ]; then
 clear
 echo "========================================================================="
@@ -14,7 +14,7 @@ exit
 fi
 rm -rf /tmp/checktmp
 echo "-------------------------------------------------------------------------"
-echo "KDATA dang kiem tra. Please wait ..."
+echo "KPANEL dang kiem tra. Please wait ..."
 #checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://kdata.com/script/kdata/Softwear/00-all-netdata-version.txt" )
 checkketnoi=$(curl -o /dev/null --silent --head --write-out '%{http_code}' "https://raw.githubusercontent.com/kdatavn/kdata-vps/main/scripts/kdata/Softwear/00-all-netdata-version.txt" )
 if [[ "$checkketnoi" == "000" ]]; then
@@ -56,7 +56,7 @@ if [ "$LOCALVER" == "$REMOVER" ]; then
 clear
 rm -f /tmp/00-all-netdata-version.txt
 echo "========================================================================="
-echo "Ban dang su dung phien ban moi nhat NetData ma KDATA ho tro ."
+echo "Ban dang su dung phien ban moi nhat NetData ma KPANEL ho tro ."
 /etc/kdata/menu/kdata-netdata-menu
 exit
 fi
@@ -66,7 +66,7 @@ printf "Da phat hien update cho NetData\n"
 echo "-------------------------------------------------------------------------"
 printf "Phien ban ban dang su dung: $LOCALVER\n"
 echo "-------------------------------------------------------------------------"
-printf "Phien ban ban moi nhat KDATA support: $REMOVER\n"
+printf "Phien ban ban moi nhat KPANEL support: $REMOVER\n"
 printf "=========================================================================\n"
 read -r -p "Ban chac chan muon update NetData ? [y/N] " response
 case $response in

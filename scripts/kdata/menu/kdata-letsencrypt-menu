@@ -12,7 +12,7 @@ fi
 if [ ! -f /root/.acme.sh/acme.sh ]; then
 clear
 echo "========================================================================="
-echo "KDATA se cai dat tien ich Acme.Sh truoc khi chay chuc nang nay"
+echo "KPANEL se cai dat tien ich Acme.Sh truoc khi chay chuc nang nay"
 echo "-------------------------------------------------------------------------"
 echo "Please wait ..."; sleep 5
 wget -O -  https://get.acme.sh | sh
@@ -35,7 +35,7 @@ show_menu_lets-encrypt () {
 prompt="Lua chon cua ban (0-Thoat):"
 options=("Cai Dat SSL Cho Domain" "Kiem Tra SSL Cua Domain " "Auto Renew SSL" "Renew SSL Cho Domain" "List Domain Cai Dat SSL" "Remove SSL (Back to HTTP)" "Upgrade Acme.sh")
 printf "=========================================================================\n"
-printf "                KDATA - Quan Ly VPS/Server by KDATA.VN \n"
+printf "                KPANEL - Quan Ly VPS/Server by KDATA.VN \n"
 printf "=========================================================================\n"
 printf "                        Cai Dat SSL - Let's Encrypt \n"
 echo "========================================================================="
@@ -72,7 +72,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -88,7 +88,7 @@ show_menu_lets-encrypt
 		else
 				clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="
@@ -107,7 +107,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -123,7 +123,7 @@ show_menu_lets-encrypt
 		else
 				clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 	clear
 	echo "========================================================================="

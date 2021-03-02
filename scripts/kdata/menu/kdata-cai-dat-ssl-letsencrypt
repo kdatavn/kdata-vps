@@ -58,7 +58,7 @@ clear
 echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien thuc nang nay."
+echo "KPANEL khong the thuc hien thuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -105,9 +105,9 @@ servername=$(cat /etc/kdata/.tmp/servername)
 if [ ! -n /etc/kdata/.tmp/servername ]; then
 clear
 echo "========================================================================="
-echo "Ban da thay doi cau hinh file Vhost khong dung voi config KDATA yeu cau"
+echo "Ban da thay doi cau hinh file Vhost khong dung voi config KPANEL yeu cau"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay."
+echo "KPANEL khong the chay chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -115,9 +115,9 @@ fi
 if [ "`grep "block.conf;" /etc/nginx/conf.d/$website.conf`" = "" ]; then
 clear
 echo "========================================================================="
-echo "Ban da thay doi cau hinh file Vhost khong dung voi config KDATA yeu cau"
+echo "Ban da thay doi cau hinh file Vhost khong dung voi config KPANEL yeu cau"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the chay chuc nang nay"
+echo "KPANEL khong the chay chuc nang nay"
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -127,7 +127,7 @@ echo "Tim thay $website tren he thong."
 echo "-------------------------------------------------------------------------"
 echo "Neu domain BAT cloudflare hoac chua TRO ve IP server"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se khong the thuc hien chuc nang nay."
+echo "KPANEL se khong the thuc hien chuc nang nay."
 echo "========================================================================="
 echo "========================================================================="
 echo ""
@@ -142,7 +142,7 @@ clear
 echo "========================================================================="
 echo "Ban dang su dung SSL cho $website."
 echo "-------------------------------------------------------------------------"
-echo "Hien tai KDATA khong ho tro chuyen tu SSL thuong sang Let's Encrypt SSL."
+echo "Hien tai KPANEL khong ho tro chuyen tu SSL thuong sang Let's Encrypt SSL."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -182,7 +182,7 @@ echo "========================================================================="
 case $response in
     [yY][eE][sS]|[yY]) 
     echo "-------------------------------------------------------------------------"
-echo "KDATA bat dau cai dat Let's Encrypt ..."
+echo "KPANEL bat dau cai dat Let's Encrypt ..."
 sleep 3
 
 if [ ! -d /home/$website/public_html/.well-known/acme-challenge ]; then
@@ -216,7 +216,7 @@ clear
 echo "========================================================================="
 echo "Qua trinh cai dat SSL cho $website gap loi."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien chuc nang nay."
+echo "KPANEL khong the thuc hien chuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -232,7 +232,7 @@ clear
 echo "========================================================================="
 echo "Qua trinh cai dat SSL cho $website gap loi."
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the cai dat SSL Let's Encrypt cho domain nay."
+echo "KPANEL khong the cai dat SSL Let's Encrypt cho domain nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -344,7 +344,7 @@ echo "-------------------------------------------------------------------------"
 echo "Backup SSL Vhost: /home/$website/$website.conf_HTTPS"
 if [ -f /etc/kdata/Renew.SSL.Letencrypt ] && [ -f /etc/cron.d/kdata.autorenew.ssl.cron ]; then
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tu dong gia han chung chi sau: $thoigiannengiahanlai ngay."
+echo "KPANEL se tu dong gia han chung chi sau: $thoigiannengiahanlai ngay."
 else
 echo "-------------------------------------------------------------------------"
 echo "BAN CHUA BAT TINH NANG TU DONG GIA HAN SSL."

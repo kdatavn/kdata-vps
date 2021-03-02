@@ -16,7 +16,7 @@ clear
 echo "========================================================================="
 echo "Can not find file /root/.bash_profile"
 echo "-------------------------------------------------------------------------"
-echo "KDATA can not run this function on this server"
+echo "KPANEL can not run this function on this server"
 echo "-------------------------------------------------------------------------"
 /etc/kdata/menu/kdata-tien-ich
 exit
@@ -77,9 +77,9 @@ fi
     cat >> "/root/.bash_profile" <<END
 IPkdatacheck="\$(echo \$SSH_CONNECTION | cut -d " " -f 1)"
 timeloginkdatacheck=\$(date +"%e %b %Y, %a %r")
-echo 'Someone has IP address '\$IPkdatacheck' login to $serverip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KDATA On $serverip' ${kdataemail}
+echo 'Someone has IP address '\$IPkdatacheck' login to $serverip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KPANEL On $serverip' ${kdataemail}
 END
-#echo 'Someone has IP address '\$IPkdatacheck' login to $serverip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KDATA On $serverip' ${kdataemail}
+#echo 'Someone has IP address '\$IPkdatacheck' login to $serverip on '\$timeloginkdatacheck'.' | mail -s 'eMail Notifications From KPANEL On $serverip' ${kdataemail}
 
 if [ -f /tmp/checkautorunkdata ]; then
 echo "/bin/kdata" >> /root/.bash_profile

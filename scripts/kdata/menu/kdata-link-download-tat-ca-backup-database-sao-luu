@@ -15,7 +15,7 @@ done
 if [ ! -f /tmp/checksite-list ]; then
 clear
 echo "========================================================================="
-echo "KDATA khong tim thay file backup database tren server"
+echo "KPANEL khong tim thay file backup database tren server"
 /etc/kdata/menu/kdata-them-xoa-database
 exit
 fi
@@ -72,7 +72,7 @@ echo "Please wait ..."
 sleep 2
 rm -rf /home/$mainsite/private_html/Listbackupall*.txt
 echo "========================================================================================================================" > /home/$mainsite/private_html/Listbackupall-DB-$code.txt
-echo "                                Link Download All Backup Files - Created by KDATA" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
+echo "                                Link Download All Backup Files - Created by KPANEL" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "========================================================================================================================" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt

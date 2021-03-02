@@ -21,7 +21,7 @@ fi
 if [ ! -f /tmp/checksite-list ]; then
 clear
 echo "========================================================================="
-echo "KDATA khong tim thay cac ban backup tren server"
+echo "KPANEL khong tim thay cac ban backup tren server"
 /etc/kdata/menu/kdata-sao-luu
 fi
 sowebsitecobackup=$(cat /tmp/checksite-list | wc -l)
@@ -77,7 +77,7 @@ case $response in
 echo "========================================================================="
 rm -rf /home/$mainsite/private_html/listbackup*
 echo "========================================================================================================================" > /home/$mainsite/private_html/listbackup-AW$code.txt
-echo "         Link Download All Backup Files - Created by KDATA" >> /home/$mainsite/private_html/listbackup-AW$code.txt
+echo "         Link Download All Backup Files - Created by KPANEL" >> /home/$mainsite/private_html/listbackup-AW$code.txt
 echo "========================================================================================================================" >> /home/$mainsite/private_html/listbackup-AW$code.txt
 echo "" >> /home/$mainsite/private_html/listbackup-AW$code.txt
 

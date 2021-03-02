@@ -2,7 +2,7 @@
 . /home/kdata.conf
 rm -rf /tmp/kdata*
 echo "-------------------------------------------------------------------------"
-echo "Please wait. KDATA dang kiem tra ..."; sleep 1
+echo "Please wait. KPANEL dang kiem tra ..."; sleep 1
 if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
 	if [ "$(/sbin/service memcached status | awk 'NR==1 {print $5}')" == "running..." ]; then
 		echo "Memcached: Running | Ram Usage: `grep CACHESIZE= /etc/sysconfig/memcached | grep -o '[0-9]*'` MB"  > /tmp/kdata-memcached-info.txt
@@ -86,7 +86,7 @@ clear
 echo "========================================================================"
 echo "MySQL service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5
@@ -113,7 +113,7 @@ rm -f /tmp/config.temp
 	if [ ! -f /var/lib/mysql/kdataCheckDB/db.opt ]; then
 		clear
 echo "========================================================================"
-echo "KDATA can not start MySQL Service"
+echo "KPANEL can not start MySQL Service"
 sleep 4 ;
 echo "MySQL Status: Stopped" > /tmp/kdata-mysql-info.txt
 	else
@@ -132,7 +132,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -148,7 +148,7 @@ echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
 		else
 		clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 echo "Nginx Status: Stopped" > /tmp/kdata-nginx-info.txt
 		fi
@@ -165,7 +165,7 @@ clear
 echo "========================================================================"
 echo "Nginx service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -182,7 +182,7 @@ echo "Nginx Status: Running" > /tmp/kdata-nginx-info.txt
 		else
 		clear
 echo "========================================================================"
-echo "KDATA can not start Nginx Service"
+echo "KPANEL can not start Nginx Service"
 sleep 4 ;
 echo "Nginx Status: Stopped" > /tmp/kdata-nginx-info.txt
 		fi
@@ -197,7 +197,7 @@ clear
 echo "========================================================================"
 echo "PHP-FPM service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -215,7 +215,7 @@ sleep 5 ; clear
 		else
 	clear
 echo "========================================================================"
-echo "KDATA can not start PHP-FPM Service"
+echo "KPANEL can not start PHP-FPM Service"
 sleep 4 ;
 	echo "PHP Status: Stopped" >> /tmp/kdata-php-info.txt
 		fi
@@ -232,7 +232,7 @@ clear
 echo "========================================================================"
 echo "PHP-FPM service is not running"
 echo "------------------------------------------------------------------------"
-echo "KDATA trying to start it"
+echo "KPANEL trying to start it"
 echo "------------------------------------------------------------------------"
 echo "Please wait ..."
 sleep 5 ; clear
@@ -250,7 +250,7 @@ if [ "`systemctl is-active php-fpm.service`" == "active" ]; then
 		else
 		clear
 echo "========================================================================"
-echo "KDATA can not start PHP-FPM Service"
+echo "KPANEL can not start PHP-FPM Service"
 sleep 4 ;
 	echo "PHP Status: Stopped" >> /tmp/kdata-php-info.txt
 		fi

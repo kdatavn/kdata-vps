@@ -141,26 +141,26 @@ fi
 echo "========================================================================="
 echo "Su dung chuc nang nay de backup tat ca database tren server"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se lan luot backup tung database mot tren server cho den het."
+echo "KPANEL se lan luot backup tung database mot tren server cho den het."
 echo "-------------------------------------------------------------------------"
 echo "Tuy thuoc vao so luong database va dung luong tung database ma thoi gian"
 echo "-------------------------------------------------------------------------"
 echo "hoan thanh sao luu tat ca database co the nhanh hay cham."
 echo "=========================================================================" 
-read -r -p "Ban muon KDATA lan luot sao luu tat ca database ? [y/N] " response
+read -r -p "Ban muon KPANEL lan luot sao luu tat ca database ? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
 echo "========================================================================="
 echo "Tong Database tren server: $sodatabasetrenserver | Database co du lieu: $sodatabase"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se sao luu $sodatabase database co du lieu tren server"
+echo "KPANEL se sao luu $sodatabase database co du lieu tren server"
 echo "========================================================================="
 echo "PLEASE DO NOT TURNOFF THIS CREEEN !"
 echo "========================================================================="
 sleep 2
 rm -rf /home/$mainsite/private_html/Listbackupall*
 echo "========================================================================================================================" > /home/$mainsite/private_html/Listbackupall-DB-$code.txt
-echo "                                  Link Download Backup All Database - Created by KDATA" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
+echo "                                  Link Download Backup All Database - Created by KPANEL" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "========================================================================================================================" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt
 echo "" >> /home/$mainsite/private_html/Listbackupall-DB-$code.txt

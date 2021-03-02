@@ -30,7 +30,7 @@ clear
 echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
-echo "KDATA khong the thuc hien thuc nang nay."
+echo "KPANEL khong the thuc hien thuc nang nay."
 /etc/kdata/menu/kdata-letsencrypt-menu
 exit
 fi
@@ -80,7 +80,7 @@ echo "-------------------------------------------------------------------------"
 echo "Chung chi SSL het han sau: $thoigianconlai ngay."
 if [ -f /etc/kdata/Renew.SSL.Letencrypt ] && [ -f /etc/cron.d/kdata.autorenew.ssl.cron ]; then
 echo "-------------------------------------------------------------------------"
-echo "KDATA se tu dong gia han chung chi sau: $thoigiannengiahanlai ngay."
+echo "KPANEL se tu dong gia han chung chi sau: $thoigiannengiahanlai ngay."
 else
 echo "-------------------------------------------------------------------------"
 echo "BAN CHUA BAT TINH NANG TU DONG GIA HAN SSL."

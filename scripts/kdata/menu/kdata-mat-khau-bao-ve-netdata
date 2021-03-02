@@ -18,7 +18,7 @@ clear
 echo "========================================================================="
 echo "Ban phai tao User va Mat khau mac dinh truoc khi chay chuc nang nay. Tao "
 echo "-------------------------------------------------------------------------"
-echo "User va Mat Khau mac dinh: KDATA Menu => User & Password Mac Dinh."
+echo "User va Mat Khau mac dinh: KPANEL Menu => User & Password Mac Dinh."
 /etc/kdata/menu/kdata-netdata-menu
 exit
 fi

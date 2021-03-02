@@ -7,7 +7,7 @@ echo "Phat hien VSFTPD duoc cai dat tren server. "
 echo "-------------------------------------------------------------------------"
 echo "De su dung day du chuc nang Quan Ly FTP Server"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se Remove VSFTPD tren Server truoc"
+echo "KPANEL se Remove VSFTPD tren Server truoc"
 sleep 8
 clear
 echo "-------------------------------------------------------------------------"
@@ -23,7 +23,7 @@ echo "Phat hien ProFTPD duoc cai dat tren server. "
 echo "-------------------------------------------------------------------------"
 echo "De su dung day du chuc nang Quan Ly FTP Server"
 echo "-------------------------------------------------------------------------"
-echo "KDATA se Remove ProFTPD tren Server truoc"
+echo "KPANEL se Remove ProFTPD tren Server truoc"
 sleep 8
 clear
 echo "-------------------------------------------------------------------------"

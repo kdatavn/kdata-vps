@@ -9,7 +9,7 @@ echo "========================================================================="
 echo "Website Co Du Lieu:"
 echo "-------------------------------------------------------------------------"
 echo "=================================================================================================================" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt
-echo "List Website - Created by KDATA" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt
+echo "List Website - Created by KPANEL" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt
 echo "=================================================================================================================" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt
 echo "" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt
 echo "-----------------------------------------------------------------------------------------------------------------" >> /home/$mainsite/private_html/ListWebsite$randomcode.txt

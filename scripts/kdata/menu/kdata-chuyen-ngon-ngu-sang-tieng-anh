@@ -8,11 +8,11 @@ echo "You are using English Version"
 exit
 fi
 echo "========================================================================= "
-echo "Use this function to change language for KDATA"
+echo "Use this function to change language for KPANEL"
 echo "-------------------------------------------------------------------------"
-echo "KDATA support EngLish & Vietnamese"
+echo "KPANEL support EngLish & Vietnamese"
 echo "========================================================================= "
-read -r -p "You want to change KDATA language to English ? [y/N] " response
+read -r -p "You want to change KPANEL language to English ? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
     echo "-------------------------------------------------------------------------"
@@ -57,7 +57,7 @@ wget -q --no-check-certificate https://github.com/kdatavn/kdata-vps/tree/main/sc
 find /etc/kdata/menu -type f -exec chmod 755 {} \;
 clear 
 echo "========================================================================= "
-echo "Change Language of KDATA to English Finished"
+echo "Change Language of KPANEL to English Finished"
 /etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu
        ;;
     *)
@@ -67,5 +67,5 @@ esac
 clear
 clear
 echo "========================================================================="
-echo "Cancel Change Language for KDATA"
+echo "Cancel Change Language for KPANEL"
 /etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu

@@ -82,7 +82,7 @@ echo "Ban phai cai dat Multisite truoc !"
 exit
 fi
 echo "-------------------------------------------------------------------------"
-echo "KDATA dang check ... "
+echo "KPANEL dang check ... "
 sleep 1;
 echo "========================================================================="
 echo "Tim thay $website tren he thong"
@@ -127,7 +127,7 @@ exit
 fi
 websiteto=`echo $website | tr '[A-Z]' '[a-z]'`
 echo "========================================================================="
-echo "KDATA se cau hinh Vhost tuy thuoc vao loai cache $website su dung"
+echo "KPANEL se cau hinh Vhost tuy thuoc vao loai cache $website su dung"
 echo "-------------------------------------------------------------------------"
 echo "Ban phai lua chon dung, neu khong Subdomain se hoat dong khong chinh xac"
 echo "========================================================================="
@@ -187,8 +187,8 @@ include /etc/nginx/conf/all.conf;
 # Confif Cache Static Files
 include /etc/nginx/conf/staticfiles.conf;  
 
-#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KDATA de tat.
-#Khong duoc xoa dong duoi, neu xoa KDATA se khong hoat dong !
+#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KPANEL de tat.
+#Khong duoc xoa dong duoi, neu xoa KPANEL se khong hoat dong !
 #include /etc/nginx/conf/block.conf;
  
  
@@ -254,8 +254,8 @@ include /etc/nginx/conf/supercache.conf;
 # Confif Cache Static Files
 include /etc/nginx/conf/staticfiles.conf;  
 
-#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KDATA de tat.
-#Khong duoc xoa dong duoi, neu xoa KDATA se khong hoat dong !
+#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KPANEL de tat.
+#Khong duoc xoa dong duoi, neu xoa KPANEL se khong hoat dong !
 #include /etc/nginx/conf/block.conf;
  
  
@@ -320,8 +320,8 @@ include /etc/nginx/conf/w3total.conf;
 # Confif Cache Static Files
 include /etc/nginx/conf/staticfiles.conf;  
 
-#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KDATA de tat.
-#Khong duoc xoa dong duoi, neu xoa KDATA se khong hoat dong !
+#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KPANEL de tat.
+#Khong duoc xoa dong duoi, neu xoa KPANEL se khong hoat dong !
 #include /etc/nginx/conf/block.conf;
  
  
@@ -384,8 +384,8 @@ include /etc/nginx/conf/all.conf;
 # Confif Cache Static Files
 include /etc/nginx/conf/staticfiles.conf;  
 
-#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KDATA de tat.
-#Khong duoc xoa dong duoi, neu xoa KDATA se khong hoat dong !
+#Tang bao mat security, chong sql injection  ....(uncoment neu ban muon su dung). Boi vi mot so code website khong su dung duoc voi rule nay, nen mac dinh KPANEL de tat.
+#Khong duoc xoa dong duoi, neu xoa KPANEL se khong hoat dong !
 #include /etc/nginx/conf/block.conf;
  
  

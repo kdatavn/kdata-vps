@@ -22,7 +22,7 @@ if [ -f /bin/kdata-backupcode-$websitecheck ]; then
      fi
 	if [ "$(grep KDATA /tmp/chitietbackupauto)" == "" ]; then
 	echo "=========================================================================" >> /tmp/chitietbackupauto
-	echo "Link Download Backup Cho Website - Created by KDATA" >> /tmp/chitietbackupauto
+	echo "Link Download Backup Cho Website - Created by KPANEL" >> /tmp/chitietbackupauto
 	echo "=========================================================================" >> /tmp/chitietbackupauto
 	echo "Luu Y:" >> /tmp/chitietbackupauto
 	echo "-------------------------------------------------------------------------" >> /tmp/chitietbackupauto

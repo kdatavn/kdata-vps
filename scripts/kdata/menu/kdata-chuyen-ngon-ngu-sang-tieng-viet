@@ -11,11 +11,11 @@ exit
 fi
 
 echo "========================================================================= "
-echo "Su dung chuc nang nay de thay doi ngon ngu KDATA sang tieng Viet"
+echo "Su dung chuc nang nay de thay doi ngon ngu KPANEL sang tieng Viet"
 echo "-------------------------------------------------------------------------"
-echo "KDATA ho tro Tieng Anh & Tieng Viet"
+echo "KPANEL ho tro Tieng Anh & Tieng Viet"
 echo "========================================================================= "
-read -r -p "Ban muon thay doi ngon ngu KDATA sang Tieng Viet ? [y/N] " response
+read -r -p "Ban muon thay doi ngon ngu KPANEL sang Tieng Viet ? [y/N] " response
 case $response in
     [yY][eE][sS]|[yY]) 
     echo "-------------------------------------------------------------------------"
@@ -59,9 +59,9 @@ fi
 find /etc/kdata/menu -type f -exec chmod 755 {} \;
 clear 
 echo "========================================================================= "
-echo "Change Language of KDATA to Vietnamese Finished"
+echo "Change Language of KPANEL to Vietnamese Finished"
 echo "-------------------------------------------------------------------------"
-echo "( Thay doi ngon ngu KDATA sang tieng Viet thanh cong )"
+echo "( Thay doi ngon ngu KPANEL sang tieng Viet thanh cong )"
 /etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu
        ;;
     *)
@@ -71,7 +71,7 @@ esac
 clear
 clear
 echo "========================================================================="
-echo "Cancel Change Language for KDATA"
+echo "Cancel Change Language for KPANEL"
 echo "-------------------------------------------------------------------------"
-echo "Huy bo thay doi ngon ngu cho KDATA"
+echo "Huy bo thay doi ngon ngu cho KPANEL"
 /etc/kdata/menu/kdata-thay-doi-ngon-ngu-menu
