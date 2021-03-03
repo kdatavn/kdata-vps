@@ -100,7 +100,7 @@ rm -rf /tmp/uploadsite
 cp -r /etc/kdata/uploadsite /tmp/uploadsite
 uploadsite=$(cat /etc/kdata/uploadsite)
 if [ "$website" = "$uploadsite" ]; then
-/etc/kdata/menu/kdata-xoa-domain-file-manager-upload
+/etc/kdata/menu/delete-website/kdata-xoa-domain-file-manager-upload
 fi
 fi
 
@@ -119,7 +119,7 @@ rm -rf /tmp/net2ftpsite.info
 cp -r /etc/kdata/net2ftpsite.info /tmp/net2ftpsite.info
 net2ftpsite=$(cat /etc/kdata/net2ftpsite.info)
 if [ "$website" = "$net2ftpsite" ]; then
-/etc/kdata/menu/kdata-xoa-website-net2ftp-kdata-main
+/etc/kdata/menu/delete-website/kdata-xoa-website-net2ftp-kdata-main
 fi
 fi
 
@@ -149,7 +149,7 @@ fi
 if [ -f /home/$website/public_html/wp-config.php ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-wordpress
+/etc/kdata/menu/delete-website/kdata-xoa-website-wordpress
 fi
 
 
@@ -157,7 +157,7 @@ if [ -f /home/$website/public_html/config.php ]; then
 if [ -d /home/$website/public_html/phpbb ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-phpbb-forum
+/etc/kdata/menu/delete-website/kdata-xoa-website-phpbb-forum
 fi
 fi
 
@@ -165,7 +165,7 @@ if [ -d /home/$website/public_html/administrator ]; then
 if [ -f /home/$website/public_html/configuration.php ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-joomla
+/etc/kdata/menu/delete-website/kdata-xoa-website-joomla
 fi
 fi
 
@@ -173,7 +173,7 @@ if [ -f /home/$website/public_html/Settings.php ]; then
 if [ -f /home/$website/public_html/Sources/Themes.php ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-smf-forum
+/etc/kdata/menu/delete-website/kdata-xoa-website-smf-forum
 fi
 fi
 
@@ -181,7 +181,7 @@ if [ -f /home/$website/public_html/inc/config.php ]; then
 if [ -f /home/$website/public_html/inc/mybb_group.php ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-mybb-forum
+/etc/kdata/menu/delete-website/kdata-xoa-website-mybb-forum
 fi
 fi
 
@@ -190,7 +190,7 @@ if [ ! "$(grep DIR_CACHE /home/$website/public_html/config.php)" == "" ]; then
 if [ ! "$(grep DIR_LOGS /home/$website/public_html/config.php)" == "" ]; then
 rm -rf /tmp/removewebsite.txt
 echo "$website" > /tmp/removewebsite.txt
-/etc/kdata/menu/kdata-xoa-website-opencart
+/etc/kdata/menu/delete-website/kdata-xoa-website-opencart
 fi
 fi
 fi

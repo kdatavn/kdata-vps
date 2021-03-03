@@ -40,7 +40,7 @@ select opt in "${options[@]}" ; do
     case "$REPLY" in
 
 	1) clear && /etc/kdata/menu/kdata-befor-them-website-menu;;
-    2) /etc/kdata/menu/kdata-befor-xoa-website;;
+    2) /etc/kdata/menu/delete-website/kdata-befor-xoa-website;;
     3) clear && /etc/kdata/menu/backup-code/kdata-sao-luu;;
     4) clear && /etc/kdata/menu/kdata-befor-them-xoa-database;;
     5) clear && /etc/kdata/menu/kdata-phpmyadmin-menu;;

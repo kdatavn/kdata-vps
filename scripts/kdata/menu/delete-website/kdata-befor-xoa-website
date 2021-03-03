@@ -2,12 +2,12 @@
 . /home/kdata.conf
 if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
 	if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
-/etc/kdata/menu/kdata-xoa-website
+/etc/kdata/menu/delete-website/kdata-xoa-website
 	else
 	echo "-------------------------------------------------------------------------"
 service nginx start
 		if [ "$(/sbin/service nginx status | awk 'NR==1 {print $5}')" == "running..." ]; then
-/etc/kdata/menu/kdata-xoa-website
+/etc/kdata/menu/delete-website/kdata-xoa-website
 		else
 	clear
 	echo "========================================================================="
@@ -20,11 +20,11 @@ fi
 #if [ "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "7" ]; then 
 if [ ! "$(rpm -q --qf "%{VERSION}" $(rpm -q --whatprovides redhat-release))" == "6" ]; then 
 	if [ "`systemctl is-active nginx.service`" == "active" ]; then
-/etc/kdata/menu/kdata-xoa-website
+/etc/kdata/menu/delete-website/kdata-xoa-website
 	else
 systemctl start nginx.service
 	if [ "`systemctl is-active nginx.service`" == "active" ]; then
-/etc/kdata/menu/kdata-xoa-website
+/etc/kdata/menu/delete-website/kdata-xoa-website
 		else
 	clear
 	echo "========================================================================="
