@@ -50,7 +50,7 @@ select opt in "${options[@]}" ; do
     9) clear &&/etc/kdata/menu/kdata-ftpserver-menu;;
     10 )clear && /etc/kdata/menu/swap/kdata-them-xoa-swap-vps-menu;;
     11) clear && /etc/kdata/menu/crontab/kdata-cronjob-menu;;
-    12) clear && /etc/kdata/menu/kdata-eroor-menu;;
+    12) clear && /etc/kdata/menu/downloadlog/kdata-eroor-menu;;
     13) clear && /etc/kdata/menu/kdata-befor-kdata-config-php.ini-menu;;
     14) clear && /etc/kdata/menu/kdata-wordpress-tools-menu;;
     #14) clear && /etc/kdata/menu/pagespeed/before-kdata-pagespeed-menu;;"Nginx Pagespeed Manage" 
