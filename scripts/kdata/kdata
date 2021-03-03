@@ -57,7 +57,7 @@ select opt in "${options[@]}" ; do
     15) /etc/kdata/menu/CSF-Fiwall/kdata-csf-firewall-before-menu;;
     16) clear && /etc/kdata/menu/kdata-iptables-firewall-manager-menu;;
     17) clear && /etc/kdata/menu/kdata-bitsync-menu;;
-    18) clear && /etc/kdata/menu/kdata-befor-rsync;;
+    18) clear && /etc/kdata/menu/backup-manager/kdata-befor-rsync;;
     19) clear && /etc/kdata/menu/kdata-maldet-menu;;
     20) clear && /etc/kdata/menu/kdata-web-upload-menu;;
     21) clear && /etc/kdata/menu/kdata-net2ftp-menu;;
