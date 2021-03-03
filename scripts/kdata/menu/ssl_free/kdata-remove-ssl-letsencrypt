@@ -19,10 +19,10 @@ echo "sau khi su dung HTTPS se bi mat."
 echo "-------------------------------------------------------------------------"
 echo "THONG BAO NAY CHI XUAT HIEN MOT LAN DUY NHAT !"
 echo "========================================================================="
-touch /etc/kdata/menu/kdata-remove-ssl-letsencrypt-read
+touch /etc/kdata/menu/ssl_free/kdata-remove-ssl-letsencrypt-read
 read -p "Nhan [Enter] de tiep tuc ..."
 clear
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 echo "========================================================================="
 echo "Su dung chuc nang nay de remove SSL (Let's Encrypt) hay quay tro lai HTTP"
@@ -37,7 +37,7 @@ if [ "$website" = "" ]; then
 clear
 echo "========================================================================="
 echo "Ban chua nhap ten domain."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -45,7 +45,7 @@ if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "Khong tim thay $websiteTO tren server. "
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi  
 
@@ -55,7 +55,7 @@ echo "========================================================================="
 echo "Khong tim thay folder public_html cua  $website"
 echo "-------------------------------------------------------------------------"
 echo "Ban khong the su dung chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 ##############
@@ -71,7 +71,7 @@ echo "========================================================================="
 echo "Ban chua tro $website toi $serverip !"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 if [ "$checkurlstt" = "200" ]; then
@@ -80,7 +80,7 @@ echo "========================================================================="
 echo "$websiteTO khong su dung SSL by Let's Encrypt"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 if [ "$(grep "/etc/nginx/auth-acme/$website/$website.crt" /etc/nginx/conf.d/$website.conf)" = "" ] && [ "$checkurlsttSSL" == "200" ]; then
@@ -89,7 +89,7 @@ echo "========================================================================="
 echo "$websiteTO su dung SSL nhung khong phai SSL cua Let's Encrypt."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -162,7 +162,7 @@ echo "========================================================================="
 echo "Remove SSL cho $websiteTO thanh cong."
 echo "-------------------------------------------------------------------------"
 echo "Clear cache trinh duyet va check $website !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 else
 yes | cp -rf  /etc/kdata/.tmp/$website.conf_HTTPS /etc/nginx/conf.d/$website.conf
 rm -rf /etc/kdata/.tmp/$website.conf_HTTPS
@@ -173,7 +173,7 @@ echo "========================================================================="
 echo "Co loi xay ra trong qua trinh remove SSL cho $websiteTO."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -182,7 +182,7 @@ fi
 clear 
 echo "========================================================================= "
 echo "Cancel !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
         ;;
 esac
 fi
@@ -216,7 +216,7 @@ echo "========================================================================="
 echo "Remove SSL cho $websiteTO thanh cong."
 echo "-------------------------------------------------------------------------"
 echo "Clear cache trinh duyet va check $website !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 else
 yes | cp -rf  /etc/kdata/.tmp/$website.conf_HTTPS /etc/nginx/conf.d/$website.conf
 rm -rf /etc/kdata/.tmp/$website.conf_HTTPS
@@ -226,13 +226,13 @@ echo "========================================================================="
 echo "Co loi xay ra trong qua trinh remove SSL cho $websiteTO."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 ;;
     *)
 clear 
 echo "========================================================================= "
 echo "Cancel !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
         ;;
 esac

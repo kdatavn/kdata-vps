@@ -62,7 +62,7 @@ select opt in "${options[@]}" ; do
     20) clear && /etc/kdata/menu/kdata-web-upload-menu;;
     21) clear && /etc/kdata/menu/kdata-net2ftp-menu;;
     22) clear && /etc/kdata/menu/kdata-netdata-menu;;
-    23) clear && /etc/kdata/menu/kdata-letsencrypt-menu;;
+    23) clear && /etc/kdata/menu/ssl_free/kdata-letsencrypt-menu;;
     24) clear && /etc/kdata/menu/kdata-kiem-tra-ddos;;
     25) clear && /etc/kdata/menu/kdata-tien-ich;;
     26) clear && /etc/kdata/menu/kdata-update-upgrade-service-menu;;

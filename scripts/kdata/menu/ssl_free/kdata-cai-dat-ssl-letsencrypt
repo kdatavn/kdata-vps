@@ -25,7 +25,7 @@ echo "========================================================================="
 echo "Cai dat acme.sh hoan thanh"
 echo "-------------------------------------------------------------------------"
 echo "Bay gio ban co the su dung chuc nang cai dat SSL cho website cua minh."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 echo "========================================================================="
@@ -41,7 +41,7 @@ if [ "$website" = "" ]; then
 clear
 echo "========================================================================="
 echo "Ban chua nhap ten website"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -49,7 +49,7 @@ if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "Khong tim thay $website tren server "
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi  
 
@@ -59,7 +59,7 @@ echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien thuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 ##############
@@ -73,7 +73,7 @@ if [[  "$checkurlsttSSL" == "200" ]]; then
 clear
 echo "========================================================================="
 echo "Ban da cai dat thanh cong SSL cho $website."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 if [[ "$checkurlstt" == "200" ]]; then
@@ -92,7 +92,7 @@ echo "-------------------------------------------------------------------------"
 echo "Backup Vhost: /home/$website/$website.conf_HTTP"
 echo "-------------------------------------------------------------------------"
 echo "SSL Vhost: /home/$website/$website.conf_HTTPS"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 fi
@@ -108,7 +108,7 @@ echo "========================================================================="
 echo "Ban da thay doi cau hinh file Vhost khong dung voi config KPANEL yeu cau"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -118,7 +118,7 @@ echo "========================================================================="
 echo "Ban da thay doi cau hinh file Vhost khong dung voi config KPANEL yeu cau"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the chay chuc nang nay"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -143,14 +143,14 @@ echo "========================================================================="
 echo "Ban dang su dung SSL cho $website."
 echo "-------------------------------------------------------------------------"
 echo "Hien tai KPANEL khong ho tro chuyen tu SSL thuong sang Let's Encrypt SSL."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 if [[ ! "$checkurlstt" == "200" ]]; then
 clear
 echo "========================================================================="
 echo "Ban phai tro $website toi $serverip truoc khi thuc hien chuc nang nay"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -171,7 +171,7 @@ echo "========================================================================="
 echo "$website dang BAT CloudFlare"
 echo "-------------------------------------------------------------------------"
 echo "Ban phai tat CloudFlare truoc khi su dung chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 echo "$websiteTO khong BAT Cloudflare. => [ OK ]"
@@ -217,7 +217,7 @@ echo "========================================================================="
 echo "Qua trinh cai dat SSL cho $website gap loi."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 mkdir -p /etc/nginx/auth-acme
@@ -233,7 +233,7 @@ echo "========================================================================="
 echo "Qua trinh cai dat SSL cho $website gap loi."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the cai dat SSL Let's Encrypt cho domain nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -319,7 +319,7 @@ echo "-------------------------------------------------------------------------"
 echo "Backup Vhost: /home/$website/$website.conf_HTTP"
 echo "-------------------------------------------------------------------------"
 echo "Backup SSL Vhost: /home/$website/$website.conf_HTTPS"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 else
 nextgiahan=`cat /root/.acme.sh/$website/$website.conf | grep NextRenewTimeStr | cut -d \" -f 2 `
 curTime=$(date +%s)
@@ -349,13 +349,13 @@ else
 echo "-------------------------------------------------------------------------"
 echo "BAN CHUA BAT TINH NANG TU DONG GIA HAN SSL."
 fi
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 ;;
     *)
 clear 
 echo "========================================================================= "
 echo "Cancel !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
         ;;
 esac

@@ -13,7 +13,7 @@ if [ "$website" = "" ]; then
 clear
 echo "========================================================================="
 echo "Ban chua nhap ten website"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -21,7 +21,7 @@ if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "Khong tim thay $website tren server "
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi  
 
@@ -31,7 +31,7 @@ echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien thuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 ##############
@@ -40,7 +40,7 @@ if [ ! -f /root/.acme.sh/$website/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "$website chua duoc cai dat SSL Let's Encrypt."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -85,7 +85,7 @@ else
 echo "-------------------------------------------------------------------------"
 echo "BAN CHUA BAT TINH NANG TU DONG GIA HAN SSL."
 fi
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -107,7 +107,7 @@ echo "-------------------------------------------------------------------------"
 echo "Backup Vhost: /home/$website/$website.conf_HTTP"
 echo "-------------------------------------------------------------------------"
 echo "SSL Vhost: /home/$website/$website.conf_HTTPS"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 fi

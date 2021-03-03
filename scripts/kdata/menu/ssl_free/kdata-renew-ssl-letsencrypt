@@ -13,7 +13,7 @@ if [ "$website" = "" ]; then
 clear
 echo "========================================================================="
 echo "Ban chua nhap ten website"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -21,7 +21,7 @@ if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "Khong tim thay $website tren server "
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi  
 
@@ -31,7 +31,7 @@ echo "========================================================================="
 echo "Khong tim thay folder public_html cua $website"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien thuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 ##############
@@ -47,7 +47,7 @@ echo "========================================================================="
 echo "Ban chua tro $website toi $serverip"
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 if [ "$(grep "/etc/nginx/auth-acme/$website/$website.crt" /etc/nginx/conf.d/$website.conf)" = "" ] && [ "$checkurlsttSSL" == "200" ]; then
@@ -56,7 +56,7 @@ echo "========================================================================="
 echo "$websiteTO co cai dat SSL nhung khong su dung Let's Encrypt."
 echo "-------------------------------------------------------------------------"
 echo "KPANEL khong the thuc hien chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -88,7 +88,7 @@ echo "========================================================================="
 echo "Hoan thanh gia han chung chi SSL cho $website."
 echo "-------------------------------------------------------------------------"
 echo "Chung chi se het han sau: $thoigianconlai2 ngay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 if [ "$thoigianconlai" -gt 10 ] && [ "$thoigianconlai" -lt 60 ]; then
@@ -109,13 +109,13 @@ echo "========================================================================="
 echo "Hoan thanh gia han chung chi SSL Let's Encrypt."
 echo "-------------------------------------------------------------------------"
 echo "Chung chi se het han sau: $thoigianconlai2 ngay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 ;;
     *)
 clear 
 echo "========================================================================= "
 echo "Cancel !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
         ;;
 esac
 fi
@@ -126,7 +126,7 @@ echo "========================================================================= 
 echo "Thoi Han chung chi SSL cua $website con $thoigianconlai ngay."
 echo "-------------------------------------------------------------------------"
 echo "Ban chua can chay chuc nang nay."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 fi
 
@@ -144,7 +144,7 @@ echo "-------------------------------------------------------------------------"
 echo "Backup Vhost: /home/$website/$website.conf_HTTP"
 echo "-------------------------------------------------------------------------"
 echo "SSL Vhost: /home/$website/$website.conf_HTTPS"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi
 
@@ -152,6 +152,6 @@ if [ ! -f /root/.acme.sh/$website/$website.conf ] && [ "$checkurlstt" == "200" ]
 clear
 echo "========================================================================="
 echo "Ban chu cai dat SSL Let's Encrypt cho $website !"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 exit
 fi

@@ -19,7 +19,7 @@ echo "========================================================================="
 echo "Ban dang su dung phien ban moi nhat acme.sh ."
 echo "-------------------------------------------------------------------------"
 echo "Version: $serverversion"
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 clear
 echo "========================================================================="
@@ -34,4 +34,4 @@ if [ ! "$(grep "/root/.acme.sh" /etc/kdata/.tmp/check_crontab_acme)" = "" ]; the
 fi
 rm -rf /etc/kdata/.tmp/check_crontab_acme
 sleep 3
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu

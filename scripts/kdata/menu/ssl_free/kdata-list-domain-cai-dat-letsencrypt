@@ -34,7 +34,7 @@ if [ ! -f /etc/kdata/.tmp/thanh_cong_SSL ]; then
 clear
 echo "========================================================================="
 echo "Hien tai khong co website nao cai dat SSL Let's Encrypt."
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
 fi
 
 if [ -n /etc/kdata/.tmp/thanh_cong_SSL ]; then
@@ -52,4 +52,4 @@ echo "Hien tai khong co website nao cai dat SSL Let's Encrypt."
 rm -rf /etc/kdata/.tmp/thanh_cong_SSL
 rm -rf /etc/kdata/.tmp/that_bai_SSL
 fi
-/etc/kdata/menu/kdata-letsencrypt-menu
+/etc/kdata/menu/ssl_free/kdata-letsencrypt-menu
