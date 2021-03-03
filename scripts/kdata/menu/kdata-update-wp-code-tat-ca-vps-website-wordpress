@@ -90,12 +90,12 @@ touch /tmp/updatethanhcongkdata/$check2
 		if [ -f /home/$wpwebsite/public_html/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz ]; then
 echo "Backup database $tendatabase thanh cong. Link Backup:"
 echo "-------------------------------------------------------------------------"
-echo "http://$wpwebsite/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz"
+echo "http://$wpwebsite/0-KDATA/$tendatabase-$random-$tenmo.sql.gz"
 echo ""  >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "Backup Database: $tendatabase cua website $wpwebsite" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "-------------------------------------------------------------------------" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
-echo "http://$wpwebsite/0-KPANEL/$tendatabase-$random-$tenmo.sql.gz" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
+echo "http://$wpwebsite/0-KDATA/$tendatabase-$random-$tenmo.sql.gz" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 echo "=========================================================================" >> /home/$mainsite/private_html/Listbackupwpdata$randomcode.txt
 check3=$(date +"%H%m%s")
 touch /tmp/saoluudatabasethanhcong/$check3
