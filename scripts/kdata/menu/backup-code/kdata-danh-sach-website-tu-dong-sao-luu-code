@@ -60,4 +60,4 @@ echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport/linkAUTOBackupWeb-$randomcode.txt"
 fi
 rm -rf /tmp/*kdata*
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu

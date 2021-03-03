@@ -28,7 +28,7 @@ rm -rf /tmp/*kdata*
 clear
 echo "========================================================================="
 echo "Khong tim thay website co du lieu tren server"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 fi
 nhapwebsite ()
 {
@@ -112,7 +112,7 @@ fi
 fi
 echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport/backup/$website/$filename2"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
         ;;
     *)
         ;;
@@ -161,7 +161,7 @@ echo "File Backup Cu Duoc Doi Ten Thanh:"
 echo "-------------------------------------------------------------------------"
 echo "$(cat /tmp/kdata_ten_file_cu)"
 rm -rf /tmp/*kdata*
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 else
 echo "-------------------------------------------------------------------------"
 	echo "KPANEL dang sao luu $website, ban cho xiu...."
@@ -189,12 +189,12 @@ echo "========================================================================="
 echo "Link Backup File:"
 echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport/backup/$website/$filename2"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 fi
 else
 clear
 echo "========================================================================="
 echo "Khong tim thay $website tren server hoac web chua co du lieu!"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 fi
 

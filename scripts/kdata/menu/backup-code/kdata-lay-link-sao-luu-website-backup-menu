@@ -21,15 +21,15 @@ done
 #
 ###################################
 if [ "$laylink" = "1website" ]; then
-/etc/kdata/menu/kdata-link-tai-sao-luu-1-site
+/etc/kdata/menu/backup-code/kdata-link-tai-sao-luu-1-site
 ###################################
 #
 ###################################
 elif [ "$laylink" = "tatca" ]; then
-/etc/kdata/menu/kdata-link-download-tat-ca-backup-website-sao-luu
+/etc/kdata/menu/backup-code/kdata-link-download-tat-ca-backup-website-sao-luu
 ###################################
 #
 ###################################
 else 
-clear && /etc/kdata/menu/kdata-sao-luu
+clear && /etc/kdata/menu/backup-code/kdata-sao-luu
 fi

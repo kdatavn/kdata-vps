@@ -28,7 +28,7 @@ if [ ! -f /tmp/checksite-list ]; then
 clear
 echo "========================================================================="
 echo "Khong tim thay website co du lieu tren server"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 fi
 sowebsitecodulieu=$(cat /tmp/checksite-list | wc -l)
 randomcode=-`date |md5sum |cut -c '1-15'`
@@ -140,7 +140,7 @@ echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport/listbackup-AW$randomcode.txt"
 fi
 rm -rf /tmp/*kdata*
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 
    ;;
     *)
@@ -148,6 +148,6 @@ rm -rf /tmp/*kdata*
     rm -rf /tmp/*kdata*
         echo "========================================================================= "
         echo "Huy bo backup tat ca website"
-        /etc/kdata/menu/kdata-sao-luu
+        /etc/kdata/menu/backup-code/kdata-sao-luu
         ;;
 esac 

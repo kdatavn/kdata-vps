@@ -9,7 +9,7 @@ if [ "$website" = "" ]; then
 clear
 echo "========================================================================="
 echo "Ban nhap sai, vui long nhap lai !"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 exit
 fi
 kiemtradomain3="^([[:alnum:]]([[:alnum:]\-]{0,61}[[:alnum:]])?\.)+[[:alpha:]]{2,12}$";
@@ -18,21 +18,21 @@ if [[ ! "$website" =~ $kiemtradomain3 ]]; then
 	clear
 echo "========================================================================="
 echo "$website co le khong phai la domain !!"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 exit
 fi
 if [ ! -f /etc/nginx/conf.d/$website.conf ]; then
 clear
 echo "========================================================================="
 echo "Website khong ton tai tren he thong"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 exit
 fi
 if [ ! -f /home/$website/public_html/index.php ]; then
 clear
 echo "========================================================================="
 echo "$website khong co du lieu. Hay chon website khac."
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 exit
 fi
 rm -rf /tmp/websiteautobackup
@@ -40,8 +40,8 @@ echo "$website" > /tmp/websiteautobackup
 if [ -f /bin/kdata-backupcode-$website ]; then
  if [ -f /etc/cron.d/kdata.code.cron ]; then
      if [ ! "$(grep kdata-backupcode-$website /etc/cron.d/kdata.code.cron)" == "" ]; then
-     /etc/kdata/menu/kdata-TAT-tu-dong-sao-luu-code
+     /etc/kdata/menu/backup-code/kdata-TAT-tu-dong-sao-luu-code
      fi
  fi
 fi 
- /etc/kdata/menu/kdata-BAT-tu-dong-sao-luu-code
+ /etc/kdata/menu/backup-code/kdata-BAT-tu-dong-sao-luu-code

@@ -22,7 +22,7 @@ if [ ! -f /tmp/checksite-list ]; then
 clear
 echo "========================================================================="
 echo "KPANEL khong tim thay cac ban backup tren server"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 fi
 sowebsitecobackup=$(cat /tmp/checksite-list | wc -l)
 code=-`date |md5sum |cut -c '1-15'`
@@ -97,13 +97,13 @@ echo "http://$serverip:$priport/listbackup-AW$code.txt"
 echo "" >> /home/$mainsite/private_html/listbackup-AW$code.txt
 echo "===================================================The End==============================================================" >> /home/$mainsite/private_html/listbackup-AW$code.txt
 rm -rf /tmp/*kdata*
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
    ;;
     *)
     clear
         echo "========================================================================= "
         echo "Huy bo lay link download cac file backup"
-        /etc/kdata/menu/kdata-sao-luu
+        /etc/kdata/menu/backup-code/kdata-sao-luu
         rm -rf /tmp/*kdata*
         ;;
 esac

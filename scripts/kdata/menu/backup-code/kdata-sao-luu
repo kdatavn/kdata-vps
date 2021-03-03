@@ -1,7 +1,7 @@
 #!/bin/sh
 . /home/kdata.conf
 if [ ! -f /usr/local/bin/htpasswd.py ]; then
-cp -r /etc/kdata/menu/kdata-tao-mat-khau-bao-ve-folder.py /usr/local/bin/htpasswd.py
+cp -r /etc/kdata/menu/backup-code/kdata-tao-mat-khau-bao-ve-folder.py /usr/local/bin/htpasswd.py
 chmod 755 /usr/local/bin/htpasswd.py
 fi
 if [ ! -f /etc/kdata/pwprotect.default ]; then
@@ -47,14 +47,14 @@ select opt in "${options[@]}" ; do
 
     case "$REPLY" in
 
-    1 ) /etc/kdata/menu/kdata-sao-luu-code;;
-    2 ) /etc/kdata/menu/kdata-lan-luot-sao-luu-het-tat-ca-website;;
-    #3 ) /etc/kdata/menu/kdata-sao-luu-home;; "Backup Folder Home" 
-    3 ) /etc/kdata/menu/kdata-tu-dong-sao-luu-code-menu;;
-    4 ) /etc/kdata/menu/kdata-phuc-hoi-website;;
-    5 ) /etc/kdata/menu/kdata-lay-link-sao-luu-website-backup-menu;;
-    #6 ) /etc/kdata/menu/kdata-link-tai-sao-luu-tat-ca-cac-site;; "Link File Backup Home" 
-    6 ) /etc/kdata/menu/kdata-xoa-toan-bo-backup-website;;
+    1 ) /etc/kdata/menu/backup-code/kdata-sao-luu-code;;
+    2 ) /etc/kdata/menu/backup-code/kdata-lan-luot-sao-luu-het-tat-ca-website;;
+    #3 ) /etc/kdata/menu/backup-code/kdata-sao-luu-home;; "Backup Folder Home" 
+    3 ) /etc/kdata/menu/backup-code/kdata-tu-dong-sao-luu-code-menu;;
+    4 ) /etc/kdata/menu/backup-code/kdata-phuc-hoi-website;;
+    5 ) /etc/kdata/menu/backup-code/kdata-lay-link-sao-luu-website-backup-menu;;
+    #6 ) /etc/kdata/menu/backup-code/kdata-link-tai-sao-luu-tat-ca-cac-site;; "Link File Backup Home" 
+    6 ) /etc/kdata/menu/backup-code/kdata-xoa-toan-bo-backup-website;;
     7 ) clear && kdata;;
     0) clear && kdata;;
     
