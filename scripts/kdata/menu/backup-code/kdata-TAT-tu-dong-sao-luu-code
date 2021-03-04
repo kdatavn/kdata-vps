@@ -25,12 +25,12 @@ fi
 clear
 echo "========================================================================="
 echo "TAT che do Auto backup cho $website thanh cong."
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
         ;;
     *)
         clear
 echo "========================================================================= "
 echo "Huy TAT Auto Backup cho $website"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
         ;;
 esac
