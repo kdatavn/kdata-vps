@@ -12,7 +12,7 @@ echo "========================================================================="
 echo "Ban phai tao User va Mat khau mac dinh truoc khi chay chuc nang nay. Tao "
 echo "-------------------------------------------------------------------------"
 echo "User va Mat Khau mac dinh: KPANEL Menu => User & Password Mac Dinh."
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
 exit
 fi
 
@@ -46,7 +46,7 @@ service nginx reload
        clear 
 echo "========================================================================= "
 echo "Huy bo dat mat khau bao ve phpMyAdmin "
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
         ;;
 esac
 clear 
@@ -56,7 +56,7 @@ echo "-------------------------------------------------------------------------"
 echo "Thong tin truy cap: "
 echo "-------------------------------------------------------------------------"
 echo "Username: $userdefault | Password: $passdefault"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
 
 else
 
@@ -86,11 +86,11 @@ fi
        clear 
 echo "========================================================================= "
 echo "Huy bo TAT mat khau bao ve phpMyAdmin "
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
         ;;
 esac
 clear 
 echo "========================================================================= "
 echo "Hoan thanh TAT mat khau bao ve phpMyAdmin "
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
 fi

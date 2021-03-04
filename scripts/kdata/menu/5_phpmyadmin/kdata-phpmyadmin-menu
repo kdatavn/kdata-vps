@@ -48,12 +48,12 @@ select opt in "${options[@]}" ; do
 
     case "$REPLY" in
 
-    1) /etc/kdata/menu/kdata-phpmyadmin;;
-    2) /etc/kdata/menu/tienich/kdata-mo-phpmyadmin-port;;
-    3) /etc/kdata/menu/tienich/kdata-dong-phpmyadmin-port;;
-    4) /etc/kdata/menu/tienich/kdata-change-port-bi-mat;;
-    #5) /etc/kdata/menu/kdata-hien-link-phpmyadmin;;
-    5) /etc/kdata/menu/dat-mat-khau-bao-ve-phpmyadmin-backup-files;;
+    1) /etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin;;
+    2) /etc/kdata/menu/5_phpmyadmin/kdata-mo-phpmyadmin-port;;
+    3) /etc/kdata/menu/5_phpmyadmin/kdata-dong-phpmyadmin-port;;
+    4) /etc/kdata/menu/5_phpmyadmin/kdata-change-port-bi-mat;;
+    #5) /etc/kdata/menu/5_phpmyadmin/kdata-hien-link-phpmyadmin;;
+    5) /etc/kdata/menu/5_phpmyadmin/dat-mat-khau-bao-ve-phpmyadmin-backup-files;;
     6) clear && /bin/kdata;;
     0) clear && kdata;;
     

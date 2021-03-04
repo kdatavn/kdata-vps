@@ -87,11 +87,11 @@ rm -rf /etc/kdata/linkbackup
 rm -rf /tmp/linkbackupall
 echo "" >> /home/$mainsite/private_html/ListBackup-$website$code.txt
 echo "===================================================The End==============================================================" >> /home/$mainsite/private_html/ListBackup-$website$code.txt
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 else
 clear
 echo "========================================================================="
 echo "Ban chua tao backup cho $website !"
-/etc/kdata/menu/kdata-sao-luu
+/etc/kdata/menu/backup-code/kdata-sao-luu
 exit
 fi

@@ -43,7 +43,7 @@ select opt in "${options[@]}" ; do
     2) /etc/kdata/menu/delete-website/kdata-befor-xoa-website;;
     3) clear && /etc/kdata/menu/backup-code/kdata-sao-luu;;
     4) clear && /etc/kdata/menu/kdata-befor-them-xoa-database;;
-    5) clear && /etc/kdata/menu/kdata-phpmyadmin-menu;;
+    5) clear && /etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu;;
     6) clear && /etc/kdata/menu/opcache/kdata-before-opcache;;
     7) clear && /etc/kdata/menu/memcache/kdata-before-memcache-menu;;
     8) clear && /etc/kdata/menu/redis/kdata-redis-before-menu;;

@@ -38,13 +38,13 @@ END
 clear
 echo "========================================================================="
 echo "Phpmyadmin link da duoc TAT thanh cong !"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
         ;;
     *)
 clear
  echo "========================================================================="
 echo "Ban lua chon NO  !"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
         ;;
 esac
 exit
@@ -73,13 +73,13 @@ clear
         echo "Phpmyadmin link da duoc BAT thanh cong !"
 echo "-------------------------------------------------------------------------"
                echo "Truy cap phpmyadmin qua: $mainsite:$priport  hoac $serverip:$priport"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
         ;;
     *)
                clear
  echo "========================================================================="
 echo "Ban lua chon NO!"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
 
         ;;
 esac
