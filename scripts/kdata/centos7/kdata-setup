@@ -400,7 +400,7 @@ sudo yum makecache fast
 #sudo yum -y install --repo="mariadb-main" MariaDB-server
 #else
 #sudo yum -y install --repo="mariadb" MariaDB-server
-sudo yum -y install MariaDB-client MariaDB-common MariaDB-compat MariaDB-devel MariaDB-server MariaDB-shared perl-DBD-MySQL
+#sudo yum -y install MariaDB-client MariaDB-common MariaDB-compat MariaDB-devel MariaDB-server MariaDB-shared perl-DBD-MySQL
 #fi
 
 sudo yum -y install exim syslog-ng cronie cronie-anacron
@@ -416,6 +416,7 @@ sudo yum -y install php php-curl php-pecl-zip php-zip php-soap php-cli php-snmp 
 fi
 
 sudo yum -y install ImageMagick ImageMagick-devel ImageMagick-c++ ImageMagick-c++-devel 
+sudo yum -y install MariaDB-client MariaDB-common MariaDB-compat MariaDB-devel MariaDB-server MariaDB-shared perl-DBD-MySQL
 yes "" | pecl install imagick
 # neu cai dat thanh cong imagick -> include vao
 if [ -f /usr/lib64/php/modules/imagick.so ]; then
@@ -445,8 +446,8 @@ systemctl enable nginx.service
 systemctl start nginx.service 
 systemctl enable php-fpm.service 
 systemctl start php-fpm.service
-#systemctl enable mariadb.service
-#systemctl start mariadb.service 
+systemctl enable mariadb.service
+systemctl start mariadb.service 
 chkconfig --add mysql
 chkconfig --levels 235 mysql on
 systemctl enable mysql
@@ -872,7 +873,7 @@ END
 fi
 
 
-    cat >> "/etc/security/limits.conf" <<END
+cat >> "/etc/security/limits.conf" <<END
 * soft nofile 65536
 * hard nofile 65536
 nginx soft nofile 65536
@@ -951,7 +952,7 @@ mv wp-cli.phar /usr/local/bin/wp
 cat >> "/home/kdata.conf" <<END
 emailmanage="$kdataemail"
 END
-#systemctl restart mariadb.service
+systemctl restart mariadb
 service mysql restart
 clear
 echo "=========================================================================="
