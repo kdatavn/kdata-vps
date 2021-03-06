@@ -7,4 +7,4 @@ echo "========================================================================="
 echo "Ban Co The Truy Cap Vao Phpmyadmin Bang Link Duoi:"
 echo "-------------------------------------------------------------------------"
 echo "http://$serverip:$priport"
-/etc/kdata/menu/kdata-phpmyadmin-menu
+/etc/kdata/menu/5_phpmyadmin/kdata-phpmyadmin-menu
